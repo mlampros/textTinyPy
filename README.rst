@@ -1,5 +1,9 @@
 .. image:: https://badge.fury.io/py/textTinyPy.svg
     :target: https://badge.fury.io/py/textTinyPy
+    
+.. image:: https://travis-ci.org/mlampros/textTinyPy.svg?branch=master
+    :target: https://travis-ci.org/mlampros/textTinyPy
+
 
 |
 
