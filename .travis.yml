@@ -5,7 +5,7 @@ python: 2.7
 
 branches:
     only:
-        - master
+        - master1
 
 addons:
     apt:
