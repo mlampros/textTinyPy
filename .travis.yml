@@ -16,9 +16,9 @@ os:
 compiler:
   - gcc
 
-env:
-  global:
-    - CMAKE_BUILD_TYPE=RELEASE
+#env:
+#  global:
+#    - CMAKE_BUILD_TYPE=RELEASE
 
 
 before_install:
@@ -31,7 +31,7 @@ before_install:
   - export CC=gcc-4.8
   - export CXX=g++-4.8
   - printenv
-  #- sudo cp .travis/config.hpp /usr/include/armadillo_bits/config.hpp
+  - sudo cp /home/travis/config.hpp /usr/include/armadillo_bits/config.hpp
   - pip install -r requirements.txt
   - sudo apt-get update
   
