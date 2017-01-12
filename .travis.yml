@@ -15,9 +15,27 @@ os:
 compiler:
   - gcc
 
-#env:
-#  global:
-#    - CMAKE_BUILD_TYPE=RELEASE
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+            - kalakris-cmake
+            - boost-latest
+        packages:
+            - cmake
+            - libboost1.55-dev
+            - libboost-filesystem1.55-dev
+            - libboost-locale1.55-dev
+
+os:
+  - linux
+
+compiler:
+  - gcc
+
+env:
+  global:
+    - CMAKE_BUILD_TYPE=RELEASE
 
 
 before_install:
@@ -29,7 +47,6 @@ before_install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 90
   - sudo apt-get install libgfortran3 libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev
-  - sudo apt-get install libboost-all-dev libboost-locale-dev
   - sudo apt-get install gfortran
   - sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so
   - pip install -r requirements.txt
@@ -37,9 +54,15 @@ before_install:
   - sudo apt-get update
 
 install:
+ - sudo apt-get install -qq cmake
  - wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz     
  - tar xf armadillo-7.600.2.tar.xz
- - pushd armadillo-7.600.2 && CXX=/usr/bin/g++-4.9 cmake . && make && sudo make install && popd
+ - cd armadillo-7.600.2/
+ - cmake .
+ - make
+ - sudo make install
+ - cd ..
+ #- pushd armadillo-7.600.2 && CXX=/usr/bin/g++-4.9 cmake . && make && sudo make install && popd
  - pip --version
  - cython --version
 
