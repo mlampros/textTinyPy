@@ -31,7 +31,7 @@ before_install:
   - export CC=gcc-4.8
   - export CXX=g++-4.8
   - printenv
-  - sudo cp .travis/config.hpp /usr/include/armadillo_bits/config.hpp
+  #- sudo cp .travis/config.hpp /usr/include/armadillo_bits/config.hpp
   - pip install -r requirements.txt
   - sudo apt-get update
   
