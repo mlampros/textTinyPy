@@ -40,3 +40,4 @@ The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy
 
 
 Use the following link to report bugs/issues, `https://github.com/mlampros/textTinyPy/issues <https://github.com/mlampros/textTinyPy/issues/>`_
+
