@@ -56,17 +56,17 @@ before_install:
   - if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then sudo apt-get install libarpack++2-dev; fi
   - if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then sudo apt-get install gfortran; fi
   - if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so; fi
+  - if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then sudo pip install -r requirements.txt; fi
   - if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then sudo apt-get update; fi
-
+  
 install:
   - pip --version
-  - pip install -r requirements.txt
 
 script:
-  - sudo python setup.py build
+  - python setup.py build
   - python setup.py sdist
-  - py.test
-  #- python setup.py install && py.test
+  #- py.test
+  - python setup.py install && py.test
 
 after_success:
   - codecov
