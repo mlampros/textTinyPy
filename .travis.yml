@@ -65,10 +65,13 @@ install:
  - cd ..
  - pip --version
  - cython --version
- - python setup.py install
+# - python setup.py install
 
 script:
-  - py.test test --cov=codecov
+  - python setup.py install && py.test
+
+#script:
+ # - py.test test --cov=codecov
 
 after_success:
   - codecov
