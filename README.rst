@@ -1,4 +1,3 @@
-
 .. image:: https://badge.fury.io/py/textTinyPy.svg
     :target: https://badge.fury.io/py/textTinyPy
 
