@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>docs_matrix &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>docs_matrix</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for docs_matrix</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">py_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="k">if</span> <span class="n">py_version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxint</span>         <span class="c1"># python 2 maximum integer</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>        <span class="c1"># python 3 maximum integer</span>
+
+
+
+<div class="viewcode-block" id="docs_matrix"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix">[docs]</a><span class="k">class</span> <span class="nc">docs_matrix</span><span class="p">:</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    document-term or term-document matrices</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<span class="c1">#    cdef term_matrix* dtm</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef bool_t FLAG_output_long</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef bool_t FLAG_doc_term_mat</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef bool_t term_matrices</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object result_struct_matrix</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object adjust_sparsity_matrix</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object sp_mat</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object dims</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    def __cinit__(self):</span>
+<span class="c1">#</span>
+<span class="c1">#        self.dtm = new term_matrix()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.FLAG_output_long = False</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.FLAG_doc_term_mat = False</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.term_matrices = False</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.sp_mat = None</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_struct_matrix = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.adjust_sparsity_matrix = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.dims = []</span>
+<span class="c1">#        </span>
+<span class="c1">#</span>
+<span class="c1">#    def __dealloc__(self):</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.dtm</span>
+        
+        
+        
+<div class="viewcode-block" id="docs_matrix.Term_Matrix"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.Term_Matrix">[docs]</a>    <span class="k">def</span> <span class="nf">Term_Matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_documents</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2documents_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sort_columns</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">LOCALE_UTF</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">to_upper</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                    
+                    <span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;english&quot;</span><span class="p">,</span> <span class="n">REMOVE_characters</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">remove_punctuation_string</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_numbers</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">trim_token</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                    
+                    <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="se">\r\n\t</span><span class="s2">.,;:()?!//&quot;</span><span class="p">,</span> <span class="n">remove_punctuation_vector</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_stopwords</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>  <span class="n">min_num_char</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+
+                    <span class="n">max_num_char</span> <span class="o">=</span> <span class="n">MAX_VAL</span><span class="p">,</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_gram_delimiter</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
+                    
+                    <span class="n">stemmer_ngram</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stemmer_gamma</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stemmer_truncate</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stemmer_batches</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">print_every_rows</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tf_idf</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                    
+                    <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param vector_documents: either None or a character vector of documents</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2documents_file: either None or a valid character path to a text file</span>
+
+<span class="sd">        :param sort_columns: either True or False specifying if the initial terms should be sorted ( so that the output sparse matrix is sorted in alphabetical order )</span>
+<span class="sd">        </span>
+<span class="sd">        :param LOCALE_UTF: the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#39;el_GR.UTF-8&#39; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the function increases.</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_lower: either True or False. If True the character string will be converted to lower case</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_upper: either True or False. If True the character string will be converted to upper case</span>
+<span class="sd">        </span>
+<span class="sd">        :param language: a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#39;afrikaans&#39;, </span>
+<span class="sd">        </span>
+<span class="sd">            &#39;arabic&#39;, &#39;armenian&#39;, &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;, &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, </span>
+<span class="sd">            &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;, &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;, &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;,</span>
+<span class="sd">            &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;, &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu&#39;</span>
+
+<span class="sd">        :param REMOVE_characters: a character string with specific characters that should be removed from the text file. If the remove_char is &quot;&quot; then no removal of characters take place</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_punctuation_string: either True or False. If True then the punctuation of the character string will be removed (applies before the split function)</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_numbers: either True or False. If True then any numbers in the character string will be removed        </span>
+<span class="sd">        </span>
+<span class="sd">        :param trim_token: either True or False. If True then the string will be trimmed (left and/or right)</span>
+<span class="sd">        </span>
+<span class="sd">        :param split_string: either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</span>
+<span class="sd">        </span>
+<span class="sd">        :param separator: a character string specifying the character delimiter(s)</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_punctuation_vector: either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</span>
+<span class="sd">    </span>
+<span class="sd">        :param remove_stopwords: either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</span>
+
+<span class="sd">        :param min_num_char: an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_num_char: an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</span>
+
+<span class="sd">        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. </span>
+
+<span class="sd">        :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_n_gram: an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_n_gram: an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.        </span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_gram_delimiter: a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</span>
+
+<span class="sd">        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</span>
+
+<span class="sd">        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</span>
+<span class="sd">        </span>
+<span class="sd">        :param print_every_rows: a numeric value greater than 1 specifying the print intervals. Frequent output in the console can slow down the method in case of big files.</span>
+<span class="sd">                </span>
+<span class="sd">        :param normalize: either None or one of &#39;l1&#39; or &#39;l2&#39; normalization.</span>
+<span class="sd">        </span>
+<span class="sd">        :param tf_idf: either True or False. If True then the term-frequency-inverse-document-frequency will be returned</span>
+<span class="sd">        </span>
+<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The Term_Matrix method takes either a character list of strings or a text file and after tokenization and transformation it saves the terms, row-indices, column-indices and counts</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+        
+<span class="c1">#        if vector_documents is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(vector_documents, list), &#39;the vector_documents parameter should be of type list&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#        if path_2documents_file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2documents_file, basestring), &#39;the path_2documents_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#            assert os.path.exists(path_2documents_file), &quot;the path_2documents_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if (vector_documents is None) and (path_2documents_file is None):</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;either the vector_documents or the path_2documents_file can be None but not both&quot;))</span>
+<span class="c1">#            </span>
+<span class="c1">#        if (vector_documents is not None) and (path_2documents_file is not None):</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;either the vector_documents or the path_2documents_file can be NOT None but not both&quot;))</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(sort_columns, bool), &#39;the sort_columns parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(LOCALE_UTF, basestring), &#39;the LOCALE_UTF parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_lower, bool), &#39;the to_lower parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_upper, bool), &#39;the to_upper parameter should be of type boolean&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        assert isinstance(REMOVE_characters, basestring), &#39;the REMOVE_characters parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_string, bool), &#39;the remove_punctuation_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_numbers, bool), &#39;the remove_numbers parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(trim_token, bool), &#39;the trim_token parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(split_string, bool), &#39;the split_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(separator, basestring), &#39;the separator parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_vector, bool), &#39;the remove_punctuation_vector parameter should be of type boolean&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#        assert isinstance(language, basestring), &#39;the language parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert language in [&quot;afrikaans&quot;, &quot;arabic&quot;, &quot;armenian&quot;, &quot;basque&quot;, &quot;bengali&quot;, &quot;breton&quot;, &quot;bulgarian&quot;, &quot;catalan&quot;, &quot;croatian&quot;, &quot;czech&quot;, &quot;danish&quot;, &quot;dutch&quot;, &quot;english&quot;, </span>
+<span class="c1">#                            &quot;estonian&quot;, &quot;finnish&quot;, &quot;french&quot;,&quot;galician&quot;, &quot;german&quot;, &quot;greek&quot;, &quot;hausa&quot;, &quot;hebrew&quot;, &quot;hindi&quot;, &quot;hungarian&quot;, &quot;indonesian&quot;, &quot;irish&quot;, &quot;italian&quot;, </span>
+<span class="c1">#                            &quot;latvian&quot;, &quot;marathi&quot;, &quot;norwegian&quot;, &quot;persian&quot;, &quot;polish&quot;, &quot;portuguese&quot;, &quot;romanian&quot;, &quot;russian&quot;, &quot;slovak&quot;, &quot;slovenian&quot;, &quot;somalia&quot;, &quot;spanish&quot;, </span>
+<span class="c1">#                            &quot;swahili&quot;, &quot;swedish&quot;, &quot;turkish&quot;, &quot;yoruba&quot;, &quot;zulu&quot;], &quot;available languages in case of stop-word removal are &#39;afrikaans&#39;, &#39;arabic&#39;, &#39;armenian&#39;,\</span>
+<span class="c1">#                                                                                &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;,\</span>
+<span class="c1">#                                                                                &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;,\</span>
+<span class="c1">#                                                                                &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;,\</span>
+<span class="c1">#                                                                                &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;, &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;,\</span>
+<span class="c1">#                                                                                &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu. \</span>
+<span class="c1">#                                                                                \</span>
+<span class="c1">#                                                                                A user defined character list of stop words can be used as input, if the target language is not included&quot;</span>
+<span class="c1">#        if isinstance(remove_stopwords, bool):</span>
+<span class="c1">#            </span>
+<span class="c1">#            if remove_stopwords:</span>
+<span class="c1">#                </span>
+<span class="c1">#                IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;\\&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                ELSE:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;/&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                path_stopw = pkg_resources.resource_filename(&#39;textTinyPy&#39;, resource_path)</span>
+<span class="c1">#                </span>
+<span class="c1">#                dat_stopw = pd.read_csv(path_stopw, header = None)</span>
+<span class="c1">#                </span>
+<span class="c1">#                array_stopw = np.array(dat_stopw.as_matrix(columns=None))</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = [i[0] for i in array_stopw]</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw.append(&quot;&quot;)</span>
+<span class="c1">#                </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = []</span>
+<span class="c1">#        </span>
+<span class="c1">#        elif isinstance(remove_stopwords, list):</span>
+<span class="c1">#            </span>
+<span class="c1">#            list_stopw = remove_stopwords</span>
+<span class="c1">#            </span>
+<span class="c1">#            remove_stopwords = True</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;the remove_stopwords parameter should be either a list of user defined stopwords or a logical parameter ( True or False )&quot;))</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(min_num_char, int) and min_num_char &gt; 0, &#39;the min_num_char parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(max_num_char, int) and max_num_char &gt; min_num_char, &#39;the max_num_char parameter should be of type integer and greater than the min_num_char&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if max_num_char == MAX_VAL:</span>
+<span class="c1">#            </span>
+<span class="c1">#            max_num_char = 1000000000</span>
+<span class="c1">#        </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(stemmer, basestring), &#39;the stemmer parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert stemmer in [&quot;porter2_stemmer&quot;, &quot;ngram_sequential&quot;, &quot;ngram_overlap&quot;], &#39;available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        if stemmer is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            stemmer = &quot;NULL&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(min_n_gram, int) and min_n_gram &gt; 0, &#39;the min_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(max_n_gram, int) and max_n_gram &gt; 0, &#39;the max_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert max_n_gram &gt;= min_n_gram, &#39;the max_n_gram parameter should be greater than the min_n_gram&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_gram_delimiter, basestring), &#39;the n_gram_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#                  </span>
+<span class="c1">#        assert isinstance(skip_n_gram, int) and skip_n_gram &gt; 0, &#39;the skip_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(skip_distance, int) and skip_distance &gt; -1, &#39;the skip_distance parameter should be of type integer and greater or equal to 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if stemmer == &quot;ngram_sequential&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert isinstance(stemmer_gamma, float) and stemmer_gamma &gt;= 0.0, &#39;the stemmer_gamma parameter should be of type float and greater or equal to 0.0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_truncate, int) and stemmer_truncate &gt; 0, &#39;the stemmer_truncate parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_batches, int) and stemmer_batches &gt; 0, &#39;the stemmer_batches parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#            if stemmer == &quot;ngram_overlap&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(print_every_rows, int) and print_every_rows &gt; 0, &#39;the print_every_rows parameter should be of type integer&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(tf_idf, bool), &#39;the tf_idf parameter should be of type boolean&#39;        </span>
+<span class="c1">#        </span>
+<span class="c1">#        tmp_flag = (normalize is None) and (not tf_idf)         # before the modification of the &#39;normalize&#39; parameter</span>
+<span class="c1">#        </span>
+<span class="c1">#        if normalize is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert normalize in [&quot;l1&quot;, &quot;l2&quot;], &quot;available normalization methods are &#39;l1&#39; or &#39;l2&#39;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if normalize is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            normalize = &quot;NULL&quot;        </span>
+<span class="c1"># </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &#39;the threads parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if vector_documents is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_VEC = []</span>
+<span class="c1">#        </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_VEC = vector_documents</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2documents_file is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_FILE = &quot;NULL&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_FILE = path_2documents_file        </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.FLAG_output_long = tmp_flag                                 # _cinit_ objects can not be modified if they are inside of if..else.. statements     </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.dtm.document_term_matrix(tmp_VEC, list_stopw, language, LOCALE_UTF, max_num_char, tmp_FILE, sort_columns, REMOVE_characters, to_lower, to_upper, </span>
+<span class="c1">#                                      </span>
+<span class="c1">#                                      remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, </span>
+<span class="c1">#                                  </span>
+<span class="c1">#                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, </span>
+<span class="c1">#                                      </span>
+<span class="c1">#                                      stemmer_batches, threads, verbose, print_every_rows, normalize, tf_idf)</span>
+<span class="c1">#        </span>
+<span class="c1">#        if self.FLAG_output_long:</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_struct_long = self.dtm.output_data()</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;terms&#39;] = result_struct_long.terms_out</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;rows&#39;] = result_struct_long.row_idx_</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;columns&#39;] = result_struct_long.col_idx_</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;counts&#39;] = result_struct_long.docs_cnt_</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_struct_double = self.dtm.output_data_double()</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;terms&#39;] = result_struct_double.terms_out</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;rows&#39;] = result_struct_double.row_idx_</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;columns&#39;] = result_struct_double.col_idx_</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.result_struct_matrix[&#39;counts&#39;] = result_struct_double.docs_cnt_</span>
+<span class="c1">#                  </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.dims.append(np.max(self.result_struct_matrix[&#39;rows&#39;]) + 1)</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.dims.append(np.max(self.result_struct_matrix[&#39;columns&#39;]) + 1)</span>
+    <span class="k">pass</span>
+
+
+
+        
+<div class="viewcode-block" id="docs_matrix.document_term_matrix"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.document_term_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">document_term_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_array</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_array: either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                res_dtm = tm.document_term_matrix(to_array = True)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method should be called after the &#39;Term_Matrix&#39; method is run. It returns a document-term-matrix</span>
+<span class="sd">            </span>
+<span class="sd">            Here the sparse matrix format is a &#39;csr_matrix&#39; because shape[0] &lt; shape[1] (rows &lt; columns)</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(to_array, bool), &#39;the to_array parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.FLAG_doc_term_mat = True</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.term_matrices = True</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.sp_mat = csr_matrix((self.result_struct_matrix[&#39;counts&#39;], (self.result_struct_matrix[&#39;rows&#39;], self.result_struct_matrix[&#39;columns&#39;])), shape=(self.dims[0], self.dims[1]))</span>
+<span class="c1">#        </span>
+<span class="c1">#        if to_array:</span>
+<span class="c1">#            </span>
+<span class="c1">#            return self.sp_mat.toarray()</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            return self.sp_mat</span>
+    <span class="k">pass</span>
+            
+            
+    
+<div class="viewcode-block" id="docs_matrix.term_document_matrix"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.term_document_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">term_document_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_array</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_array: either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                res_tdm = tm.term_document_matrix(to_array = True)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method should be called after the &#39;Term_Matrix&#39; method is run. It returns a term-document-matrix.</span>
+<span class="sd">            </span>
+<span class="sd">            Here the sparse matrix format is a &#39;csc_matrix&#39; because shape[0] &gt; shape[1] (rows &gt; columns)</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(to_array, bool), &#39;the to_array parameter should be of type boolean&#39;        </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.term_matrices = True</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.sp_mat = csc_matrix((self.result_struct_matrix[&#39;counts&#39;], (self.result_struct_matrix[&#39;columns&#39;], self.result_struct_matrix[&#39;rows&#39;])), shape=(self.dims[1], self.dims[0]))</span>
+<span class="c1">#        </span>
+<span class="c1">#        if to_array:</span>
+<span class="c1">#            </span>
+<span class="c1">#            return self.sp_mat.toarray()</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            return self.sp_mat</span>
+    <span class="k">pass</span>            
+        
+        
+    
+<div class="viewcode-block" id="docs_matrix.corpus_terms"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.corpus_terms">[docs]</a>    <span class="k">def</span> <span class="nf">corpus_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The corpus_terms method returns the terms of the corpus. There are two different cases: </span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                1st. either the &#39;document_term_matrix&#39; or the &#39;term_document_matrix&#39; was run first --&gt; it returns all the terms of the corpus.</span>
+<span class="sd">                </span>
+<span class="sd">                Example::</span>
+<span class="sd">                    </span>
+<span class="sd">                    tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                    tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                    res_crp_all = tm.corpus_terms()</span>
+<span class="sd">                    </span>
+<span class="sd">                </span>
+<span class="sd">                2nd. the &#39;Term_Matrix_Adjust&#39; method was run first --&gt; it retuns a reduced list of terms taking into account the output of the &#39;Term_Matrix_Adjust&#39; method</span>
+<span class="sd">                </span>
+<span class="sd">                Example::</span>
+<span class="sd">                    </span>
+<span class="sd">                    tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                    tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                    </span>
+<span class="sd">                    res_adj = tm.Term_Matrix_Adjust(sparsity_thresh = 0.9)</span>
+<span class="sd">                </span>
+<span class="sd">                    res_crp_reduced = tm.corpus_terms()</span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        if self.adjust_sparsity_matrix != {}:</span>
+<span class="c1">#            </span>
+<span class="c1">#            return self.adjust_sparsity_matrix[&#39;sparsity_terms&#39;]</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if self.result_struct_matrix == {}:</span>
+<span class="c1">#                </span>
+<span class="c1">#                raise_with_traceback(ValueError(&quot;you have to run first one of the &#39;document_term_matrix&#39;, &#39;term_document_matrix&#39; and/or &#39;Term_Matrix_Adjust&#39; methods and then require the corpus terms&quot;))</span>
+<span class="c1">#                </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                return self.result_struct_matrix[&#39;terms&#39;]</span>
+    <span class="k">pass</span>     
+
+
+
+<div class="viewcode-block" id="docs_matrix.Sparsity"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.Sparsity">[docs]</a>    <span class="k">def</span> <span class="nf">Sparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Sparsity()</span>
+<span class="sd">                </span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            returns the sparsity of the initial term-matrix</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        cdef double tmp_val </span>
+<span class="c1">#        </span>
+<span class="c1">#        tmp_val = self.dtm.sparsity()</span>
+<span class="c1">#        </span>
+<span class="c1">#        return &quot;sparsity of the matrix: &quot; + str(float(round(tmp_val, 4))) + &quot; %&quot;</span>
+    <span class="k">pass</span>        
+        
+        
+        
+<div class="viewcode-block" id="docs_matrix.Term_Matrix_Adjust"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.Term_Matrix_Adjust">[docs]</a>    <span class="k">def</span> <span class="nf">Term_Matrix_Adjust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sparsity_thresh</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">to_array</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param sparsity_thresh: a float number between 0.0 and 1.0 specifying the sparsity threshold</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_array: either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">            </span>
+<span class="sd">            tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">            tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                    </span>
+<span class="sd">            res_adj = tm.Term_Matrix_Adjust(sparsity_thresh = 0.9)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The Term_Matrix_Adjust method removes sparse terms from the output matrix using a sparsity threshold</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(sparsity_thresh, float) and (sparsity_thresh &lt;= 1.0 and sparsity_thresh &gt; 0.0) , &quot;the sparsity_thresh parameter should be of type float and it&#39;s range should be between 0.0 and 1.0&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(to_array, bool), &#39;the to_array parameter should be of type boolean&#39;         </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.term_matrices = False  </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.dtm.adjust_sparsity(self.result_struct_matrix[&#39;terms&#39;], sparsity_thresh)</span>
+<span class="c1">#        </span>
+<span class="c1">#        sparsity_struct = self.dtm.output_data_sparsity()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.adjust_sparsity_matrix[&#39;sparsity_terms&#39;] = sparsity_struct.adj_struct_terms</span>
+<span class="c1">#</span>
+<span class="c1">#        self.adjust_sparsity_matrix[&#39;sparsity_index&#39;] = sparsity_struct.index_sparse_mat</span>
+<span class="c1">#        </span>
+<span class="c1">#        if self.FLAG_doc_term_mat:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if to_array:</span>
+<span class="c1">#                </span>
+<span class="c1">#                return self.sp_mat[:, self.adjust_sparsity_matrix[&#39;sparsity_index&#39;]].toarray()</span>
+<span class="c1">#                </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                return self.sp_mat[:, self.adjust_sparsity_matrix[&#39;sparsity_index&#39;]]</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if to_array:</span>
+<span class="c1">#                </span>
+<span class="c1">#                return self.sp_mat[self.adjust_sparsity_matrix[&#39;sparsity_index&#39;], :].toarray()</span>
+<span class="c1">#                </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                return self.sp_mat[self.adjust_sparsity_matrix[&#39;sparsity_index&#39;], :]</span>
+    <span class="k">pass</span>
+                
+    
+    
+<div class="viewcode-block" id="docs_matrix.most_frequent_terms"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.most_frequent_terms">[docs]</a>    <span class="k">def</span> <span class="nf">most_frequent_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param keep_terms: a numeric value specifying the number of rows (terms) to keep from the output data frame</span>
+<span class="sd">        </span>
+<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                res_freq = tm.most_frequent_terms(keep_terms = 10, threads = 1, verbose = False)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The most_frequent_terms method returns the most frequent terms of the corpus using the output of the Term_matrix method. The user has the option </span>
+<span class="sd">        </span>
+<span class="sd">            to keep a specific number of terms from the output table using the keep_terms parameter.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>            </div>
+        
+<span class="c1">#        if keep_terms is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(keep_terms, int) and keep_terms &gt; 0, &#39;the keep_terms parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            keep_terms = 0</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &#39;the threads parameter should be of type integer and greater than 0&#39; </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39; </span>
+<span class="c1">#        </span>
+<span class="c1">#        result_freq = self.dtm.most_freq_terms(self.result_struct_matrix[&#39;terms&#39;], keep_terms, threads, verbose)</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict[&#39;terms&#39;] = result_freq.adj_struct_terms</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict[&#39;frequency&#39;] = result_freq.index_sparse_mat</span>
+<span class="c1">#        </span>
+<span class="c1">#        df = pd.DataFrame.from_dict(pd_2dict, orient = &#39;columns&#39;)</span>
+<span class="c1">#        </span>
+<span class="c1">#        df = df[[&#39;terms&#39;, &#39;frequency&#39;]]</span>
+<span class="c1">#        </span>
+<span class="c1">#        if keep_terms != 0:</span>
+<span class="c1">#        </span>
+<span class="c1">#            df = df[0:keep_terms]</span>
+<span class="c1">#        </span>
+<span class="c1">#        return df</span>
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="docs_matrix.term_associations"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.term_associations">[docs]</a>    <span class="k">def</span> <span class="nf">term_associations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">        :param Terms: a character list specifying the character strings for which the associations will be computed</span>
+<span class="sd">        </span>
+<span class="sd">        :param keep_terms: a numeric value specifying the number of rows (terms) to keep from the output data frame</span>
+<span class="sd">        </span>
+<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                res_assoc = tm.term_associations(Terms = [&#39;this&#39;, &#39;word&#39;, &#39;that&#39;], keep_terms = 10, threads = 1, verbose = False)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The term_associations method finds the associations between the given terms (Terms argument) and all the other terms in the corpus by calculating their correlation.</span>
+<span class="sd">        </span>
+<span class="sd">            There is also the option to keep a specific number of terms from the output table using the keep_terms parameter.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+        
+<span class="c1">#        assert isinstance(Terms, list), &#39;the Terms parameter should be a list of character strings&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if keep_terms is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(keep_terms, int) and keep_terms &gt; -1, &#39;the keep_terms parameter should be of type integer and greater or equal to 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            keep_terms += 1                # keep_terms + 1 because I&#39;ll remove the target-variable from the end-dataframe</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            keep_terms = 0</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &quot;the number of threads should be greater or equal to 1&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        assert isinstance(verbose, bool), &quot;the verbose parameter should be either TRUE or FALSE&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        </span>
+<span class="c1">#        single_trgt_idx, single_trgt_nam = [], []</span>
+<span class="c1">#        </span>
+<span class="c1">#        count_add = 0</span>
+<span class="c1">#        </span>
+<span class="c1">#        for item in range(len(Terms)):</span>
+<span class="c1">#            </span>
+<span class="c1">#            check_terms = np.array([i == Terms[item] for i in self.result_struct_matrix[&#39;terms&#39;]])</span>
+<span class="c1">#        </span>
+<span class="c1">#            if not any(check_terms):</span>
+<span class="c1">#                </span>
+<span class="c1">#                print(&quot;the &#39;&quot;, Terms[item], &quot;&#39; term does not exist in the terms list&quot;)</span>
+<span class="c1">#                </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                tmp_trm = np.where(check_terms == True)[0][0]</span>
+<span class="c1">#                </span>
+<span class="c1">#                single_trgt_idx.append(tmp_trm)</span>
+<span class="c1">#                </span>
+<span class="c1">#                single_trgt_nam.append(Terms[item])</span>
+<span class="c1">#                </span>
+<span class="c1">#                count_add += 1</span>
+<span class="c1">#                </span>
+<span class="c1">#        if single_trgt_idx == []:</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;none of the choosen Terms are present in the terms list&quot;))</span>
+<span class="c1">#            </span>
+<span class="c1">#        if self.FLAG_doc_term_mat:</span>
+<span class="c1">#            </span>
+<span class="c1">#            trgt_size = self.dims[0]</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            trgt_size = self.dims[1]</span>
+<span class="c1">#            </span>
+<span class="c1">#        if len(single_trgt_idx) == 1:</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix[&#39;terms&#39;], [], keep_terms, single_trgt_idx[0], threads, verbose)</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_tmp_single = self.dtm.return_cor_assoc_T()</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_single = {}</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_single[&#39;term&#39;] = result_tmp_single.term</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_single[&#39;correlation&#39;] = result_tmp_single.correlation</span>
+<span class="c1">#            </span>
+<span class="c1">#            remove_idx = np.where(np.array(result_single[&#39;term&#39;]) == Terms[0])[0][0]         # remove index of target variable</span>
+<span class="c1">#            </span>
+<span class="c1">#            df = pd.DataFrame(result_single)</span>
+<span class="c1">#            </span>
+<span class="c1">#            df = df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
+<span class="c1">#            </span>
+<span class="c1">#            return df.drop([remove_idx])</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix[&#39;terms&#39;], single_trgt_idx, keep_terms, -1, threads, verbose)</span>
+<span class="c1">#            </span>
+<span class="c1">#            res_tmp_mult = self.dtm.return_nested_cor_assoc_T()</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_mult, return_mult = {}, {}</span>
+<span class="c1">#            </span>
+<span class="c1">#            result_mult[&#39;result_nested&#39;] = res_tmp_mult.result_nested</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_vals = listvalues(result_mult)[0]       </span>
+<span class="c1">#            </span>
+<span class="c1">#            for nam in range(len(single_trgt_nam)):</span>
+<span class="c1">#                </span>
+<span class="c1">#                tmp_dict = tmp_vals[nam]</span>
+<span class="c1">#                </span>
+<span class="c1">#                remove_idx = np.where(np.array(tmp_dict[&#39;term&#39;]) == single_trgt_nam[nam])[0][0]         # remove index of target variable</span>
+<span class="c1">#                </span>
+<span class="c1">#                tmp_df = pd.DataFrame(tmp_dict)</span>
+<span class="c1">#            </span>
+<span class="c1">#                tmp_df = tmp_df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
+<span class="c1">#                </span>
+<span class="c1">#                tmp_df = tmp_df.drop([remove_idx])</span>
+<span class="c1">#                </span>
+<span class="c1">#                return_mult[single_trgt_nam[nam]] = tmp_df</span>
+<span class="c1">#</span>
+<span class="c1">#            return return_mult</span>
+    <span class="k">pass</span></div>
+            
+            
+            
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">docs_matrix</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">Term_Matrix</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">document_term_matrix</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">term_document_matrix</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">corpus_terms</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">Sparsity</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">Term_Matrix_Adjust</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">most_frequent_terms</span><span class="p">()</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">term_associations</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

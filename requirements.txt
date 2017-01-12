@@ -1,0 +1,14 @@
+
+future ( >= 0.15.2 )
+cython ( >= 0.23.5 )
+scipy  ( >= 0.16.1 )
+pandas ( >= 0.13.1 )
+numpy  ( >= 1.11.2 )
+boost library ( >= 1.55.0 ) [ boost.org ]
+armadillo ( >= 7.500 ) [ http://arma.sourceforge.net/ ]
+if available OPENMP for parallelization [ http://www.openmp.org/ ]
+a c++11 compatible compiler
+
+
+
+

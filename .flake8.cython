@@ -1,0 +1,4 @@
+[flake8]
+filename = *.pyx
+exclude = .eggs,*.egg,build
+

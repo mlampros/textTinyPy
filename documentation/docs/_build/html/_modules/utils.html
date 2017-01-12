@@ -1,0 +1,1050 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>utils &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>utils</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for utils</h1><div class="highlight"><pre>
+<span></span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">py_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="k">if</span> <span class="n">py_version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxint</span>         <span class="c1"># python 2 maximum integer</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>        <span class="c1"># python 3 maximum integer</span>
+
+
+
+
+
+<div class="viewcode-block" id="utils"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils">[docs]</a><span class="k">class</span> <span class="nc">utils</span><span class="p">:</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    utility functions</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<span class="c1">#    cdef big_files* bgf</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef TOKEN_stats* tks</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef BATCH_TOKEN* btk</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef utils_cpp* utl</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    def __cinit__(self):</span>
+<span class="c1">#               </span>
+<span class="c1">#        self.bgf = new big_files()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.tks = new TOKEN_stats()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.btk = new BATCH_TOKEN()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.utl = new utils_cpp()</span>
+<span class="c1">#        </span>
+<span class="c1">#</span>
+<span class="c1">#    def __dealloc__(self):</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.bgf</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.tks</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.btk</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.utl</span>
+        
+
+<div class="viewcode-block" id="utils.vocabulary_parser"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.vocabulary_parser">[docs]</a>    <span class="k">def</span> <span class="nf">vocabulary_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vocabulary_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">start_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_lines</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trimmed_line</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">LOCALE_UTF</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+                          
+                          <span class="n">max_num_char</span> <span class="o">=</span> <span class="n">MAX_VAL</span><span class="p">,</span> <span class="n">REMOVE_characters</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">to_upper</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_punctuation_string</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_punctuation_vector</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_numbers</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                          
+                          <span class="n">trim_token</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="se">\r\n\t</span><span class="s2">.,;:()?!//&quot;</span><span class="p">,</span> <span class="n">remove_stopwords</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">min_num_char</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+
+                          <span class="n">n_gram_delimiter</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">skip_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stemmer_ngram</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stemmer_gamma</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stemmer_truncate</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stemmer_batches</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying the path to the input file</span>
+<span class="sd">        </span>
+<span class="sd">        :param vocabulary_path_file: a character string specifying the output file where the vocabulary should be saved (after tokenization and transformation is applied).</span>
+
+<span class="sd">        :param start_query: a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</span>
+
+<span class="sd">        :param end_query: a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</span>
+
+<span class="sd">        :param min_lines: a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</span>
+
+<span class="sd">        :param trimmed_line: either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</span>
+
+<span class="sd">        :param language: a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#39;afrikaans&#39;, </span>
+<span class="sd">        </span>
+<span class="sd">            &#39;arabic&#39;, &#39;armenian&#39;, &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;, &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, </span>
+<span class="sd">            &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;, &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;, &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;,</span>
+<span class="sd">            &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;, &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu&#39;</span>
+
+<span class="sd">        :param LOCALE_UTF: the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#39;el_GR.UTF-8&#39; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_num_char: an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</span>
+
+<span class="sd">        :param REMOVE_characters: a character string with specific characters that should be removed from the text file. If the remove_char is &quot;&quot; then no removal of characters take place</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_lower: either True or False. If True the character string will be converted to lower case</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_upper: either True or False. If True the character string will be converted to upper case</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_punctuation_string: either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</span>
+
+<span class="sd">        :param remove_punctuation_vector: either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)       </span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_numbers: either True or False. If True then any numbers in the character string will be removed        </span>
+<span class="sd">        </span>
+<span class="sd">        :param trim_token: either True or False. If True then the string will be trimmed (left and/or right)</span>
+<span class="sd">        </span>
+<span class="sd">        :param split_string: either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</span>
+<span class="sd">        </span>
+<span class="sd">        :param separator: a character string specifying the character delimiter(s)</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_stopwords: either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</span>
+
+<span class="sd">        :param min_num_char: an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. </span>
+
+<span class="sd">        :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_n_gram: an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_gram_delimiter: a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_n_gram: an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</span>
+
+<span class="sd">        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</span>
+<span class="sd">        </span>
+<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.vocabulary_parser(input_path_file = &#39;/myfolder/input_file.txt&#39;, vocabulary_path_file = &#39;/myfolder/output_VOCAB.txt&#39;, start_query = &quot;&lt;structure&gt;&quot;, </span>
+<span class="sd">                </span>
+<span class="sd">                                            end_query = &quot;&lt;/structure&gt;&quot; to_lower = True, split_string = True)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            Returns the vocabulary counts for small or medium ( xml ) files ( for big files the vocabulary_accumulator method of the big_text_files class is appropriate )</span>
+<span class="sd">        </span>
+<span class="sd">            The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the start_query and end_query parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(vocabulary_path_file, basestring), &#39;the vocabulary_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(start_query, basestring), &#39;the start_query parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(end_query, basestring), &#39;the end_query parameter should be of type string&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        assert isinstance(min_lines, int) and min_lines &gt; 0, &#39;the min_lines parameter should be of type integer and at least 1&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(trimmed_line, bool), &#39;the trimmed_line parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(LOCALE_UTF, basestring), &#39;the LOCALE_UTF parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_lower, bool), &#39;the to_lower parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_upper, bool), &#39;the to_upper parameter should be of type boolean&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        assert isinstance(REMOVE_characters, basestring), &#39;the REMOVE_characters parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_string, bool), &#39;the remove_punctuation_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_numbers, bool), &#39;the remove_numbers parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(trim_token, bool), &#39;the trim_token parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(split_string, bool), &#39;the split_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(separator, basestring), &#39;the separator parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_vector, bool), &#39;the remove_punctuation_vector parameter should be of type boolean&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#        assert isinstance(min_num_char, int) and min_num_char &gt; 0, &#39;the min_num_char parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(max_num_char, int) and max_num_char &gt; min_num_char, &#39;the max_num_char parameter should be of type integer and greater than the min_num_char&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if max_num_char == MAX_VAL:</span>
+<span class="c1">#            </span>
+<span class="c1">#            max_num_char = 1000000000</span>
+<span class="c1">#        </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(stemmer, basestring), &#39;the stemmer parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert stemmer in [&quot;porter2_stemmer&quot;, &quot;ngram_sequential&quot;, &quot;ngram_overlap&quot;], &#39;available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(min_n_gram, int) and min_n_gram &gt; 0, &#39;the min_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(max_n_gram, int) and max_n_gram &gt; 0, &#39;the max_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert max_n_gram &gt;= min_n_gram, &#39;the max_n_gram parameter should be greater than the min_n_gram&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_gram_delimiter, basestring), &#39;the n_gram_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#                  </span>
+<span class="c1">#        assert isinstance(skip_n_gram, int) and skip_n_gram &gt; 0, &#39;the skip_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(skip_distance, int) and skip_distance &gt; -1, &#39;the skip_distance parameter should be of type integer and greater or equal to 0&#39;    </span>
+<span class="c1">#        </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if stemmer == &quot;ngram_sequential&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert isinstance(stemmer_gamma, float) and stemmer_gamma &gt;= 0.0, &#39;the stemmer_gamma parameter should be of type float and greater or equal to 0.0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_truncate, int) and stemmer_truncate &gt; 0, &#39;the stemmer_truncate parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_batches, int) and stemmer_batches &gt; 0, &#39;the stemmer_batches parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#            if stemmer == &quot;ngram_overlap&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#             </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &#39;the threads parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(language, basestring), &#39;the language parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert language in [&quot;afrikaans&quot;, &quot;arabic&quot;, &quot;armenian&quot;, &quot;basque&quot;, &quot;bengali&quot;, &quot;breton&quot;, &quot;bulgarian&quot;, &quot;catalan&quot;, &quot;croatian&quot;, &quot;czech&quot;, &quot;danish&quot;, &quot;dutch&quot;, &quot;english&quot;, </span>
+<span class="c1">#                            &quot;estonian&quot;, &quot;finnish&quot;, &quot;french&quot;,&quot;galician&quot;, &quot;german&quot;, &quot;greek&quot;, &quot;hausa&quot;, &quot;hebrew&quot;, &quot;hindi&quot;, &quot;hungarian&quot;, &quot;indonesian&quot;, &quot;irish&quot;, &quot;italian&quot;, </span>
+<span class="c1">#                            &quot;latvian&quot;, &quot;marathi&quot;, &quot;norwegian&quot;, &quot;persian&quot;, &quot;polish&quot;, &quot;portuguese&quot;, &quot;romanian&quot;, &quot;russian&quot;, &quot;slovak&quot;, &quot;slovenian&quot;, &quot;somalia&quot;, &quot;spanish&quot;, </span>
+<span class="c1">#                            &quot;swahili&quot;, &quot;swedish&quot;, &quot;turkish&quot;, &quot;yoruba&quot;, &quot;zulu&quot;], &quot;available languages in case of stop-word removal are &#39;afrikaans&#39;, &#39;arabic&#39;, &#39;armenian&#39;,\</span>
+<span class="c1">#                                                                                &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;,\</span>
+<span class="c1">#                                                                                &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;,\</span>
+<span class="c1">#                                                                                &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;,\</span>
+<span class="c1">#                                                                                &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;, &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;,\</span>
+<span class="c1">#                                                                                &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu. \</span>
+<span class="c1">#                                                                                \</span>
+<span class="c1">#                                                                                A user defined character list of stop words can be used as input, if the target language is not included&quot;</span>
+<span class="c1">#        query_transform = False</span>
+<span class="c1">#        </span>
+<span class="c1">#        tmp_fl_stopw = False</span>
+<span class="c1">#        </span>
+<span class="c1">#        if isinstance(remove_stopwords, bool):</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_fl_stopw = True</span>
+<span class="c1">#        </span>
+<span class="c1">#        if max_num_char &lt; 1000000000 or REMOVE_characters != &quot;&quot; or to_lower or to_upper or remove_punctuation_string or remove_punctuation_vector or remove_numbers or trim_token or split_string or isinstance(remove_stopwords, list) or tmp_fl_stopw or min_num_char &gt; 1 or stemmer != None or min_n_gram &gt; 1 or max_n_gram &gt; 1 or skip_n_gram &gt; 1:</span>
+<span class="c1">#              </span>
+<span class="c1">#              query_transform = True</span>
+<span class="c1">#              </span>
+<span class="c1">#        if stemmer is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            stemmer = &quot;NULL&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if isinstance(remove_stopwords, bool):</span>
+<span class="c1">#            </span>
+<span class="c1">#            if remove_stopwords:</span>
+<span class="c1">#                </span>
+<span class="c1">#                IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;\\&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                ELSE:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;/&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                path_stopw = pkg_resources.resource_filename(&#39;textTinyPy&#39;, resource_path)</span>
+<span class="c1">#                </span>
+<span class="c1">#                dat_stopw = pd.read_csv(path_stopw, header = None)</span>
+<span class="c1">#                </span>
+<span class="c1">#                array_stopw = np.array(dat_stopw.as_matrix(columns=None))</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = [i[0] for i in array_stopw]</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw.append(&quot;&quot;)</span>
+<span class="c1">#                    </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = []</span>
+<span class="c1">#        </span>
+<span class="c1">#        elif isinstance(remove_stopwords, list):</span>
+<span class="c1">#            </span>
+<span class="c1">#            list_stopw = remove_stopwords</span>
+<span class="c1">#            </span>
+<span class="c1">#            remove_stopwords = True</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;the remove_stopwords parameter should be either a list of user defined stopwords or a logical parameter ( True or False )&quot;))</span>
+<span class="c1">#        </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.vocabulary_count_parser(input_path_file, start_query, end_query, list_stopw, vocabulary_path_file, min_lines, trimmed_line, query_transform, language, LOCALE_UTF, max_num_char, </span>
+<span class="c1">#                          </span>
+<span class="c1">#                                          REMOVE_characters, to_lower, to_upper, remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, </span>
+<span class="c1">#                                                     </span>
+<span class="c1">#                                          separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, </span>
+<span class="c1">#                                          </span>
+<span class="c1">#                                          stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose)</span>
+        
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="utils.utf_locale"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.utf_locale">[docs]</a>    <span class="k">def</span> <span class="nf">utf_locale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;english&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param language: a character string specifying the language for which the utf-locale should be returned</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.utf_locale(language = &quot;english&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            utf-locale for specific languages</span>
+<span class="sd">        </span>
+<span class="sd">            This is a limited list of language-locale. The locale depends mostly on the text input.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(language, basestring), &quot;the &#39;language&#39; parameter should be a character string&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert language in [&quot;afrikaans&quot;, &quot;arabic&quot;, &quot;armenian&quot;, &quot;basque&quot;, &quot;bengali&quot;, &quot;breton&quot;, &quot;bulgarian&quot;, &quot;catalan&quot;, &quot;croatian&quot;, &quot;czech&quot;, &quot;danish&quot;, &quot;dutch&quot;, &quot;english&quot;, </span>
+<span class="c1">#                            &quot;estonian&quot;, &quot;finnish&quot;, &quot;french&quot;,&quot;galician&quot;, &quot;german&quot;, &quot;greek&quot;, &quot;hausa&quot;, &quot;hebrew&quot;, &quot;hindi&quot;, &quot;hungarian&quot;, &quot;indonesian&quot;, &quot;irish&quot;, &quot;italian&quot;, </span>
+<span class="c1">#                            &quot;latvian&quot;, &quot;marathi&quot;, &quot;norwegian&quot;, &quot;persian&quot;, &quot;polish&quot;, &quot;portuguese&quot;, &quot;romanian&quot;, &quot;russian&quot;, &quot;slovak&quot;, &quot;slovenian&quot;, &quot;somalia&quot;, &quot;spanish&quot;, </span>
+<span class="c1">#                            &quot;swahili&quot;, &quot;swedish&quot;, &quot;turkish&quot;, &quot;yoruba&quot;, &quot;zulu&quot;], &quot;available languages in case of stop-word removal are &#39;afrikaans&#39;, &#39;arabic&#39;, &#39;armenian&#39;,\</span>
+<span class="c1">#                                                                                &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;,\</span>
+<span class="c1">#                                                                                &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;,\</span>
+<span class="c1">#                                                                                &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;,\</span>
+<span class="c1">#                                                                                &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;, &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;,\</span>
+<span class="c1">#                                                                                &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu.&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            resource_path = &#39;\\&#39;.join((&#39;locale&#39;, &#39;locale_stopword_encoding.csv&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#        ELSE:</span>
+<span class="c1">#            </span>
+<span class="c1">#            resource_path = &#39;/&#39;.join((&#39;locale&#39;, &#39;locale_stopword_encoding.csv&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#        path_loc = pkg_resources.resource_filename(&#39;textTinyPy&#39;, resource_path)</span>
+<span class="c1">#        </span>
+<span class="c1">#        dat_loc = pd.read_csv(path_loc, header = 0)</span>
+<span class="c1">#        </span>
+<span class="c1">#        array_loc = np.array(dat_loc.as_matrix(columns=None))</span>
+<span class="c1">#        </span>
+<span class="c1">#        dict_loc = { i[0] : i[1] for i in array_loc }</span>
+<span class="c1">#        </span>
+<span class="c1">#        return dict_loc[language]</span>
+    <span class="k">pass</span>  
+
+
+
+<div class="viewcode-block" id="utils.bytes_converter"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.bytes_converter">[docs]</a>    <span class="k">def</span> <span class="nf">bytes_converter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;MB&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying the path to the input file</span>
+<span class="sd">        </span>
+<span class="sd">        :param unit: a character string specifying the unit. One of KB, MB, GB</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.bytes_converter(input_path_file = &#39;/myfolder/input_file.txt&#39;, unit = &quot;MB&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            bytes converter using a text file ( KB, MB or GB )</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>        </div>
+        
+<span class="c1">#        cdef double result_conv         </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;        </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(unit, basestring), &#39;the unit parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert unit in [&quot;KB&quot;, &quot;MB&quot;, &quot;GB&quot;], &quot;available units are &#39;KB&#39;, &#39;MB&#39; or &#39;GB&#39;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_conv = self.bgf.bytes_converter(input_path_file, unit)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_conv</span>
+        
+    <span class="k">pass</span> 
+
+
+<div class="viewcode-block" id="utils.text_file_parser"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.text_file_parser">[docs]</a>    <span class="k">def</span> <span class="nf">text_file_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">start_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_lines</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trimmed_line</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying the path to the input file</span>
+<span class="sd">        </span>
+<span class="sd">        :param start_query: a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</span>
+
+<span class="sd">        :param end_query: a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</span>
+
+<span class="sd">        :param output_path_file: a character string specifying the path to the output file</span>
+
+<span class="sd">        :param min_lines: a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</span>
+
+<span class="sd">        :param trimmed_line: either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</span>
+
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.text_file_parser(input_path_file = &#39;/myfolder/input_file.txt&#39;, start_query = &quot;&lt;structure&gt;&quot;, end_query = &quot;&lt;/structure&gt;&quot;, output_path_file = &#39;/myfolder/output_file.txt&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the start_query and end_query parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>  </div>
+        
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(output_path_file, basestring), &#39;the output_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(start_query, basestring), &#39;the start_query parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(end_query, basestring), &#39;the end_query parameter should be of type string&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        assert isinstance(min_lines, int) and min_lines &gt; 0, &#39;the min_lines parameter should be of type integer and at least 1&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(trimmed_line, bool), &#39;the trimmed_line parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.batch_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose)</span>
+        
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="utils.dice_distance"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.dice_distance">[docs]</a>    <span class="k">def</span> <span class="nf">dice_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word1</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_grams</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param word1: a character string</span>
+<span class="sd">        </span>
+<span class="sd">        :param word2: a character string</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_grams: a value specifying the consecutive n-grams of the words</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.dice_distance(word1 = &#39;one_word&#39;, word2 = &#39;two_words&#39;, n_grams = 2)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            dice similarity of words using n-grams </span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(word1, basestring), &#39;the word1 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(word2, basestring), &#39;the word2 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_grams, int) and n_grams &gt; 0, &#39;the n_grams parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef double result_dice </span>
+<span class="c1">#        </span>
+<span class="c1">#        result_dice = self.tks.dice_similarity(word1, word2, n_grams)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_dice</span>
+        
+    <span class="k">pass</span>
+        
+        
+    
+<div class="viewcode-block" id="utils.levenshtein_distance"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.levenshtein_distance">[docs]</a>    <span class="k">def</span> <span class="nf">levenshtein_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word1</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param word1: a character string</span>
+<span class="sd">        </span>
+<span class="sd">        :param word2: a character string</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.levenshtein_distance(word1 = &#39;one_word&#39;, word2 = &#39;two_words&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            levenshtein distance of two words</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(word1, basestring), &#39;the word1 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(word2, basestring), &#39;the word2 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef double result_lev</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_lev = self.tks.levenshtein_dist(word1, word2)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_lev</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="utils.cosine_distance"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.cosine_distance">[docs]</a>    <span class="k">def</span> <span class="nf">cosine_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentence1</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sentence2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">split_separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param sentence1: a character string consisting of multiple words</span>
+<span class="sd">        </span>
+<span class="sd">        :param sentence2: a character string consisting of multiple words</span>
+<span class="sd">        </span>
+<span class="sd">        :param split_separator: a character string specifying the delimiter(s) to split the sentence</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.cosine_distance(sentence1 = &#39;this is one sentence&#39;, sentence2 = &#39;this is another sentence&#39;, split_separator = &quot; &quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note:: </span>
+<span class="sd">            </span>
+<span class="sd">            cosine distance of two character strings (each string consists of more than one words)</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(sentence1, basestring), &#39;the sentence1 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(sentence2, basestring), &#39;the sentence2 parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(split_separator, basestring), &#39;the split_separator parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef double result_cos</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_cos = self.tks.cosine_dist(sentence1, sentence2, split_separator)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_cos</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="utils.read_characters"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.read_characters">[docs]</a>    <span class="k">def</span> <span class="nf">read_characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">characters</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">write_2file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_file: a character string specifying a valid path to a text file</span>
+<span class="sd">        </span>
+<span class="sd">        :param characters: a numeric value specifying the number of characters to read</span>
+<span class="sd">        </span>
+<span class="sd">        :param write_2file: either an empty string (&quot;&quot;) or a character string specifying a valid output file to write the subset of the input file</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()</span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.read_characters(input_file = &#39;/myfolder/input_file.txt&#39;, characters = 100, write_2file = &quot;&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            read a specific number of characters from a text file</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_file, basestring), &#39;the input_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_file), &quot;the input_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(characters, int) and characters &gt; 0, &#39;the characters parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(write_2file, basestring), &#39;the write_2file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef string result_chars</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_chars = self.btk.read_CHARS(input_file, characters, write_2file)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_chars</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="utils.read_rows"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.read_rows">[docs]</a>    <span class="k">def</span> <span class="nf">read_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">read_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">write_2file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_file: a character string specifying a valid path to a text file</span>
+<span class="sd">        </span>
+<span class="sd">        :param read_delimiter: a character string specifying the row delimiter of the text file</span>
+<span class="sd">        </span>
+<span class="sd">        :param rows: a numeric value specifying the number of rows to read</span>
+<span class="sd">        </span>
+<span class="sd">        :param write_2file: either an empty string (&quot;&quot;) or a character string specifying a valid output file to write the subset of the input file</span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">            </span>
+<span class="sd">            utl = utils()</span>
+<span class="sd">            </span>
+<span class="sd">            res = utl.read_rows(input_file = &#39;/myfolder/input_file.txt&#39;, rows = 100, write_2file = &quot;&quot;)</span>
+<span class="sd">            </span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            read a specific number of rows from a text file</span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_file, basestring), &#39;the input_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_file), &quot;the input_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(read_delimiter, basestring), &#39;the read_delimiter parameter should be of type integer&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(read_delimiter) == 1, &#39;the read_delimiter should be a single character string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(rows, int) and rows &gt; 0, &#39;the rows parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(write_2file, basestring), &#39;the write_2file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef vector[string] result_rows        </span>
+<span class="c1">#        </span>
+<span class="c1">#        result_rows = self.btk.read_ROWS(input_file, write_2file, read_delimiter, rows)</span>
+<span class="c1">#</span>
+<span class="c1">#        return result_rows</span>
+    <span class="k">pass</span>
+
+
+
+<div class="viewcode-block" id="utils.xml_parser_subroot_elements"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.xml_parser_subroot_elements">[docs]</a>    <span class="k">def</span> <span class="nf">xml_parser_subroot_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xml_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">empty_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying a valid path to an xml text file</span>
+<span class="sd">        </span>
+<span class="sd">        :param xml_path: a character string specifying the xml query</span>
+<span class="sd">        </span>
+<span class="sd">        :param output_path_file: a character string specifying a valid output file to write output</span>
+<span class="sd">        </span>
+<span class="sd">        :param empty_key: a character string specifying the replacement word in case that the key in the tree structure is empty</span>
+
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            xml file tree traversal for subroot&#39;s attributes, elements and sub-elements using the boost library</span>
+<span class="sd">            </span>
+<span class="sd">            The logic behind root-child-subchildren of an xml file is explained in http://www.w3schools.com/xml/xml_tree.asp</span>
+<span class="sd">            </span>
+<span class="sd">            </span>
+<span class="sd">            Example::</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                using the following structure as a &#39;FILE.xml&#39;</span>
+<span class="sd">                ---------------------------------------------</span>
+<span class="sd">            </span>
+<span class="sd">                &lt;mediawiki&gt;</span>
+<span class="sd">                    &lt;page&gt;</span>
+<span class="sd">                        &lt;title&gt;AccessibleComputing&lt;/title&gt;</span>
+<span class="sd">                        &lt;revision&gt;</span>
+<span class="sd">                            &lt;id&gt;631144794&lt;/id&gt;</span>
+<span class="sd">                            &lt;parentid&gt;381202555&lt;/parentid&gt;</span>
+<span class="sd">                            &lt;timestamp&gt;2014-10-26T04:50:23Z&lt;/timestamp&gt;</span>
+<span class="sd">                        &lt;/revision&gt;</span>
+<span class="sd">                    &lt;/page&gt;</span>
+<span class="sd">                &lt;/mediawiki&gt;</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                example to get a &quot;subchild&#39;s element&quot;   (here the xml_path equals to --&gt;  &quot;/root/child/subchild.element.sub-element&quot;)</span>
+<span class="sd">                -------------------------------------                </span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()                </span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.xml_parser_subroot_elements(input_path_file = &quot;FILE.xml&quot;, xml_path = &quot;/mediawiki/page/revision.contributor.id&quot;, empty_key = &quot;&quot;)</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                output</span>
+<span class="sd">                ------</span>
+<span class="sd">                </span>
+<span class="sd">                631144794</span>
+<span class="sd">                </span>
+<span class="sd">                                </span>
+<span class="sd">                </span>
+<span class="sd">                example to get a &quot;subchild&#39;s attribute&quot; ( by using the &quot;.&lt;xmlattr&gt;.&quot; in the query )</span>
+<span class="sd">                ---------------------------------------</span>
+<span class="sd">    </span>
+<span class="sd">                the attribute in this .xml file is:     &lt;redirect title=&quot;Computer accessibility&quot;/&gt;        </span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                utl = utils()                </span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.xml_parser_subroot_elements(input_path_file = &quot;FILE.xml&quot;, xml_path = &quot;/mediawiki/page/redirect.&lt;xmlattr&gt;.title&quot;)</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                output</span>
+<span class="sd">                ------</span>
+<span class="sd">                </span>
+<span class="sd">                AccessibleComputing</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(xml_path, basestring), &#39;the xml_path parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if output_path_file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(output_path_file, basestring), &#39;the output_path_file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            output_path_file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(empty_key, basestring), &#39;the empty_key parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef vector[string] result_xml</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_xml = self.utl.xml_subchildren_attrs_elems(input_path_file, xml_path, output_path_file, empty_key)</span>
+<span class="c1">#</span>
+<span class="c1">#        return result_xml</span>
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="utils.xml_parser_root_elements"><a class="viewcode-back" href="../_autosummary/utils.html#utils.utils.xml_parser_root_elements">[docs]</a>    <span class="k">def</span> <span class="nf">xml_parser_root_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xml_root</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying a valid path to an xml text file</span>
+<span class="sd">        </span>
+<span class="sd">        :param xml_root: a character string specifying the xml query</span>
+<span class="sd">        </span>
+<span class="sd">        :param output_path_file: a character string specifying a valid output file to write output</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            xml file tree traversal for a root&#39;s attributes using the boost library ( repeated tree sturcture )</span>
+<span class="sd">            </span>
+<span class="sd">            </span>
+<span class="sd">            Example::</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                using the following structure as a &#39;FILE.xml&#39;</span>
+<span class="sd">                ---------------------------------------------</span>
+<span class="sd">                </span>
+<span class="sd">                &lt;MultiMessage&gt;</span>
+<span class="sd">                    &lt;Message structID=&quot;1710&quot; msgID=&quot;0&quot; length=&quot;50&quot;&gt;</span>
+<span class="sd">                        &lt;structure type=&quot;AppHeader&quot;&gt;</span>
+<span class="sd">                        &lt;/structure&gt;</span>
+<span class="sd">                    &lt;/Message&gt;</span>
+<span class="sd">                    &lt;Message structID=&quot;27057&quot; msgID=&quot;27266&quot; length=&quot;315&quot;&gt;</span>
+<span class="sd">                        &lt;structure type=&quot;Container&quot;&gt;</span>
+<span class="sd">                            &lt;productID value=&quot;166&quot;/&gt;</span>
+<span class="sd">                            &lt;publishTo value=&quot;xyz&quot;/&gt;</span>
+<span class="sd">                            &lt;templateID value=&quot;97845&quot;/&gt;</span>
+<span class="sd">                        &lt;/structure&gt;</span>
+<span class="sd">                    &lt;/Message&gt;</span>
+<span class="sd">                &lt;/MultiMessage&gt;</span>
+<span class="sd">                &lt;MultiMessage&gt;</span>
+<span class="sd">                    &lt;Message structID=&quot;1710&quot; msgID=&quot;0&quot; length=&quot;50&quot;&gt;</span>
+<span class="sd">                        &lt;structure type=&quot;AppHeader&quot;&gt;</span>
+<span class="sd">                        &lt;/structure&gt;</span>
+<span class="sd">                    &lt;/Message&gt;</span>
+<span class="sd">                    &lt;Message structID=&quot;27057&quot; msgID=&quot;27266&quot; length=&quot;315&quot;&gt;</span>
+<span class="sd">                        &lt;structure type=&quot;Container&quot;&gt;</span>
+<span class="sd">                            &lt;productID value=&quot;166&quot;/&gt;</span>
+<span class="sd">                            &lt;publishTo value=&quot;xyz&quot;/&gt;</span>
+<span class="sd">                            &lt;templateID value=&quot;97845&quot;/&gt;</span>
+<span class="sd">                        &lt;/structure&gt;</span>
+<span class="sd">                    &lt;/Message&gt;</span>
+<span class="sd">                &lt;/MultiMessage&gt;</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">            </span>
+<span class="sd">                example to get a &quot;child&#39;s attributes&quot; (use only the root-element of the xml file as a parameter )</span>
+<span class="sd">                -------------------------------------</span>
+
+<span class="sd">        </span>
+<span class="sd">                utl = utils()                </span>
+<span class="sd">                </span>
+<span class="sd">                res = utl.xml_parser_root_elements(input_path_file = &quot;FILE.xml&quot;, xml_root = &quot;MultiMessage&quot;, output_path_file = &quot;&quot;)</span>
+<span class="sd">                </span>
+<span class="sd">                </span>
+<span class="sd">                output</span>
+<span class="sd">                ------</span>
+<span class="sd">                </span>
+<span class="sd">                  child_keys child_values</span>
+<span class="sd">                0   structID         1710</span>
+<span class="sd">                1      msgID            0</span>
+<span class="sd">                2     length           50</span>
+<span class="sd">                3   structID        27057</span>
+<span class="sd">                4      msgID        27266</span>
+<span class="sd">                5     length          315</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(xml_root, basestring), &#39;the xml_root parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if output_path_file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(output_path_file, basestring), &#39;the output_path_file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            output_path_file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.utl.xml_child_attributes(input_path_file, xml_root, output_path_file)</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_xml = self.utl.output_xml_data()</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict[&#39;child_keys&#39;] = result_xml.KEYS</span>
+<span class="c1">#        </span>
+<span class="c1">#        pd_2dict[&#39;child_values&#39;] = result_xml.VALUES</span>
+<span class="c1">#        </span>
+<span class="c1">#        df = pd.DataFrame.from_dict(pd_2dict, orient = &#39;columns&#39;)</span>
+<span class="c1">#        </span>
+<span class="c1">#        df = df[[&#39;child_keys&#39;, &#39;child_values&#39;]]</span>
+<span class="c1">#        </span>
+<span class="c1">#        return df</span>
+    <span class="k">pass</span></div>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">vocabulary_parser</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">utf_locale</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">bytes_converter</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">text_file_parser</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">dice_distance</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">levenshtein_distance</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">cosine_distance</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">read_characters</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">read_rows</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">xml_parser_subroot_elements</span><span class="p">()</span>
+    <span class="n">utl</span><span class="o">.</span><span class="n">xml_parser_root_elements</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

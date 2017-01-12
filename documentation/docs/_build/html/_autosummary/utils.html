@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>utils &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="textTinyPy classes" href="../modules.html"/>
+        <link rel="prev" title="tokenizer" href="tokenizer.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="big_text_files.html">big_text_files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_matrix.html">docs_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token_stats.html">token_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenizer.html">tokenizer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../modules.html"><strong>textTinyPy classes</strong></a> &raquo;</li>
+      
+    <li>utils</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-utils">
+<span id="utils"></span><h1>utils<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#utils.utils" title="utils.utils"><code class="xref py py-obj docutils literal"><span class="pre">utils</span></code></a></td>
+<td>utility functions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="utils.utils">
+<em class="property">class </em><code class="descclassname">utils.</code><code class="descname">utils</code><a class="reference internal" href="../_modules/utils.html#utils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils" title="Permalink to this definition">¶</a></dt>
+<dd><p>utility functions</p>
+<dl class="method">
+<dt id="utils.utils.vocabulary_parser">
+<code class="descname">vocabulary_parser</code><span class="sig-paren">(</span><em>input_path_file=None</em>, <em>vocabulary_path_file=None</em>, <em>start_query=None</em>, <em>end_query=None</em>, <em>min_lines=1</em>, <em>trimmed_line=False</em>, <em>language='english'</em>, <em>LOCALE_UTF=''</em>, <em>max_num_char=9223372036854775807</em>, <em>REMOVE_characters=''</em>, <em>to_lower=False</em>, <em>to_upper=False</em>, <em>remove_punctuation_string=False</em>, <em>remove_punctuation_vector=False</em>, <em>remove_numbers=False</em>, <em>trim_token=False</em>, <em>split_string=False</em>, <em>separator=' \r\n\t.</em>, <em>;:()?!//'</em>, <em>remove_stopwords=False</em>, <em>min_num_char=1</em>, <em>stemmer=None</em>, <em>min_n_gram=1</em>, <em>max_n_gram=1</em>, <em>n_gram_delimiter=' '</em>, <em>skip_n_gram=1</em>, <em>skip_distance=0</em>, <em>stemmer_ngram=4</em>, <em>stemmer_gamma=0.0</em>, <em>stemmer_truncate=3</em>, <em>stemmer_batches=1</em>, <em>threads=1</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.vocabulary_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.vocabulary_parser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
+<li><strong>vocabulary_path_file</strong> &#8211; a character string specifying the output file where the vocabulary should be saved (after tokenization and transformation is applied).</li>
+<li><strong>start_query</strong> &#8211; a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
+<li><strong>end_query</strong> &#8211; a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
+<li><strong>min_lines</strong> &#8211; a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
+<li><strong>trimmed_line</strong> &#8211; either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
+<li><strong>language</strong> &#8211; <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#8216;afrikaans&#8217;,</p>
+<p>&#8216;arabic&#8217;, &#8216;armenian&#8217;, &#8216;basque&#8217;, &#8216;bengali&#8217;, &#8216;breton&#8217;, &#8216;bulgarian&#8217;, &#8216;catalan&#8217;, &#8216;croatian&#8217;, &#8216;czech&#8217;,&#8217;danish&#8217;, &#8216;dutch&#8217;, &#8216;english&#8217;, &#8216;estonian&#8217;, &#8216;finnish&#8217;, &#8216;french&#8217;, &#8216;galician&#8217;, &#8216;german&#8217;, 
+&#8216;greek&#8217;, &#8216;hausa&#8217;, &#8216;hebrew&#8217;, &#8216;hindi&#8217;, &#8216;hungarian&#8217;, &#8216;indonesian&#8217;, &#8216;irish&#8217;, &#8216;italian&#8217;, &#8216;latvian&#8217;, &#8216;marathi&#8217;, &#8216;norwegian&#8217;, &#8216;persian&#8217;, &#8216;polish&#8217;, &#8216;portuguese&#8217;, &#8216;romanian&#8217;, &#8216;russian&#8217;,
+&#8216;slovak&#8217;, &#8216;slovenian&#8217;, &#8216;somalia&#8217;, &#8216;spanish&#8217;, &#8216;swahili&#8217;, &#8216;swedish&#8217;, &#8216;turkish&#8217;, &#8216;yoruba&#8217;, &#8216;zulu&#8217;</p>
+</li>
+<li><strong>LOCALE_UTF</strong> &#8211; the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#8216;el_GR.UTF-8&#8217; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</li>
+<li><strong>max_num_char</strong> &#8211; an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
+<li><strong>REMOVE_characters</strong> &#8211; a character string with specific characters that should be removed from the text file. If the remove_char is &#8220;&#8221; then no removal of characters take place</li>
+<li><strong>to_lower</strong> &#8211; either True or False. If True the character string will be converted to lower case</li>
+<li><strong>to_upper</strong> &#8211; either True or False. If True the character string will be converted to upper case</li>
+<li><strong>remove_punctuation_string</strong> &#8211; either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</li>
+<li><strong>remove_punctuation_vector</strong> &#8211; either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
+<li><strong>remove_numbers</strong> &#8211; either True or False. If True then any numbers in the character string will be removed</li>
+<li><strong>trim_token</strong> &#8211; either True or False. If True then the string will be trimmed (left and/or right)</li>
+<li><strong>split_string</strong> &#8211; either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
+<li><strong>separator</strong> &#8211; a character string specifying the character delimiter(s)</li>
+<li><strong>remove_stopwords</strong> &#8211; either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
+<li><strong>min_num_char</strong> &#8211; an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
+<li><strong>stemmer</strong> &#8211; a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap.</li>
+<li><strong>min_n_gram</strong> &#8211; an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
+<li><strong>max_n_gram</strong> &#8211; an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
+<li><strong>n_gram_delimiter</strong> &#8211; a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
+<li><strong>skip_n_gram</strong> &#8211; an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
+<li><strong>skip_distance</strong> &#8211; an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
+<li><strong>stemmer_ngram</strong> &#8211; a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</li>
+<li><strong>stemmer_gamma</strong> &#8211; a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</li>
+<li><strong>stemmer_truncate</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</li>
+<li><strong>stemmer_batches</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</li>
+<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">vocabulary_parser</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">vocabulary_path_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/output_VOCAB.txt&#39;</span><span class="p">,</span> <span class="n">start_query</span> <span class="o">=</span> <span class="s2">&quot;&lt;structure&gt;&quot;</span><span class="p">,</span> 
+
+                            <span class="n">end_query</span> <span class="o">=</span> <span class="s2">&quot;&lt;/structure&gt;&quot;</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Returns the vocabulary counts for small or medium ( xml ) files ( for big files the vocabulary_accumulator method of the big_text_files class is appropriate )</p>
+<p class="last">The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the start_query and end_query parameters.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.utf_locale">
+<code class="descname">utf_locale</code><span class="sig-paren">(</span><em>language='english'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.utf_locale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.utf_locale" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> &#8211; a character string specifying the language for which the utf-locale should be returned</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">utf_locale</span><span class="p">(</span><span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;english&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>utf-locale for specific languages</p>
+<p class="last">This is a limited list of language-locale. The locale depends mostly on the text input.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.bytes_converter">
+<code class="descname">bytes_converter</code><span class="sig-paren">(</span><em>input_path_file=None</em>, <em>unit='MB'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.bytes_converter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.bytes_converter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
+<li><strong>unit</strong> &#8211; a character string specifying the unit. One of KB, MB, GB</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">bytes_converter</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;MB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">bytes converter using a text file ( KB, MB or GB )</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.text_file_parser">
+<code class="descname">text_file_parser</code><span class="sig-paren">(</span><em>input_path_file=None</em>, <em>start_query=None</em>, <em>end_query=None</em>, <em>output_path_file=None</em>, <em>min_lines=1</em>, <em>trimmed_line=False</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.text_file_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.text_file_parser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
+<li><strong>start_query</strong> &#8211; a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
+<li><strong>end_query</strong> &#8211; a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
+<li><strong>output_path_file</strong> &#8211; a character string specifying the path to the output file</li>
+<li><strong>min_lines</strong> &#8211; a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
+<li><strong>trimmed_line</strong> &#8211; either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
+<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">text_file_parser</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">start_query</span> <span class="o">=</span> <span class="s2">&quot;&lt;structure&gt;&quot;</span><span class="p">,</span> <span class="n">end_query</span> <span class="o">=</span> <span class="s2">&quot;&lt;/structure&gt;&quot;</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/output_file.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the start_query and end_query parameters.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.dice_distance">
+<code class="descname">dice_distance</code><span class="sig-paren">(</span><em>word1=None</em>, <em>word2=None</em>, <em>n_grams=2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.dice_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.dice_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>word1</strong> &#8211; a character string</li>
+<li><strong>word2</strong> &#8211; a character string</li>
+<li><strong>n_grams</strong> &#8211; a value specifying the consecutive n-grams of the words</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">dice_distance</span><span class="p">(</span><span class="n">word1</span> <span class="o">=</span> <span class="s1">&#39;one_word&#39;</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="s1">&#39;two_words&#39;</span><span class="p">,</span> <span class="n">n_grams</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">dice similarity of words using n-grams</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.levenshtein_distance">
+<code class="descname">levenshtein_distance</code><span class="sig-paren">(</span><em>word1=None</em>, <em>word2=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.levenshtein_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.levenshtein_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>word1</strong> &#8211; a character string</li>
+<li><strong>word2</strong> &#8211; a character string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">levenshtein_distance</span><span class="p">(</span><span class="n">word1</span> <span class="o">=</span> <span class="s1">&#39;one_word&#39;</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="s1">&#39;two_words&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">levenshtein distance of two words</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.cosine_distance">
+<code class="descname">cosine_distance</code><span class="sig-paren">(</span><em>sentence1=None</em>, <em>sentence2=None</em>, <em>split_separator=' '</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.cosine_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.cosine_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sentence1</strong> &#8211; a character string consisting of multiple words</li>
+<li><strong>sentence2</strong> &#8211; a character string consisting of multiple words</li>
+<li><strong>split_separator</strong> &#8211; a character string specifying the delimiter(s) to split the sentence</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">cosine_distance</span><span class="p">(</span><span class="n">sentence1</span> <span class="o">=</span> <span class="s1">&#39;this is one sentence&#39;</span><span class="p">,</span> <span class="n">sentence2</span> <span class="o">=</span> <span class="s1">&#39;this is another sentence&#39;</span><span class="p">,</span> <span class="n">split_separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">cosine distance of two character strings (each string consists of more than one words)</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.read_characters">
+<code class="descname">read_characters</code><span class="sig-paren">(</span><em>input_file=None</em>, <em>characters=100</em>, <em>write_2file=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.read_characters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.read_characters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_file</strong> &#8211; a character string specifying a valid path to a text file</li>
+<li><strong>characters</strong> &#8211; a numeric value specifying the number of characters to read</li>
+<li><strong>write_2file</strong> &#8211; either an empty string (&#8220;&#8221;) or a character string specifying a valid output file to write the subset of the input file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">read_characters</span><span class="p">(</span><span class="n">input_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">characters</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">write_2file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">read a specific number of characters from a text file</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.read_rows">
+<code class="descname">read_rows</code><span class="sig-paren">(</span><em>input_file=None</em>, <em>read_delimiter='\n'</em>, <em>rows=100</em>, <em>write_2file=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.read_rows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.read_rows" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_file</strong> &#8211; a character string specifying a valid path to a text file</li>
+<li><strong>read_delimiter</strong> &#8211; a character string specifying the row delimiter of the text file</li>
+<li><strong>rows</strong> &#8211; a numeric value specifying the number of rows to read</li>
+<li><strong>write_2file</strong> &#8211; either an empty string (&#8220;&#8221;) or a character string specifying a valid output file to write the subset of the input file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">read_rows</span><span class="p">(</span><span class="n">input_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">write_2file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">read a specific number of rows from a text file</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.xml_parser_subroot_elements">
+<code class="descname">xml_parser_subroot_elements</code><span class="sig-paren">(</span><em>input_path_file=None</em>, <em>xml_path=None</em>, <em>output_path_file=None</em>, <em>empty_key=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.xml_parser_subroot_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.xml_parser_subroot_elements" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_path_file</strong> &#8211; a character string specifying a valid path to an xml text file</li>
+<li><strong>xml_path</strong> &#8211; a character string specifying the xml query</li>
+<li><strong>output_path_file</strong> &#8211; a character string specifying a valid output file to write output</li>
+<li><strong>empty_key</strong> &#8211; a character string specifying the replacement word in case that the key in the tree structure is empty</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>xml file tree traversal for subroot&#8217;s attributes, elements and sub-elements using the boost library</p>
+<p>The logic behind root-child-subchildren of an xml file is explained in <a class="reference external" href="http://www.w3schools.com/xml/xml_tree.asp">http://www.w3schools.com/xml/xml_tree.asp</a></p>
+<p>Example:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">the</span> <span class="n">following</span> <span class="n">structure</span> <span class="k">as</span> <span class="n">a</span> <span class="s1">&#39;FILE.xml&#39;</span>
+<span class="o">---------------------------------------------</span>
+
+<span class="o">&lt;</span><span class="n">mediawiki</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">page</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">AccessibleComputing</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">revision</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="mi">631144794</span><span class="o">&lt;/</span><span class="nb">id</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">parentid</span><span class="o">&gt;</span><span class="mi">381202555</span><span class="o">&lt;/</span><span class="n">parentid</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="mi">2014</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">26</span><span class="n">T04</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">23</span><span class="n">Z</span><span class="o">&lt;/</span><span class="n">timestamp</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">revision</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">page</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">mediawiki</span><span class="o">&gt;</span>
+
+
+<span class="n">example</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="s2">&quot;subchild&#39;s element&quot;</span>   <span class="p">(</span><span class="n">here</span> <span class="n">the</span> <span class="n">xml_path</span> <span class="n">equals</span> <span class="n">to</span> <span class="o">--&gt;</span>  <span class="s2">&quot;/root/child/subchild.element.sub-element&quot;</span><span class="p">)</span>
+<span class="o">-------------------------------------</span>                
+
+<span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>                
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">xml_parser_subroot_elements</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s2">&quot;FILE.xml&quot;</span><span class="p">,</span> <span class="n">xml_path</span> <span class="o">=</span> <span class="s2">&quot;/mediawiki/page/revision.contributor.id&quot;</span><span class="p">,</span> <span class="n">empty_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+
+<span class="n">output</span>
+<span class="o">------</span>
+
+<span class="mi">631144794</span>
+
+                
+
+<span class="n">example</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="s2">&quot;subchild&#39;s attribute&quot;</span> <span class="p">(</span> <span class="n">by</span> <span class="n">using</span> <span class="n">the</span> <span class="s2">&quot;.&lt;xmlattr&gt;.&quot;</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">query</span> <span class="p">)</span>
+<span class="o">---------------------------------------</span>
+
+<span class="n">the</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">this</span> <span class="o">.</span><span class="n">xml</span> <span class="n">file</span> <span class="ow">is</span><span class="p">:</span>     <span class="o">&lt;</span><span class="n">redirect</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Computer accessibility&quot;</span><span class="o">/&gt;</span>        
+
+
+<span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>                
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">xml_parser_subroot_elements</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s2">&quot;FILE.xml&quot;</span><span class="p">,</span> <span class="n">xml_path</span> <span class="o">=</span> <span class="s2">&quot;/mediawiki/page/redirect.&lt;xmlattr&gt;.title&quot;</span><span class="p">)</span>
+
+
+<span class="n">output</span>
+<span class="o">------</span>
+
+<span class="n">AccessibleComputing</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="utils.utils.xml_parser_root_elements">
+<code class="descname">xml_parser_root_elements</code><span class="sig-paren">(</span><em>input_path_file=None</em>, <em>xml_root=None</em>, <em>output_path_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utils.html#utils.xml_parser_root_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.utils.xml_parser_root_elements" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_path_file</strong> &#8211; a character string specifying a valid path to an xml text file</li>
+<li><strong>xml_root</strong> &#8211; a character string specifying the xml query</li>
+<li><strong>output_path_file</strong> &#8211; a character string specifying a valid output file to write output</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>xml file tree traversal for a root&#8217;s attributes using the boost library ( repeated tree sturcture )</p>
+<p>Example:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">the</span> <span class="n">following</span> <span class="n">structure</span> <span class="k">as</span> <span class="n">a</span> <span class="s1">&#39;FILE.xml&#39;</span>
+<span class="o">---------------------------------------------</span>
+
+<span class="o">&lt;</span><span class="n">MultiMessage</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Message</span> <span class="n">structID</span><span class="o">=</span><span class="s2">&quot;1710&quot;</span> <span class="n">msgID</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;50&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">structure</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AppHeader&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">structure</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">Message</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Message</span> <span class="n">structID</span><span class="o">=</span><span class="s2">&quot;27057&quot;</span> <span class="n">msgID</span><span class="o">=</span><span class="s2">&quot;27266&quot;</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;315&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">structure</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Container&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">productID</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;166&quot;</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">publishTo</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;xyz&quot;</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">templateID</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;97845&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="n">structure</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">Message</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">MultiMessage</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">MultiMessage</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Message</span> <span class="n">structID</span><span class="o">=</span><span class="s2">&quot;1710&quot;</span> <span class="n">msgID</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;50&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">structure</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AppHeader&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">structure</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">Message</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Message</span> <span class="n">structID</span><span class="o">=</span><span class="s2">&quot;27057&quot;</span> <span class="n">msgID</span><span class="o">=</span><span class="s2">&quot;27266&quot;</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;315&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">structure</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Container&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">productID</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;166&quot;</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">publishTo</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;xyz&quot;</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="n">templateID</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;97845&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="n">structure</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">Message</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">MultiMessage</span><span class="o">&gt;</span>
+
+
+
+<span class="n">example</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="s2">&quot;child&#39;s attributes&quot;</span> <span class="p">(</span><span class="n">use</span> <span class="n">only</span> <span class="n">the</span> <span class="n">root</span><span class="o">-</span><span class="n">element</span> <span class="n">of</span> <span class="n">the</span> <span class="n">xml</span> <span class="n">file</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span> <span class="p">)</span>
+<span class="o">-------------------------------------</span>
+
+
+<span class="n">utl</span> <span class="o">=</span> <span class="n">utils</span><span class="p">()</span>                
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">utl</span><span class="o">.</span><span class="n">xml_parser_root_elements</span><span class="p">(</span><span class="n">input_path_file</span> <span class="o">=</span> <span class="s2">&quot;FILE.xml&quot;</span><span class="p">,</span> <span class="n">xml_root</span> <span class="o">=</span> <span class="s2">&quot;MultiMessage&quot;</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+
+<span class="n">output</span>
+<span class="o">------</span>
+
+  <span class="n">child_keys</span> <span class="n">child_values</span>
+<span class="mi">0</span>   <span class="n">structID</span>         <span class="mi">1710</span>
+<span class="mi">1</span>      <span class="n">msgID</span>            <span class="mi">0</span>
+<span class="mi">2</span>     <span class="n">length</span>           <span class="mi">50</span>
+<span class="mi">3</span>   <span class="n">structID</span>        <span class="mi">27057</span>
+<span class="mi">4</span>      <span class="n">msgID</span>        <span class="mi">27266</span>
+<span class="mi">5</span>     <span class="n">length</span>          <span class="mi">315</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="tokenizer.html" class="btn btn-neutral" title="tokenizer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
