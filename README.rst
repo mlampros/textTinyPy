@@ -31,6 +31,8 @@ The package will work properly only if the following requirements are satisfied 
 * **scipy**>=0.16.1
 * **numpy**>=1.11.2
 * **future**>=0.15.2
+* a **C++11** compiler
+* `OpenMP <http://www.openmp.org/>`_ for parallelization ( *optional* )
 
 The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.1/>`_  using:
 
