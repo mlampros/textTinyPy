@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>token_stats &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>token_stats</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for token_stats</h1><div class="highlight"><pre>
+<span></span>
+
+<div class="viewcode-block" id="token_stats"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats">[docs]</a><span class="k">class</span> <span class="nc">token_stats</span><span class="p">:</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    functions to compute token statistics</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    
+<span class="c1">#    cdef TOKEN_stats* tks</span>
+<span class="c1">#</span>
+<span class="c1">#    cdef object result_counts         # first cdef a new object and add in __cinit__ then use a def method() to call it</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object result_collocations</span>
+<span class="c1">#    </span>
+<span class="c1">#    cdef object result_look_up_tbl</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    def __cinit__(self):</span>
+<span class="c1">#               </span>
+<span class="c1">#        self.tks = new TOKEN_stats()</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_counts = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_collocations = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_look_up_tbl = {}</span>
+<span class="c1">#        </span>
+<span class="c1">#</span>
+<span class="c1">#    def __dealloc__(self):</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.tks    </span>
+    
+
+        
+<div class="viewcode-block" id="token_stats.path_2vector"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.path_2vector">[docs]</a>    <span class="k">def</span> <span class="nf">path_2vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_2folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2folder: either None or a valid path to a folder ( each file in the folder should include words separated by a delimiter )</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2file: either None or a valid path to a file</span>
+
+<span class="sd">        :param file_delimiter: either None or a character string specifying the file delimiter</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.path_2vector(path_2file = &#39;/myfolder/vocab_file.txt&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            the path_2vector method returns the words of a folder or file to a list ( using the file_delimiter to input the data ). Usage: read a vocabulary from a text file</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+
+<span class="c1">#        if path_2folder is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2folder, basestring), &#39;the path_2folder parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert path_2folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#            ELSE:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert path_2folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        if path_2file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2file, basestring), &#39;the path_2file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert os.path.exists(path_2file), &quot;the path_2file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(file_delimiter, basestring), &#39;the file_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(file_delimiter) == 1, &#39;the file_delimiter should be a single character string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2folder = &quot;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if path_2file is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef vector[string] result_vec</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_vec = self.tks.path_2vector(path_2folder, path_2file, file_delimiter)</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_vec</span>
+
+    <span class="k">pass</span>
+        
+        
+        
+    
+<div class="viewcode-block" id="token_stats.freq_distribution"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.freq_distribution">[docs]</a>    <span class="k">def</span> <span class="nf">freq_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_vector</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">keep</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param x_vector: either None or a string character list       </span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2folder: either None or a valid path to a folder ( each file in the folder should include words separated by a delimiter )</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2file: either None or a valid path to a file</span>
+
+<span class="sd">        :param file_delimiter: either None or a character string specifying the file delimiter</span>
+<span class="sd">        </span>
+<span class="sd">        :param keep: the number of lines to keep from the output data frame</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.freq_distribution(path_2file = &#39;/myfolder/vocab_file.txt&#39;, keep = 20)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method returns a frequency_distribution in form of a data frame for EITHER a folder, a file OR a character string list.</span>
+<span class="sd">            </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        if x_vector is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(x_vector, list), &#39;the x_vector parameter should be of type list&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2folder, basestring), &#39;the path_2folder parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert path_2folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#            ELSE:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert path_2folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        if path_2file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2file, basestring), &#39;the path_2file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert os.path.exists(path_2file), &quot;the path_2file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(file_delimiter, basestring), &#39;the file_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(file_delimiter) == 1, &#39;the file_delimiter should be a single character string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if x_vector is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            x_vector = []</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2folder = &quot;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if path_2file is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef unordered_map[string, int] result_map</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_map = self.tks.frequency_distribution(x_vector, path_2folder, path_2file, file_delimiter)</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_pd = pd.DataFrame.from_dict(result_map, orient=&#39;index&#39;)</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_pd.columns = [&#39;freq&#39;]</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_pd = result_pd.sort([&#39;freq&#39;], ascending=[False])</span>
+<span class="c1">#        </span>
+<span class="c1">#        if keep is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(keep, int), &#39;the keep parameter should be of type int&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#            result_pd = result_pd[0:keep]</span>
+<span class="c1">#        </span>
+<span class="c1">#        return result_pd</span>
+    <span class="k">pass</span>
+        
+    
+    
+<div class="viewcode-block" id="token_stats.count_character"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.count_character">[docs]</a>    <span class="k">def</span> <span class="nf">count_character</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_vector</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param x_vector: either None or a string character list       </span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2folder: either None or a valid path to a folder ( each file in the folder should include words separated by a delimiter )</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2file: either None or a valid path to a file</span>
+
+<span class="sd">        :param file_delimiter: either None or a character string specifying the file delimiter</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.count_character(path_2file = &#39;/myfolder/vocab_file.txt&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The count_character method returns the number of characters for each word of the corpus for EITHER a folder, a file OR a character string list.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        if x_vector is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(x_vector, list), &#39;the x_vector parameter should be of type list&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2folder, basestring), &#39;the path_2folder parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert path_2folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#            ELSE:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert path_2folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        if path_2file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2file, basestring), &#39;the path_2file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert os.path.exists(path_2file), &quot;the path_2file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(file_delimiter, basestring), &#39;the file_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(file_delimiter) == 1, &#39;the file_delimiter should be a single character string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if x_vector is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            x_vector = []        </span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2folder = &quot;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if path_2file is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef unordered_map[int, vector[string]] result_counts_tmp   </span>
+<span class="c1">#        </span>
+<span class="c1">#        result_counts_tmp = self.tks.count_characters(x_vector, path_2folder, path_2file, file_delimiter)</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_counts = result_counts_tmp</span>
+<span class="c1">#        </span>
+<span class="c1">#        return list(result_counts_tmp)                         # extract keys() in both python 2 and 3</span>
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="token_stats.print_count_character"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.print_count_character">[docs]</a>    <span class="k">def</span> <span class="nf">print_count_character</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">        :param number: a numeric value.  All words with number of characters (see method count_character) equal to the number parameter will be returned.</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.count_character(path_2file = &#39;/myfolder/vocab_file.txt&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">                tks.print_count_character(number = 6)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method should be called after the &#39;count_character&#39; method is run. Given the numeric parameter &#39;number&#39; this method </span>
+<span class="sd">            </span>
+<span class="sd">            prints all the words with number of characters equal to &#39;number&#39;        </span>
+<span class="sd">            </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(number, int), &#39;the number parameter should be of type int&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert number in list(self.result_counts), &quot;the specified &#39;number&#39; is not included in the count_character dictionary. Return the &#39;count_character()&#39; method to see the list of the available numbers&quot;                   # extract keys() in both python 2 and 3 using list()</span>
+<span class="c1">#        </span>
+<span class="c1">#        return self.result_counts[number]</span>
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="token_stats.collocation_words"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.collocation_words">[docs]</a>    <span class="k">def</span> <span class="nf">collocation_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_vector</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">path_2file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">file_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">n_gram_delimiter</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param x_vector: either None or a string character list       </span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2folder: either None or a valid path to a folder ( each file in the folder should include words separated by a delimiter )</span>
+<span class="sd">        </span>
+<span class="sd">        :param path_2file: either None or a valid path to a file</span>
+
+<span class="sd">        :param file_delimiter: either None or a character string specifying the file delimiter</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_gram_delimiter: either None or a character string specifying the n-gram delimiter.</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.collocation_words(path_2file = &#39;/myfolder/vocab_file.txt&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The collocation_words method saves a co-occurence frequency table for n-grams for EITHER a folder, a file OR a character string list. </span>
+<span class="sd">        </span>
+<span class="sd">            A collocation is defined as a sequence of two or more consecutive words, that has characteristics of a syntactic and semantic unit, and whose </span>
+<span class="sd">            </span>
+<span class="sd">            exact and unambiguous meaning or connotation cannot be derived directly from the meaning or connotation of its components ( http://nlp.stanford.edu/fsnlp/promo/colloc.pdf, page 172 ). </span>
+<span class="sd">        </span>
+<span class="sd">            The input to the method should be text n-grams separated by a delimiter (for instance 3- or 4-ngrams ).</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        if x_vector is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(x_vector, list), &#39;the x_vector parameter should be of type list&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if path_2folder is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2folder, basestring), &#39;the path_2folder parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert path_2folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#            ELSE:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert path_2folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the path_2folder parameter should end in slash&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        if path_2file is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(path_2file, basestring), &#39;the path_2file parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert os.path.exists(path_2file), &quot;the path_2file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(file_delimiter, basestring), &#39;the file_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(file_delimiter) == 1, &#39;the file_delimiter should be a single character string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_gram_delimiter, basestring), &#39;the n_gram_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if x_vector is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            x_vector = []</span>
+<span class="c1">#            </span>
+<span class="c1">#        if path_2folder is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2folder = &quot;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if path_2file is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            path_2file = &quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef unordered_map[string, unordered_map[string, int]] result_coll</span>
+<span class="c1">#        </span>
+<span class="c1">#        result_coll = self.tks.collocations_ngrams(x_vector, path_2folder, path_2file, file_delimiter, n_gram_delimiter)</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_collocations = result_coll</span>
+<span class="c1">#        </span>
+<span class="c1">#        return np.sort(list(result_coll))                       # extract keys() in both python 2 and 3</span>
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="token_stats.print_collocations"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.print_collocations">[docs]</a>    <span class="k">def</span> <span class="nf">print_collocations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param number: a numeric value.  All words with number of characters (see method count_character) equal to the number parameter will be returned.</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.collocation_words(path_2file = &#39;/myfolder/vocab_file.txt&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">                tks.print_collocations(word = &#39;aword&#39;)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method should be called after the &#39;collocation_words&#39; method is run. It prints the collocations for a specific &#39;word&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span>        </div>
+        
+        
+<span class="c1">#        assert isinstance(word, basestring), &#39;the word parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert word in list(self.result_collocations), &quot;the specified &#39;word&#39; is not included in the collocations dictionary. Return the &#39;collocation_words()&#39; method to see the list of the available words&quot;           # extract keys() in both python 2 and 3 using list()</span>
+<span class="c1">#            </span>
+<span class="c1">#        tmp_vals = self.result_collocations[word]</span>
+<span class="c1">#        </span>
+<span class="c1">#        tmp_sum = np.sum(listvalues(tmp_vals))</span>
+<span class="c1">#        </span>
+<span class="c1">#        for (k,v) in iteritems(tmp_vals):</span>
+<span class="c1">#            </span>
+<span class="c1">#            tmp_vals[k] = float(np.round(v / float(tmp_sum), decimals = 3))                        # first round then use float to get the correct rounding</span>
+<span class="c1">#        </span>
+<span class="c1">#        return tmp_vals</span>
+    <span class="k">pass</span>
+        
+        
+    
+<div class="viewcode-block" id="token_stats.string_dissimilarity_matrix"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.string_dissimilarity_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">string_dissimilarity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words_vector</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dice_n_gram</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;dice&#39;</span><span class="p">,</span> <span class="n">split_separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">dice_thresh</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">diagonal</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param words_vector: a string character list    </span>
+<span class="sd">        </span>
+<span class="sd">        :param dice_n_gram a numeric value specifying the n-gram for the dice method of the string_dissimilarity_matrix method</span>
+<span class="sd">        </span>
+<span class="sd">        :param method: a character string specifying the method to use in the string_dissimilarity_matrix method. One of dice, levenshtein or cosine</span>
+<span class="sd">        </span>
+<span class="sd">        :param split_separator: a character string specifying the string split separator if method equal cosine in the string_dissimilarity_matrix method. The cosine method uses sentences, so for a sentence : &quot;this_is_a_word_sentence&quot; the split_separator should be &quot;_&quot;</span>
+<span class="sd">       </span>
+<span class="sd">        :param dice_thresh: a float number to use to threshold the data if method is dice in the string_dissimilarity_matrix method. It takes values between 0.0 and 1.0. The closer the thresh is to 0.0 the more values of the dissimilarity matrix will take the value of 1.0.</span>
+<span class="sd">       </span>
+<span class="sd">        :param upper: either True or False. If True then both lower and upper parts of the dissimilarity matrix of the string_dissimilarity_matrix method will be shown. Otherwise the upper part will be filled with NA&#39;s</span>
+<span class="sd">       </span>
+<span class="sd">        :param diagonal: either True or False. If True then the diagonal of the dissimilarity matrix of the string_dissimilarity_matrix method will be shown. Otherwise the diagonal will be filled with NA&#39;s</span>
+<span class="sd">       </span>
+<span class="sd">        :param threads: a numeric value specifying the number of cores to use in parallel in the string_dissimilarity_matrix method</span>
+
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                vocab_lst = [&#39;the&#39;, &#39;term&#39;, &#39;planet&#39;, &#39;is&#39;, &#39;ancient&#39;, &#39;with&#39;, &#39;ties&#39;, &#39;to&#39;]                </span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.string_dissimilarity_matrix( words_vector = vocab_lst, dice_n_gram = 2, method = &#39;dice&#39;)</span>
+
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The string_dissimilarity_matrix method returns a string-dissimilarity-matrix using either the dice, levenshtein or cosine distance. The input can be a character </span>
+<span class="sd">        </span>
+<span class="sd">            string list only. In case that the method is dice then the dice-coefficient (similarity) is calculated between two strings for a specific number of character n-grams ( dice_n_gram ).</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(words_vector, list), &#39;the words_vector parameter should be of type list&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(dice_n_gram, int) and dice_n_gram &gt; 0, &#39;the dice_n_gram parameter should be of type int and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert method in [&quot;dice&quot;, &quot;levenshtein&quot;, &quot;cosine&quot;], &quot;available methods are &#39;dice&#39;, &#39;levenshtein&#39; or &#39;cosine&#39;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(split_separator, basestring), &#39;the split_separator parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(dice_thresh, float) and (dice_thresh &lt;= 1.0 and dice_thresh &gt; 0.0), &#39;the dice_thresh parameter should be of type float&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(upper, bool), &#39;the upper parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(diagonal, bool), &#39;the diagonal parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &#39;the threads parameter should be of type int and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef vector[vector[double]] dissim_mat</span>
+<span class="c1">#        </span>
+<span class="c1">#        sorted_vec = list(np.sort(words_vector))        </span>
+<span class="c1">#        </span>
+<span class="c1">#        dissim_mat = self.tks.dissimilarity_mat(sorted_vec, dice_n_gram, method, split_separator, dice_thresh, upper, diagonal, threads)</span>
+<span class="c1">#        </span>
+<span class="c1">#        df = pd.DataFrame(dissim_mat, index = sorted_vec, columns = sorted_vec)        </span>
+<span class="c1">#        </span>
+<span class="c1">#        return df</span>
+    <span class="k">pass</span>
+        
+       
+       
+<div class="viewcode-block" id="token_stats.look_up_table"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.look_up_table">[docs]</a>    <span class="k">def</span> <span class="nf">look_up_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words_vector</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_grams</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param words_vector: a string character list </span>
+<span class="sd">        </span>
+<span class="sd">        :param n_grams: a numeric value specifying the n-grams</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                vocab_lst = [&#39;the&#39;, &#39;term&#39;, &#39;planet&#39;, &#39;is&#39;, &#39;ancient&#39;, &#39;with&#39;, &#39;ties&#39;, &#39;to&#39;]</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.look_up_table(words_vector = vocab_lst, n_grams = 4)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The look_up_table returns a look-up-list where the list-names are the n-grams and the list-vectors are the words associated with those n-grams. </span>
+<span class="sd">        </span>
+<span class="sd">            The input can be a character string list only.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(words_vector, list), &#39;the words_vector parameter should be of type list&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_grams, int) and n_grams &gt; 0, &#39;the n_grams parameter should be of type int and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        cdef unordered_map[string, vector[string]] look_up_tmp</span>
+<span class="c1">#        </span>
+<span class="c1">#        look_up_tmp = self.tks.look_up_tbl(words_vector, n_grams)</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.result_look_up_tbl = look_up_tmp</span>
+<span class="c1">#        </span>
+<span class="c1">#        return np.sort(list(look_up_tmp))                    # extract keys() in both python 2 and 3</span>
+    <span class="k">pass</span>
+        
+      
+      
+<div class="viewcode-block" id="token_stats.print_words_lookup_tbl"><a class="viewcode-back" href="../_autosummary/token_stats.html#token_stats.token_stats.print_words_lookup_tbl">[docs]</a>    <span class="k">def</span> <span class="nf">print_words_lookup_tbl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_gram</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_gram: a character string specifying the n-gram</span>
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tks = token_stats()</span>
+<span class="sd">                </span>
+<span class="sd">                vocab_lst = [&#39;the&#39;, &#39;term&#39;, &#39;planet&#39;, &#39;is&#39;, &#39;ancient&#39;, &#39;with&#39;, &#39;ties&#39;, &#39;to&#39;]</span>
+<span class="sd">                </span>
+<span class="sd">                res = tks.look_up_table(words_vector = vocab_lst, n_grams = 4)</span>
+<span class="sd">                </span>
+<span class="sd">                tks.print_words_lookup_tbl(n_gram = &quot;_abo&quot;)</span>
+<span class="sd">                </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            This method should be called after the &#39;look_up_table&#39; method is run. It returns words associated to n-grams in the look-up-table</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(n_gram, basestring), &#39;the n_gram parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert n_gram in list(self.result_look_up_tbl), &quot;the specified &#39;n_gram&#39; is not included in the look_up_table dictionary. Return the &#39;look_up_table()&#39; method to see the list of the available n_grams&quot;          # extract keys() in both python 2 and 3</span>
+<span class="c1">#            </span>
+<span class="c1">#        return self.result_look_up_tbl[n_gram]</span>
+    <span class="k">pass</span></div>
+        
+        
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">tks</span> <span class="o">=</span> <span class="n">token_stats</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">path_2vector</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">freq_distribution</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">count_character</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">print_count_character</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">collocation_words</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">print_collocations</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">string_dissimilarity_matrix</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">look_up_table</span><span class="p">()</span>
+    <span class="n">tks</span><span class="o">.</span><span class="n">print_words_lookup_tbl</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

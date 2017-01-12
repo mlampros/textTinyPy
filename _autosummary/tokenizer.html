@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tokenizer &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="textTinyPy classes" href="../modules.html"/>
+        <link rel="next" title="utils" href="utils.html"/>
+        <link rel="prev" title="token_stats" href="token_stats.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="big_text_files.html">big_text_files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_matrix.html">docs_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token_stats.html">token_stats</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../modules.html"><strong>textTinyPy classes</strong></a> &raquo;</li>
+      
+    <li>tokenizer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tokenizer">
+<span id="tokenizer"></span><h1>tokenizer<a class="headerlink" href="#module-tokenizer" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#tokenizer.tokenizer" title="tokenizer.tokenizer"><code class="xref py py-obj docutils literal"><span class="pre">tokenizer</span></code></a></td>
+<td>String tokenization and transformation</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="tokenizer.tokenizer">
+<em class="property">class </em><code class="descclassname">tokenizer.</code><code class="descname">tokenizer</code><a class="reference internal" href="../_modules/tokenizer.html#tokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tokenizer.tokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>String tokenization and transformation</p>
+<dl class="method">
+<dt id="tokenizer.tokenizer.transform_text">
+<code class="descname">transform_text</code><span class="sig-paren">(</span><em>input_string</em>, <em>batches=None</em>, <em>read_file_delimiter='\n'</em>, <em>LOCALE_UTF=''</em>, <em>to_lower=False</em>, <em>to_upper=False</em>, <em>language='english'</em>, <em>REMOVE_characters=''</em>, <em>remove_punctuation_string=False</em>, <em>remove_numbers=False</em>, <em>trim_token=False</em>, <em>split_string=False</em>, <em>separator=' \r\n\t.</em>, <em>;:()?!//'</em>, <em>remove_punctuation_vector=False</em>, <em>remove_stopwords=False</em>, <em>min_num_char=1</em>, <em>max_num_char=9223372036854775807</em>, <em>stemmer=None</em>, <em>min_n_gram=1</em>, <em>max_n_gram=1</em>, <em>n_gram_delimiter=' '</em>, <em>skip_n_gram=1</em>, <em>skip_distance=0</em>, <em>stemmer_ngram=4</em>, <em>stemmer_gamma=0.0</em>, <em>stemmer_truncate=3</em>, <em>stemmer_batches=1</em>, <em>vocabulary_path=None</em>, <em>concat_delimiter=None</em>, <em>path_2folder=''</em>, <em>threads=1</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tokenizer.html#tokenizer.transform_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tokenizer.tokenizer.transform_text" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_string</strong> &#8211; either a character string of length 1 or a character-string-path to a file (for big .txt files it&#8217;s recommended to use a path to a file)</li>
+<li><strong>batches</strong> &#8211; a numeric value. If the batches parameter is not None then the object parameter should be a valid path to a file and the path_2folder parameter should be a valid path to a folder. The batches parameter should be used in case of small to medium data sets (for zero memory consumption). For big data sets the big_tokenize_transform class and especially the big_text_tokenizer method should be used.</li>
+<li><strong>read_file_delimiter</strong> &#8211; the delimiter to use when the input file will be red (for instance a tab-delimiter or a new-line delimiter).</li>
+<li><strong>LOCALE_UTF</strong> &#8211; the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#8216;el_GR.UTF-8&#8217; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</li>
+<li><strong>to_lower</strong> &#8211; either True or False. If True the character string will be converted to lower case</li>
+<li><strong>to_upper</strong> &#8211; either True or False. If True the character string will be converted to upper case</li>
+<li><strong>language</strong> &#8211; <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#8216;afrikaans&#8217;,</p>
+<p>&#8216;arabic&#8217;, &#8216;armenian&#8217;, &#8216;basque&#8217;, &#8216;bengali&#8217;, &#8216;breton&#8217;, &#8216;bulgarian&#8217;, &#8216;catalan&#8217;, &#8216;croatian&#8217;, &#8216;czech&#8217;,&#8217;danish&#8217;, &#8216;dutch&#8217;, &#8216;english&#8217;, &#8216;estonian&#8217;, &#8216;finnish&#8217;, &#8216;french&#8217;, &#8216;galician&#8217;, &#8216;german&#8217;, 
+&#8216;greek&#8217;, &#8216;hausa&#8217;, &#8216;hebrew&#8217;, &#8216;hindi&#8217;, &#8216;hungarian&#8217;, &#8216;indonesian&#8217;, &#8216;irish&#8217;, &#8216;italian&#8217;, &#8216;latvian&#8217;, &#8216;marathi&#8217;, &#8216;norwegian&#8217;, &#8216;persian&#8217;, &#8216;polish&#8217;, &#8216;portuguese&#8217;, &#8216;romanian&#8217;, &#8216;russian&#8217;,
+&#8216;slovak&#8217;, &#8216;slovenian&#8217;, &#8216;somalia&#8217;, &#8216;spanish&#8217;, &#8216;swahili&#8217;, &#8216;swedish&#8217;, &#8216;turkish&#8217;, &#8216;yoruba&#8217;, &#8216;zulu&#8217;</p>
+</li>
+<li><strong>REMOVE_characters</strong> &#8211; a character string with specific characters that should be removed from the text file. If the remove_char is &#8220;&#8221; then no removal of characters take place</li>
+<li><strong>remove_punctuation_string</strong> &#8211; either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</li>
+<li><strong>remove_numbers</strong> &#8211; either True or False. If True then any numbers in the character string will be removed</li>
+<li><strong>trim_token</strong> &#8211; either True or False. If True then the string will be trimmed (left and/or right)</li>
+<li><strong>split_string</strong> &#8211; either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
+<li><strong>separator</strong> &#8211; a character string specifying the character delimiter(s)</li>
+<li><strong>remove_punctuation_vector</strong> &#8211; either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
+<li><strong>remove_stopwords</strong> &#8211; either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
+<li><strong>min_num_char</strong> &#8211; an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
+<li><strong>max_num_char</strong> &#8211; an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
+<li><strong>stemmer</strong> &#8211; a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap.</li>
+<li><strong>min_n_gram</strong> &#8211; an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
+<li><strong>max_n_gram</strong> &#8211; an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
+<li><strong>n_gram_delimiter</strong> &#8211; a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
+<li><strong>skip_n_gram</strong> &#8211; an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
+<li><strong>skip_distance</strong> &#8211; an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
+<li><strong>stemmer_ngram</strong> &#8211; a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</li>
+<li><strong>stemmer_gamma</strong> &#8211; a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</li>
+<li><strong>stemmer_truncate</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</li>
+<li><strong>stemmer_batches</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</li>
+<li><strong>vocabulary_path_file</strong> &#8211; either None or a character string specifying the output path to a file where the vocabulary should be saved once the text is tokenized</li>
+<li><strong>concat_delimiter</strong> &#8211; either None or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)</li>
+<li><strong>path_2folder</strong> &#8211; a character string specifying the path to the folder where the file(s) will be saved</li>
+<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> &#8211; <p>either True or False. If True then information will be printed out</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tok</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">()</span>
+
+<span class="n">res_tok</span> <span class="o">=</span> <span class="n">tok</span><span class="o">.</span><span class="n">transform_text</span><span class="p">(</span><span class="n">input_string</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/file_text.txt&#39;</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">trim_token</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tokenizer.tokenizer.transform_vec_docs">
+<code class="descname">transform_vec_docs</code><span class="sig-paren">(</span><em>input_list</em>, <em>as_token=False</em>, <em>LOCALE_UTF=''</em>, <em>to_lower=False</em>, <em>to_upper=False</em>, <em>language='english'</em>, <em>REMOVE_characters=''</em>, <em>remove_punctuation_string=False</em>, <em>remove_numbers=False</em>, <em>trim_token=False</em>, <em>split_string=False</em>, <em>separator=' \r\n\t.</em>, <em>;:()?!//'</em>, <em>remove_punctuation_vector=False</em>, <em>remove_stopwords=False</em>, <em>min_num_char=1</em>, <em>max_num_char=9223372036854775807</em>, <em>stemmer=None</em>, <em>min_n_gram=1</em>, <em>max_n_gram=1</em>, <em>n_gram_delimiter=' '</em>, <em>skip_n_gram=1</em>, <em>skip_distance=0</em>, <em>stemmer_ngram=4</em>, <em>stemmer_gamma=0.0</em>, <em>stemmer_truncate=3</em>, <em>stemmer_batches=1</em>, <em>vocabulary_path=None</em>, <em>concat_delimiter=None</em>, <em>path_2folder=''</em>, <em>threads=1</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tokenizer.html#tokenizer.transform_vec_docs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tokenizer.tokenizer.transform_vec_docs" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_list</strong> &#8211; a character string list of documents</li>
+<li><strong>as_token</strong> &#8211; if True then the method will return a list of (split) token. Otherwise it will return a list of character strings (sentences)</li>
+<li><strong>LOCALE_UTF</strong> &#8211; the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#8216;el_GR.UTF-8&#8217; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</li>
+<li><strong>to_lower</strong> &#8211; either True or False. If True the character string will be converted to lower case</li>
+<li><strong>to_upper</strong> &#8211; either True or False. If True the character string will be converted to upper case</li>
+<li><strong>language</strong> &#8211; <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#8216;afrikaans&#8217;,</p>
+<p>&#8216;arabic&#8217;, &#8216;armenian&#8217;, &#8216;basque&#8217;, &#8216;bengali&#8217;, &#8216;breton&#8217;, &#8216;bulgarian&#8217;, &#8216;catalan&#8217;, &#8216;croatian&#8217;, &#8216;czech&#8217;,&#8217;danish&#8217;, &#8216;dutch&#8217;, &#8216;english&#8217;, &#8216;estonian&#8217;, &#8216;finnish&#8217;, &#8216;french&#8217;, &#8216;galician&#8217;, &#8216;german&#8217;, 
+&#8216;greek&#8217;, &#8216;hausa&#8217;, &#8216;hebrew&#8217;, &#8216;hindi&#8217;, &#8216;hungarian&#8217;, &#8216;indonesian&#8217;, &#8216;irish&#8217;, &#8216;italian&#8217;, &#8216;latvian&#8217;, &#8216;marathi&#8217;, &#8216;norwegian&#8217;, &#8216;persian&#8217;, &#8216;polish&#8217;, &#8216;portuguese&#8217;, &#8216;romanian&#8217;, &#8216;russian&#8217;,
+&#8216;slovak&#8217;, &#8216;slovenian&#8217;, &#8216;somalia&#8217;, &#8216;spanish&#8217;, &#8216;swahili&#8217;, &#8216;swedish&#8217;, &#8216;turkish&#8217;, &#8216;yoruba&#8217;, &#8216;zulu&#8217;</p>
+</li>
+<li><strong>REMOVE_characters</strong> &#8211; a character string with specific characters that should be removed from the text file. If the remove_char is &#8220;&#8221; then no removal of characters take place</li>
+<li><strong>remove_punctuation_string</strong> &#8211; either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</li>
+<li><strong>remove_numbers</strong> &#8211; either True or False. If True then any numbers in the character string will be removed</li>
+<li><strong>trim_token</strong> &#8211; either True or False. If True then the string will be trimmed (left and/or right)</li>
+<li><strong>split_string</strong> &#8211; either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
+<li><strong>separator</strong> &#8211; a character string specifying the character delimiter(s)</li>
+<li><strong>remove_punctuation_vector</strong> &#8211; either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
+<li><strong>remove_stopwords</strong> &#8211; either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
+<li><strong>min_num_char</strong> &#8211; an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
+<li><strong>max_num_char</strong> &#8211; an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
+<li><strong>stemmer</strong> &#8211; a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap.</li>
+<li><strong>min_n_gram</strong> &#8211; an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
+<li><strong>max_n_gram</strong> &#8211; an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
+<li><strong>n_gram_delimiter</strong> &#8211; a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
+<li><strong>skip_n_gram</strong> &#8211; an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
+<li><strong>skip_distance</strong> &#8211; an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
+<li><strong>stemmer_ngram</strong> &#8211; a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</li>
+<li><strong>stemmer_gamma</strong> &#8211; a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</li>
+<li><strong>stemmer_truncate</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</li>
+<li><strong>stemmer_batches</strong> &#8211; a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</li>
+<li><strong>vocabulary_path_file</strong> &#8211; either None or a character string specifying the output path to a file where the vocabulary should be saved once the text is tokenized</li>
+<li><strong>concat_delimiter</strong> &#8211; either None or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)</li>
+<li><strong>path_2folder</strong> &#8211; a character string specifying the path to the folder where the file(s) will be saved</li>
+<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> &#8211; <p>either True or False. If True then information will be printed out</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tok</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">()</span>
+
+<span class="n">res_tok</span> <span class="o">=</span> <span class="n">tok</span><span class="o">.</span><span class="n">transform_vec_docs</span><span class="p">(</span><span class="n">input_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;first word sentence&#39;</span><span class="p">,</span> <span class="s1">&#39;second word sentence&#39;</span><span class="p">],</span> <span class="n">as_token</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">trim_token</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>It is memory efficient to read the data using a path file in case of a big file, rather than importing the data and then calling the tokenize method.</p>
+<p>The utf_locale and split_string functionality is based on the boost library ( <a class="reference external" href="http://www.boost.org">http://www.boost.org</a> ).</p>
+<p>It is memory efficient to specify a path_2folder in case that a big file should be saved, rather than return the vector of all character strings.</p>
+<p>The skip-grams are a generalization of n-grams in which the components (typically words) need not to be consecutive in the text under consideration, but may leave gaps</p>
+<p>that are skipped over. They provide one way of overcoming the data sparsity problem found with conventional n-gram analysis.</p>
+<p>Stemming of the english language is done using the porter2-stemmer, for details see <a class="reference external" href="https://github.com/smassung/porter2_stemmer">https://github.com/smassung/porter2_stemmer</a>. N-gram stemming is language independent</p>
+<p>and supported by the following two functions:</p>
+<blockquote>
+<div><p>ngram_overlap    : The ngram_overlap stemming method is based on N-Gram Morphemes for Retrieval, Paul McNamee and James Mayfield ( <a class="reference external" href="http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf">http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf</a> )</p>
+<p>ngram_sequential : The ngram_sequential stemming method is a modified version based on Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami ( <a class="reference external" href="https://arxiv.org/pdf/1312.4824.pdf">https://arxiv.org/pdf/1312.4824.pdf</a> )</p>
+</div></blockquote>
+<p class="last">The list of stop-words in all available languages was downloaded from the following link <a class="reference external" href="https://github.com/6/stopwords-json">https://github.com/6/stopwords-json</a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="token_stats.html" class="btn btn-neutral" title="token_stats" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>big_text_files &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> textTinyPy documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">textTinyPy documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      
+    <li>big_text_files</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for big_text_files</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">py_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="k">if</span> <span class="n">py_version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxint</span>         <span class="c1"># python 2 maximum integer</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">MAX_VAL</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>        <span class="c1"># python 3 maximum integer</span>
+    
+    
+    
+
+
+<div class="viewcode-block" id="big_text_files"><a class="viewcode-back" href="../_autosummary/big_text_files.html#big_text_files.big_text_files">[docs]</a><span class="k">class</span> <span class="nc">big_text_files</span><span class="p">:</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    text processing of big data files</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    
+    
+<span class="c1">#    cdef big_files* bgf</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    def __cinit__(self):</span>
+<span class="c1">#               </span>
+<span class="c1">#        self.bgf = new big_files()</span>
+<span class="c1">#        </span>
+<span class="c1">#</span>
+<span class="c1">#    def __dealloc__(self):</span>
+<span class="c1">#        </span>
+<span class="c1">#        del self.bgf</span>
+        
+    
+    
+<div class="viewcode-block" id="big_text_files.big_text_splitter"><a class="viewcode-back" href="../_autosummary/big_text_files.html#big_text_files.big_text_files.big_text_splitter">[docs]</a>    <span class="k">def</span> <span class="nf">big_text_splitter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">batches</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">end_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trimmed_line</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_file: a character string specifying the path to the input file</span>
+<span class="sd">        </span>
+<span class="sd">        :param output_path_folder: a character string specifying the folder where the output files should be saved</span>
+
+<span class="sd">        :param batches: a numeric value specifying the number of batches to use. The batches will be used to split the initial data into subsets. Those subsets will be either saved in files (big_text_splitter method) or will be used internally for low memory processing (big_text_tokenizer method).</span>
+
+<span class="sd">        :param end_query: a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</span>
+
+<span class="sd">        :param trimmed_line: either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</span>
+
+<span class="sd">        :param verbose: either True or False. If True then information will be printed in the console</span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                btf = big_text_files()</span>
+<span class="sd">                </span>
+<span class="sd">                res = btf.big_text_splitter(input_path_file = &#39;/myfolder/input_file.txt&#39;, output_path_folder = &#39;/myfolder/output_folder/&#39;, </span>
+<span class="sd">                </span>
+<span class="sd">                                            batches = 4, end_query = None, trimmed_line = False, verbose = False)</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            The big_text_splitter method splits a text file into sub-text-files using either the batches parameter (big-text-splitter-bytes) or both the batches and </span>
+<span class="sd">            </span>
+<span class="sd">            the end_query parameter (big-text-splitter-query). The end_query parameter (if not None) should be a character string specifying a word that appears repeatedly </span>
+<span class="sd">            </span>
+<span class="sd">            at the end of each line in the text file.</span>
+
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+
+<span class="c1">#        assert isinstance(input_path_file, basestring), &#39;the input_path_file parameter should be of type string&#39;        </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert os.path.exists(input_path_file), &quot;the input_path_file parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(output_path_folder, basestring), &#39;the output_path_folder parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Darwin&quot; or UNAME_SYSNAME == &quot;Linux&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert os.path.exists(output_path_folder), &quot;the output_path_folder parameter should be a valid path to a folder&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(batches, int) and batches &gt; 1, &#39;the batches parameter should be of type integer and at least 2&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if end_query is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(end_query, basestring), &#39;the end_query parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if end_query is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            end_query = &quot;NULL&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(trimmed_line, bool), &#39;the trimmed_line parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.bytes_splitter(input_path_file, batches, output_path_folder, end_query, trimmed_line, verbose)</span>
+
+    <span class="k">pass</span>
+        
+
+
+<div class="viewcode-block" id="big_text_files.big_text_parser"><a class="viewcode-back" href="../_autosummary/big_text_files.html#big_text_files.big_text_files.big_text_parser">[docs]</a>    <span class="k">def</span> <span class="nf">big_text_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">start_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_query</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_lines</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trimmed_line</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param input_path_folder: a character string specifying the folder where the input files are saved</span>
+<span class="sd">       </span>
+<span class="sd">        :param output_path_folder: a character string specifying the folder where the output files should be saved</span>
+<span class="sd"> </span>
+<span class="sd">        :param start_query: a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</span>
+
+<span class="sd">        :param end_query: a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</span>
+
+<span class="sd">        :param min_lines: a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</span>
+
+<span class="sd">        :param trimmed_line: either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</span>
+
+<span class="sd">        :param verbose: either True or False. If True then information will be printed in the console</span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                btf = big_text_files()</span>
+<span class="sd">                </span>
+<span class="sd">                res = btf.big_text_parser(input_path_folder = &#39;/myfolder/input_folder/&#39;, output_path_folder = &#39;/myfolder/output_folder/&#39;, start_query = &quot;&lt;structure&gt;&quot;,</span>
+<span class="sd">                </span>
+<span class="sd">                                          end_query = &quot;&lt;/structure&gt;&quot;, min_lines = 1, trimmed_line = False, verbose = False)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            the big_text_parser method parses text files from an input folder and saves those processed files to an output folder</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_path_folder, basestring), &#39;the input_path_folder parameter should be of type string&#39;        </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(output_path_folder, basestring), &#39;the output_path_folder parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        ELSE:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(start_query, basestring), &#39;the start_query parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(end_query, basestring), &#39;the end_query parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(min_lines, int) and min_lines &gt; 0, &#39;the min_lines parameter should be of type integer and at least 1&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(trimmed_line, bool), &#39;the trimmed_line parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.wrapper_batches_parser(input_path_folder, start_query, end_query, output_path_folder, min_lines, trimmed_line, verbose)</span>
+        
+    <span class="k">pass</span>
+        
+        
+        
+<div class="viewcode-block" id="big_text_files.big_text_tokenizer"><a class="viewcode-back" href="../_autosummary/big_text_files.html#big_text_files.big_text_files.big_text_tokenizer">[docs]</a>    <span class="k">def</span> <span class="nf">big_text_tokenizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">batches</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">increment_batch_no</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">LOCALE_UTF</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                           
+                           <span class="n">to_upper</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">read_file_delimiter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">remove_punctuation_string</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">remove_numbers</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                           
+                           <span class="n">trim_token</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">REMOVE_characters</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="se">\r\n\t</span><span class="s2">.,;:()?!//&quot;</span><span class="p">,</span> <span class="n">remove_punctuation_vector</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+
+                           <span class="n">remove_stopwords</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">min_num_char</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_num_char</span> <span class="o">=</span> <span class="n">MAX_VAL</span><span class="p">,</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_gram_delimiter</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
+                           
+                           <span class="n">skip_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stemmer_ngram</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stemmer_gamma</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stemmer_truncate</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stemmer_batches</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+                           
+                           <span class="n">vocabulary_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">save_2single_file</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">concat_delimiter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_folder: a character string specifying the folder where the input files are saved</span>
+<span class="sd">        </span>
+<span class="sd">        :param output_path_folder: a character string specifying the folder where the output files should be saved</span>
+
+<span class="sd">        :param batches: a numeric value specifying the number of batches to use. The batches will be used to split the initial data into subsets. Those subsets will be either saved in files (big_text_splitter method) or will be used internally for low memory processing (big_text_tokenizer method).</span>
+
+<span class="sd">        :param increment_batch_no: a numeric value. The enumeration of the output files will start from the increment_batch_nr. If the save_2single_file parameter is True then the increment_batch_no parameter won&#39;t be taken into consideration.</span>
+<span class="sd">        </span>
+<span class="sd">        :param LOCALE_UTF: the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#39;el_GR.UTF-8&#39; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_lower: either True or False. If True the character string will be converted to lower case</span>
+<span class="sd">        </span>
+<span class="sd">        :param to_upper: either True or False. If True the character string will be converted to upper case</span>
+<span class="sd">        </span>
+<span class="sd">        :param language: a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#39;afrikaans&#39;, </span>
+<span class="sd">        </span>
+<span class="sd">            &#39;arabic&#39;, &#39;armenian&#39;, &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;, &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, </span>
+<span class="sd">            &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;, &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;, &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;,</span>
+<span class="sd">            &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;, &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu&#39;</span>
+
+<span class="sd">        :param read_file_delimiter: the delimiter to use when the input file will be red (for instance a tab-delimiter or a new-line delimiter).</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_punctuation_string: either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_numbers: either True or False. If True then any numbers in the character string will be removed        </span>
+<span class="sd">        </span>
+<span class="sd">        :param trim_token: either True or False. If True then the string will be trimmed (left and/or right)</span>
+<span class="sd">        </span>
+<span class="sd">        :param REMOVE_characters: a character string with specific characters that should be removed from the text file. If the remove_char is &quot;&quot; then no removal of characters take place</span>
+
+<span class="sd">        :param split_string: either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</span>
+<span class="sd">        </span>
+<span class="sd">        :param separator: a character string specifying the character delimiter(s)</span>
+<span class="sd">        </span>
+<span class="sd">        :param remove_punctuation_vector: either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</span>
+<span class="sd">    </span>
+<span class="sd">        :param remove_stopwords: either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</span>
+
+<span class="sd">        :param min_num_char: an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_num_char: an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</span>
+
+<span class="sd">        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. </span>
+
+<span class="sd">        :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_n_gram: an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param n_gram_delimiter: a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_n_gram: an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</span>
+<span class="sd">        </span>
+<span class="sd">        :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</span>
+<span class="sd">        </span>
+<span class="sd">        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</span>
+
+<span class="sd">        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</span>
+<span class="sd">        </span>
+<span class="sd">        :param vocabulary_path_file: either None or a character string specifying the output path to a file where the vocabulary should be saved once the text is tokenized</span>
+<span class="sd">                </span>
+<span class="sd">        :param save_2single_file: either True or False. If True then the output data will be saved in a single file. Otherwise the data will be saved in multiple files with incremented enumeration</span>
+<span class="sd">        </span>
+<span class="sd">        :param concat_delimiter: either None or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)       </span>
+<span class="sd">        </span>
+<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                btf = big_text_files()</span>
+<span class="sd">                </span>
+<span class="sd">                res = btf.big_text_tokenizer(input_path_folder = &#39;/myfolder/input_folder/&#39;, output_path_folder = &#39;/myfolder/output_folder/&#39;, batches = 5, to_lower = True, split_string = True)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            the big_text_tokenizer method tokenizes and transforms the text files of a folder and saves those files to either a folder or a single file.</span>
+<span class="sd">        </span>
+<span class="sd">            There is also the option to save a frequency vocabulary of those transformed tokens to a file.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+
+
+<span class="c1">#        assert isinstance(input_path_folder, basestring), &#39;the input_path_folder parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert input_path_folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the input_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        ELSE:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert input_path_folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the input_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(output_path_folder, basestring), &#39;the output_path_folder parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#          </span>
+<span class="c1">#        ELSE:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert output_path_folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the output_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(batches, int) and batches &gt; 1, &#39;the batches parameter should be of type integer and at least 2&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(increment_batch_no, int) and increment_batch_no &gt;= 0, &#39;the increment_batch_no parameter should be of type integer and greater or equal to 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(read_file_delimiter, basestring), &#39;the read_file_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert len(read_file_delimiter) == 1, &#39;the read_file_delimiter should be a single character string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(LOCALE_UTF, basestring), &#39;the LOCALE_UTF parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_lower, bool), &#39;the to_lower parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(to_upper, bool), &#39;the to_upper parameter should be of type boolean&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        assert isinstance(REMOVE_characters, basestring), &#39;the REMOVE_characters parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_string, bool), &#39;the remove_punctuation_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_numbers, bool), &#39;the remove_numbers parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(trim_token, bool), &#39;the trim_token parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(split_string, bool), &#39;the split_string parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(separator, basestring), &#39;the separator parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(remove_punctuation_vector, bool), &#39;the remove_punctuation_vector parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(language, basestring), &#39;the language parameter should be of type string&#39;      </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert language in [&quot;afrikaans&quot;, &quot;arabic&quot;, &quot;armenian&quot;, &quot;basque&quot;, &quot;bengali&quot;, &quot;breton&quot;, &quot;bulgarian&quot;, &quot;catalan&quot;, &quot;croatian&quot;, &quot;czech&quot;, &quot;danish&quot;, &quot;dutch&quot;, &quot;english&quot;, </span>
+<span class="c1">#                            &quot;estonian&quot;, &quot;finnish&quot;, &quot;french&quot;,&quot;galician&quot;, &quot;german&quot;, &quot;greek&quot;, &quot;hausa&quot;, &quot;hebrew&quot;, &quot;hindi&quot;, &quot;hungarian&quot;, &quot;indonesian&quot;, &quot;irish&quot;, &quot;italian&quot;, </span>
+<span class="c1">#                            &quot;latvian&quot;, &quot;marathi&quot;, &quot;norwegian&quot;, &quot;persian&quot;, &quot;polish&quot;, &quot;portuguese&quot;, &quot;romanian&quot;, &quot;russian&quot;, &quot;slovak&quot;, &quot;slovenian&quot;, &quot;somalia&quot;, &quot;spanish&quot;, </span>
+<span class="c1">#                            &quot;swahili&quot;, &quot;swedish&quot;, &quot;turkish&quot;, &quot;yoruba&quot;, &quot;zulu&quot;], &quot;available languages in case of stop-word removal are &#39;afrikaans&#39;, &#39;arabic&#39;, &#39;armenian&#39;,\</span>
+<span class="c1">#                                                                                &#39;basque&#39;, &#39;bengali&#39;, &#39;breton&#39;, &#39;bulgarian&#39;, &#39;catalan&#39;, &#39;croatian&#39;, &#39;czech&#39;,&#39;danish&#39;, &#39;dutch&#39;,\</span>
+<span class="c1">#                                                                                &#39;english&#39;, &#39;estonian&#39;, &#39;finnish&#39;, &#39;french&#39;, &#39;galician&#39;, &#39;german&#39;, &#39;greek&#39;, &#39;hausa&#39;, &#39;hebrew&#39;,\</span>
+<span class="c1">#                                                                                &#39;hindi&#39;, &#39;hungarian&#39;, &#39;indonesian&#39;, &#39;irish&#39;, &#39;italian&#39;, &#39;latvian&#39;, &#39;marathi&#39;, &#39;norwegian&#39;,\</span>
+<span class="c1">#                                                                                &#39;persian&#39;, &#39;polish&#39;, &#39;portuguese&#39;, &#39;romanian&#39;, &#39;russian&#39;, &#39;slovak&#39;, &#39;slovenian&#39;, &#39;somalia&#39;,\</span>
+<span class="c1">#                                                                                &#39;spanish&#39;, &#39;swahili&#39;, &#39;swedish&#39;, &#39;turkish&#39;, &#39;yoruba&#39;, &#39;zulu. \</span>
+<span class="c1">#                                                                                \</span>
+<span class="c1">#                                                                                A user defined character list of stop words can be used as input, if the target language is not included&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if isinstance(remove_stopwords, bool):</span>
+<span class="c1">#            </span>
+<span class="c1">#            if remove_stopwords:</span>
+<span class="c1">#                </span>
+<span class="c1">#                IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;\\&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                ELSE:</span>
+<span class="c1">#                    </span>
+<span class="c1">#                    resource_path = &#39;/&#39;.join((&#39;stopwords&#39;, language + &#39;.txt&#39;))</span>
+<span class="c1">#                    </span>
+<span class="c1">#                path_stopw = pkg_resources.resource_filename(&#39;textTinyPy&#39;, resource_path)</span>
+<span class="c1">#                </span>
+<span class="c1">#                dat_stopw = pd.read_csv(path_stopw, header = None)</span>
+<span class="c1">#                </span>
+<span class="c1">#                array_stopw = np.array(dat_stopw.as_matrix(columns=None))</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = [i[0] for i in array_stopw]</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw.append(&quot;&quot;)</span>
+<span class="c1">#                    </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                </span>
+<span class="c1">#                list_stopw = []</span>
+<span class="c1">#        </span>
+<span class="c1">#        elif isinstance(remove_stopwords, list):</span>
+<span class="c1">#            </span>
+<span class="c1">#            list_stopw = remove_stopwords</span>
+<span class="c1">#            </span>
+<span class="c1">#            remove_stopwords = True</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            raise_with_traceback(ValueError(&quot;the remove_stopwords parameter should be either a list of user defined stopwords or a logical parameter ( True or False )&quot;))       </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(min_num_char, int) and min_num_char &gt; 0, &#39;the min_num_char parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(max_num_char, int) and max_num_char &gt; min_num_char, &#39;the max_num_char parameter should be of type integer and greater than the min_num_char&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if max_num_char == MAX_VAL:</span>
+<span class="c1">#            </span>
+<span class="c1">#            max_num_char = 1000000000</span>
+<span class="c1">#        </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(stemmer, basestring), &#39;the stemmer parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert stemmer in [&quot;porter2_stemmer&quot;, &quot;ngram_sequential&quot;, &quot;ngram_overlap&quot;], &#39;available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#        if stemmer is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            stemmer = &quot;NULL&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        assert isinstance(min_n_gram, int) and min_n_gram &gt; 0, &#39;the min_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(max_n_gram, int) and max_n_gram &gt; 0, &#39;the max_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert max_n_gram &gt;= min_n_gram, &#39;the max_n_gram parameter should be greater than the min_n_gram&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(n_gram_delimiter, basestring), &#39;the n_gram_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#                  </span>
+<span class="c1">#        assert isinstance(skip_n_gram, int) and skip_n_gram &gt; 0, &#39;the skip_n_gram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(skip_distance, int) and skip_distance &gt; -1, &#39;the skip_distance parameter should be of type integer and greater or equal to 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if stemmer is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            if stemmer == &quot;ngram_sequential&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#                assert isinstance(stemmer_gamma, float) and stemmer_gamma &gt;= 0.0, &#39;the stemmer_gamma parameter should be of type float and greater or equal to 0.0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_truncate, int) and stemmer_truncate &gt; 0, &#39;the stemmer_truncate parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                    </span>
+<span class="c1">#                assert isinstance(stemmer_batches, int) and stemmer_batches &gt; 0, &#39;the stemmer_batches parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#                </span>
+<span class="c1">#            if stemmer == &quot;ngram_overlap&quot;:</span>
+<span class="c1">#                </span>
+<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if vocabulary_path is not None:        </span>
+<span class="c1">#        </span>
+<span class="c1">#            assert isinstance(vocabulary_path, basestring), &#39;the vocabulary_path parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert os.path.exists(vocabulary_path), &quot;the vocabulary_path parameter should be a valid path to a file&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        if vocabulary_path is None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            vocabulary_path = &quot;&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(save_2single_file, bool), &#39;the save_2single_file parameter should be of type boolean&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        if concat_delimiter is not None:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert isinstance(concat_delimiter, basestring), &#39;the concat_delimiter parameter should be of type string&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        else:</span>
+<span class="c1">#            </span>
+<span class="c1">#            concat_delimiter = &quot;NULL&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &#39;the threads parameter should be of type integer and greater than 0&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39;   </span>
+<span class="c1">#        </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.wrapper_batch_tokenizer_bytes(input_path_folder, output_path_folder, batches, increment_batch_no, list_stopw, language, LOCALE_UTF, read_file_delimiter, </span>
+<span class="c1">#                           </span>
+<span class="c1">#                           max_num_char, REMOVE_characters, to_lower, to_upper, remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, </span>
+<span class="c1">#                           </span>
+<span class="c1">#                           separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, </span>
+<span class="c1">#                           </span>
+<span class="c1">#                           stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, save_2single_file, vocabulary_path, verbose)</span>
+
+    <span class="k">pass</span>
+        
+    
+    
+<div class="viewcode-block" id="big_text_files.vocabulary_accumulator"><a class="viewcode-back" href="../_autosummary/big_text_files.html#big_text_files.big_text_files.vocabulary_accumulator">[docs]</a>    <span class="k">def</span> <span class="nf">vocabulary_accumulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path_folder</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">output_path_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_num_chars</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        :param input_path_folder: a character string specifying the folder where the input files are saved</span>
+<span class="sd">        </span>
+<span class="sd">        :param output_path_file: a character string specifying the file where the vocabulary should be saved</span>
+<span class="sd">        </span>
+<span class="sd">        :param max_num_chars: a numeric value to limit the words of the output vocabulary to a maximum number of characters (applies to the vocabulary_accumulator method)</span>
+<span class="sd">        </span>
+<span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
+
+
+<span class="sd">        </span>
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                btf = big_text_files()</span>
+<span class="sd">                </span>
+<span class="sd">                res = btf.vocabulary_accumulator(input_path_folder = &#39;/myfolder/input_folder/&#39;, output_path_file = &#39;/myfolder/VOCAB.txt&#39;, max_num_chars = 100, verbose = False)</span>
+<span class="sd">        </span>
+<span class="sd">        .. note::</span>
+<span class="sd">            </span>
+<span class="sd">            the vocabulary_accumulator method takes the resulted vocabulary files of the big_text_tokenizer and returns the vocabulary sums sorted in decreasing order. </span>
+<span class="sd">        </span>
+<span class="sd">            The parameter max_num_chars limits the number of the corpus using the number of characters of each word.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        assert isinstance(input_path_folder, basestring), &#39;the input_path_folder parameter should be of type string&#39;</span>
+<span class="c1">#        </span>
+<span class="c1">#        IF UNAME_SYSNAME == &quot;Windows&quot;:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert input_path_folder.split(&#39;\\&#39;)[-1] == &quot;&quot;, &quot;the input_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        ELSE:</span>
+<span class="c1">#            </span>
+<span class="c1">#            assert input_path_folder.split(&#39;/&#39;)[-1] == &quot;&quot;, &quot;the input_path_folder parameter should end in slash&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert os.path.exists(input_path_folder), &quot;the input_path_folder parameter should be a valid path to a file&quot;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(output_path_file, basestring), &#39;the output_path_file parameter should be of type string&#39;   </span>
+<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(max_num_chars, int) and max_num_chars &gt; 0, &#39;the max_num_chars parameter should be of type integer and at least 1&#39;</span>
+<span class="c1">#            </span>
+<span class="c1">#        assert isinstance(verbose, bool), &#39;the verbose parameter should be of type boolean&#39; </span>
+<span class="c1">#        </span>
+<span class="c1">#        self.bgf.vocabulary_counts_folder(input_path_folder, output_path_file, max_num_chars, verbose) </span>
+        
+    <span class="k">pass</span></div>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">btf</span> <span class="o">=</span> <span class="n">big_text_files</span><span class="p">()</span>
+    <span class="n">btf</span><span class="o">.</span><span class="n">big_text_splitter</span><span class="p">()</span>
+    <span class="n">btf</span><span class="o">.</span><span class="n">big_text_parser</span><span class="p">()</span>
+    <span class="n">btf</span><span class="o">.</span><span class="n">big_text_tokenizer</span><span class="p">()</span>
+    <span class="n">btf</span><span class="o">.</span><span class="n">vocabulary_accumulator</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Lampros Mouselimis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
