@@ -1,7 +1,7 @@
 .. image:: https://badge.fury.io/py/textTinyPy.svg
     :target: https://badge.fury.io/py/textTinyPy
     
-.. image:: https://travis-ci.org/mlampros/textTinyPy.svg?branch=master
+.. image:: https://travis-ci.org/mlampros/textTinyPy.svg?branch=master1
     :target: https://travis-ci.org/mlampros/textTinyPy
 
 
