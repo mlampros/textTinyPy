@@ -28,8 +28,8 @@ before_install:
   - sudo apt-get update
 
 install:
- - wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.gz     
- - tar xzf armadillo-7.600.2.tar.gz
+ - wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz     
+ - tar xzf armadillo-7.600.2.tar.xz
  - pushd armadillo-7.600.2 && CXX=/usr/bin/g++-4.9 cmake . && make && sudo make install && popd
  - pip --version
  - cython --version
