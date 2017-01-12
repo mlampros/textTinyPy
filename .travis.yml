@@ -23,7 +23,9 @@ compiler:
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
-  - sudo apt-get install g++-4.9 liblapack-dev libboost-program-options-dev -y
+  - sudo apt-get install g++-4.9 gcc-4.9 libgfortran3 libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev libboost-program-options-dev -y
+  - sudo apt-get install gfortran
+  - sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so
   - pip install -r requirements.txt
   - sudo apt-get update
 
