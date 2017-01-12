@@ -15,6 +15,9 @@ os:
 compiler:
   - gcc
 
+
+# the 'addons' is a modification of https://github.com/travis-ci/travis-ci/issues/6481
+
 addons:
     apt:
         sources:
@@ -26,12 +29,6 @@ addons:
             - libboost1.55-dev
             - libboost-filesystem1.55-dev
             - libboost-locale1.55-dev
-
-os:
-  - linux
-
-compiler:
-  - gcc
 
 env:
   global:
@@ -53,6 +50,10 @@ before_install:
   - pip install pytest pytest-cov
   - sudo apt-get update
 
+
+# the 'install' is a modification of https://github.com/johnlees/seer/blob/master/.travis.yml  AND
+#                                    https://github.com/dme65/SOT/blob/master/.travis.yml
+
 install:
  - sudo apt-get install -qq cmake
  - wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz     
@@ -62,14 +63,10 @@ install:
  - make
  - sudo make install
  - cd ..
- #- pushd armadillo-7.600.2 && CXX=/usr/bin/g++-4.9 cmake . && make && sudo make install && popd
  - pip --version
  - cython --version
 
 script:
-  - python setup.py build
-  - python setup.py sdist
-  #- py.test
   - python setup.py install && py.test
 
 after_success:
