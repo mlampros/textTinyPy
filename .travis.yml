@@ -46,14 +46,15 @@ install:
  - cython --version
  - python setup.py install
 
-#script:
-#  - python setup.py install && py.test
 
 script:
-  #- py.test -v --cov-config .coveragerc
-  #- py.test --tb=short -v --cov textTinyPy/ test/
-  - make pytest
+  - py.test -v --cov-config .coveragerc
+  #- python setup.py install && py.test
   
+  # In all other cases it returns: Coverage.py warning: No data was collected, see: 
+  # http://stackoverflow.com/questions/34665433/coverage-py-cant-collect-any-data-for-coveralls-failing-in-travis,
+  # http://stackoverflow.com/questions/18573542/coverage-py-does-not-cover-script-if-py-test-executes-it-from-another-directory
+  # http://luc.lino-framework.org/blog/2013/0307.html
   #- py.test --cov=textTinyPy
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
