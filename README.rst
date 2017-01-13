@@ -71,7 +71,7 @@ Installation of System Requirements on Linux (Debian, Fedora):
 
 The installation requires a gcc-4.8 or newer (this can be checked in a console using : **gcc --version** ).
 
-If the gcc is older than 4.8 continue with step **1.** else go to **2.**
+If the gcc is older than 4.8 continue with step **1.** else go to step **2.**
 
 |
 **1.: installation of gcc-4.9 and g++-4.9**
