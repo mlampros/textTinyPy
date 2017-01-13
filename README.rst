@@ -65,7 +65,7 @@ Use the following link to report bugs/issues, `https://github.com/mlampros/textT
 
 |
 
-Installation of System Requirements on Linux (Debian, Fedora):
+Installation of System Requirements on Linux (Debian):
 --------------------------------------------------------------
 |
 
