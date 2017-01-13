@@ -50,7 +50,7 @@ install:
 #  - python setup.py install && py.test
 
 script:
-  - py.test -v --cov-config .coveragerc
+  #- py.test -v --cov-config .coveragerc
   - py.test --tb=short -v --cov textTinyPy/ test/
   
   #- py.test --cov=textTinyPy
