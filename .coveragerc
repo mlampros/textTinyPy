@@ -1,3 +1,4 @@
 [run]
 plugins = Cython.Coverage
+source = /home/travis/build/mlampros/textTinyPy
 omit = */__init__.py, */setup.py, */test/*
