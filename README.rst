@@ -53,15 +53,17 @@ Python Requirements:
 * **numpy**>=1.11.2
 * **future**>=0.15.2
 
+|
 
 The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.1/>`_  using:
 
 **pip install textTinyPy**
 
+|
 
 Use the following link to report bugs/issues, `https://github.com/mlampros/textTinyPy/issues <https://github.com/mlampros/textTinyPy/issues/>`_
 
-
+|
 
 Installation of System Requirements on Linux (Debian, Fedora):
 --------------------------------------------------------------
