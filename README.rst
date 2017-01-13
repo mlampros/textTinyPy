@@ -32,6 +32,8 @@ Details for the parameters of each class can be found in the package `documentat
 
 The package will work properly only if the following requirements are satisfied / installed :
 
+|
+
 System Requirements:
 --------------------
 
@@ -40,6 +42,7 @@ System Requirements:
 * a **C++11** compiler
 * `OpenMP <http://www.openmp.org/>`_ for parallelization ( *optional* )
 
+|
 
 Python Requirements:
 --------------------
