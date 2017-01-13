@@ -19,7 +19,7 @@ compiler:
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
-  - sudo add-apt-repository ppa:boost-latest/ppa
+  - sudo add-apt-repository ppa:boost-latest/ppa -y
   - sudo apt-get update -qq
   - sudo apt-get install libboost1.55-dev
   - sudo apt-get -qq install gcc-4.9
