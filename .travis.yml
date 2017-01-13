@@ -51,6 +51,8 @@ install:
 
 script:
   - py.test -v --cov-config .coveragerc
+  - py.test --tb=short -v --cov textTinyPy/ test/
+  
   #- py.test --cov=textTinyPy
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
