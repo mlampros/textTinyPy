@@ -17,7 +17,7 @@
 |
 
 
-The *textTinyPy* package consists of text processing functions for small or big data files. The source code is based on C++11 and wrapped in Python using Cython . It is tested on Linux with Python 2.7 (it includes exception handling for Mac OS and Windows but not tested yet) and there is currently one limitation :
+The *textTinyPy* package consists of text processing functions for small or big data files. The source code is based on C++11 and wrapped in Python using Cython. It is tested on Linux with Python 2.7 (it includes exception handling for Mac OS and Windows but not tested yet) and there is currently one limitation :
 
 * there is no support for chinese, japanese, korean, thai or languages with ambiguous word boundaries.
 |
