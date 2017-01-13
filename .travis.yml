@@ -51,7 +51,7 @@ install:
 
 script:
   #- py.test textTinyPy test --cov=codecov
-  - py.test -v --cov-config .coveragerc --cov=textTinyPy textTinyPy/test
+  - py.test -v --cov-config .coveragerc --cov=textTinyPy test
 
 after_success:
   - codecov
