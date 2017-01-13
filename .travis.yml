@@ -44,13 +44,13 @@ install:
  - cd ..
  - pip --version
  - cython --version
- #- python setup.py install
+ - python setup.py install
 
 #script:
 #  - python setup.py install && py.test
 
 script:
-  - python setup.py develop && py.test --cov=textTinyPy
+  - py.test -v --cov-config .coveragerc
   #- py.test --cov=textTinyPy
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
