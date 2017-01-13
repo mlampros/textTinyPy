@@ -28,7 +28,7 @@ before_install:
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 90
   - sudo apt-get install libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev       # armadillo requirements
   - pip install -r requirements.txt
-  - pip install pytest pytest-cov
+  - pip install pytest codecov pytest-cov
   - sudo apt-get update
 
 
