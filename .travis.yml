@@ -45,7 +45,7 @@ install:
  - pip --version
  - cython --version
  - python setup.py install
- - pip install coveralls
+ #- pip install coveralls
 
 
 script:
@@ -61,8 +61,8 @@ script:
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
 after_success:
-  - coveralls
-  #- codecov
+  #- coveralls
+  - codecov
 
 notifications:
   email:
