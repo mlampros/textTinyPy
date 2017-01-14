@@ -45,10 +45,12 @@ install:
  - pip --version
  - cython --version
  - python setup.py install
+ - pip install coveralls
 
 
 script:
-  - py.test -v --cov-config .coveragerc
+  - py.test
+  #- py.test -v --cov-config .coveragerc
   #- python setup.py install && py.test
   
   # In all other cases it returns: Coverage.py warning: No data was collected, see: 
@@ -59,7 +61,8 @@ script:
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
 after_success:
-  - codecov
+  - coveralls
+  #- codecov
 
 notifications:
   email:
