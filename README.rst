@@ -17,9 +17,10 @@
 |
 
 
-The *textTinyPy* package consists of text processing functions for small or big data files. The source code is based on C++11 and wrapped in Python using Cython. It is tested on Linux with Python 2.7 (it includes exception handling for Mac OS and Windows but not tested yet) and there is currently one limitation :
+The *textTinyPy* package consists of text processing functions for small or big data files. The source code is based on C++11 and wrapped in Python using Cython. It is tested on Linux (Debian) with Python 2.7 and there is currently one limitation :
 
 * there is no support for chinese, japanese, korean, thai or languages with ambiguous word boundaries.
+
 |
 
 The functionality of the textTinyPy is explained in the `blog post <http://mlampros.github.io/2017/01/10/textTinyPy_package/>`_
@@ -55,9 +56,15 @@ Python Requirements:
 
 |
 
-The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.1/>`_  using:
+The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.2/>`_  using:
 
 **pip install textTinyPy**
+
+|
+
+To upgrade use 
+
+**pip install -U textTinyPy**
 
 |
 
@@ -74,6 +81,7 @@ The installation requires a gcc-4.8 or newer (this can be checked in a console u
 If the gcc is older than 4.8 continue with step **1.** else go to step **2.**
 
 |
+
 **1.: installation of gcc-4.9 and g++-4.9**
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
@@ -91,6 +99,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90
 sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 90
 
 |
+
 **2.: installation of boost version 1.55 (including boost-locale and boost-system)**
 
 sudo add-apt-repository ppa:boost-latest/ppa -y 
@@ -130,4 +139,6 @@ cmake .
 make
 
 sudo make install
+
+|
 

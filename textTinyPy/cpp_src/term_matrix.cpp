@@ -11,7 +11,7 @@
  * 
  * @Notes: document-term-matrix or term-document-matrix in sparse format
  * 
- * @last_modified: December 2016
+ * @last_modified: January 2017
  * 
  **/
 
@@ -793,35 +793,54 @@ void term_matrix::adj_Sparsity(double sparsity_thresh) {
     }
   }
   
-  std::vector<long long> tmp_adj_row_indices(all_indices.size());
-  
-  std::vector<double> tmp_adj_counts_double(all_indices.size());
-  
-  std::vector<long long> tmp_adj_counts_long(all_indices.size());
-  
-  for (unsigned long long j = 0; j < all_indices.size(); j++) {
-    
-    tmp_adj_row_indices[j] = row_indices(all_indices[j]);
+  if (all_indices.empty() || adj_col_indices.empty()) {         // append empty vectors if any of 'all_indices', 'adj_col_indices' is an empty vector
     
     if (flag_long_long) {
       
-      tmp_adj_counts_long[j] = docs_counts_[all_indices[j]];}
+      std::vector<long long> tmp_adj_counts_long;
+      
+      adj_counts_long = tmp_adj_counts_long;}
     
     else {
       
-      tmp_adj_counts_double[j] = docs_counts_double_[all_indices[j]];
+      std::vector<double> tmp_adj_counts_double;
+      
+      adj_counts_double = tmp_adj_counts_double;
     }
   }
   
-  adj_row_indices = tmp_adj_row_indices;
-  
-  if (flag_long_long) {
-    
-    adj_counts_long = tmp_adj_counts_long;}
-  
   else {
+  
+    std::vector<long long> tmp_adj_row_indices(all_indices.size());
     
-    adj_counts_double = tmp_adj_counts_double;
+    std::vector<double> tmp_adj_counts_double(all_indices.size());
+    
+    std::vector<long long> tmp_adj_counts_long(all_indices.size());
+    
+    for (unsigned long long j = 0; j < all_indices.size(); j++) {
+      
+      tmp_adj_row_indices[j] = row_indices(all_indices[j]);
+      
+      if (flag_long_long) {
+        
+        tmp_adj_counts_long[j] = docs_counts_[all_indices[j]];}
+      
+      else {
+        
+        tmp_adj_counts_double[j] = docs_counts_double_[all_indices[j]];
+      }
+    }
+    
+    adj_row_indices = tmp_adj_row_indices;
+    
+    if (flag_long_long) {
+      
+      adj_counts_long = tmp_adj_counts_long;}
+    
+    else {
+      
+      adj_counts_double = tmp_adj_counts_double;
+    }
   }
 }
 

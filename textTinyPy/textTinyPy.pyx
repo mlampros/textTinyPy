@@ -2249,6 +2249,11 @@ cdef class docs_matrix:
             self.adjust_sparsity_matrix['sparsity_rows'] = sparsity_struct_double.row_idx_
             
             self.adjust_sparsity_matrix['sparsity_counts'] = sparsity_struct_double.docs_cnt_
+            
+            
+        if self.adjust_sparsity_matrix['sparsity_cols'] == [] or self.adjust_sparsity_matrix['sparsity_counts'] == []:
+            
+            raise_with_traceback(ValueError("a sparsity_thresh of " + str(sparsity_thresh) + " returns an empty sparse matrix. Consider increasing the sparsity_thresh"))            
         
         cdef vector[long long] zer_val_sparse_idx        
         

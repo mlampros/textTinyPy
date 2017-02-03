@@ -139,9 +139,11 @@ args_tm_mft = { 'vector_documents' : voc_vec, 'to_lower' : True, 'trim_token' : 
 # Term_Matrix_Adjust error handling
 
 
-lst_adj = [ { 'sparsity_thresh' : 0.0 }, { 'to_array' : 'False' }]
+lst_adj = [ { 'sparsity_thresh' : 0.0 }, { 'to_array' : 'False' }, { 'sparsity_thresh' : 0.1 } ]
 
-msg_adj = [ "the sparsity_thresh parameter should be of type float and it's range should be between 0.0 and 1.0", 'the to_array parameter should be of type boolean']
+msg_adj = [ "the sparsity_thresh parameter should be of type float and it's range should be between 0.0 and 1.0", 'the to_array parameter should be of type boolean',
+           
+           "a sparsity_thresh of 0.1 returns an empty sparse matrix. Consider increasing the sparsity_thresh" ]
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

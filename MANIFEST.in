@@ -3,4 +3,5 @@ global-include *.csv *.py *.txt *.pyx *.pxd *.cpp *.h *.so
 include MANIFEST.in
 include README.rst
 include LICENSE
+include NEWS.md
 
