@@ -7,7 +7,7 @@ dist: precise
 
 branches:
     only:
-        - master1
+        - master
 os:
   - linux
 
@@ -45,9 +45,11 @@ install:
  - pip --version
  - cython --version
  - python setup.py install
+ #- pip install coveralls
 
 
 script:
+  #- py.test
   - py.test -v --cov-config .coveragerc
   #- python setup.py install && py.test
   
@@ -59,6 +61,7 @@ script:
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
 after_success:
+  #- coveralls
   - codecov
 
 notifications:

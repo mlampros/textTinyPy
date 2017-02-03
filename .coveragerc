@@ -1,3 +1,3 @@
 [run]
 plugins = Cython.Coverage
-omit = */__init__.py, */setup.py, */test/*
+omit = */__init__.py, setup.py, */test_*, */params_*
