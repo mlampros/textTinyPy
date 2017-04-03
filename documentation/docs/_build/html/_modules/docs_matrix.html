@@ -199,9 +199,7 @@
 
                     <span class="n">max_num_char</span> <span class="o">=</span> <span class="n">MAX_VAL</span><span class="p">,</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_n_gram</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">skip_distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_gram_delimiter</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
                     
-                    <span class="n">stemmer_ngram</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stemmer_gamma</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stemmer_truncate</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stemmer_batches</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">print_every_rows</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tf_idf</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
-                    
-                    <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="n">print_every_rows</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tf_idf</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        </span>
@@ -243,7 +241,7 @@
 <span class="sd">        </span>
 <span class="sd">        :param max_num_char: an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</span>
 
-<span class="sd">        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. </span>
+<span class="sd">        :param stemmer: a character string specifying the stemming method. Available method is porter2_stemmer.</span>
 
 <span class="sd">        :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</span>
 <span class="sd">        </span>
@@ -254,15 +252,7 @@
 <span class="sd">        :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</span>
 <span class="sd">        </span>
 <span class="sd">        :param n_gram_delimiter: a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</span>
-
-<span class="sd">        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.</span>
-<span class="sd">        </span>
-<span class="sd">        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.</span>
-<span class="sd">        </span>
-<span class="sd">        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.</span>
-
-<span class="sd">        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.</span>
-<span class="sd">        </span>
+<span class="sd">       </span>
 <span class="sd">        :param print_every_rows: a numeric value greater than 1 specifying the print intervals. Frequent output in the console can slow down the method in case of big files.</span>
 <span class="sd">                </span>
 <span class="sd">        :param normalize: either None or one of &#39;l1&#39; or &#39;l2&#39; normalization.</span>
@@ -388,7 +378,7 @@
 <span class="c1">#            </span>
 <span class="c1">#            assert isinstance(stemmer, basestring), &#39;the stemmer parameter should be of type string&#39;</span>
 <span class="c1">#            </span>
-<span class="c1">#            assert stemmer in [&quot;porter2_stemmer&quot;, &quot;ngram_sequential&quot;, &quot;ngram_overlap&quot;], &#39;available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap&#39;</span>
+<span class="c1">#            assert stemmer in [&quot;porter2_stemmer&quot;], &#39;available stemmer is porter2_stemmer&#39;</span>
 <span class="c1">#                </span>
 <span class="c1">#        if stemmer is None:</span>
 <span class="c1">#            </span>
@@ -404,24 +394,7 @@
 <span class="c1">#                  </span>
 <span class="c1">#        assert isinstance(skip_n_gram, int) and skip_n_gram &gt; 0, &#39;the skip_n_gram parameter should be of type integer and greater than 0&#39;</span>
 <span class="c1">#            </span>
-<span class="c1">#        assert isinstance(skip_distance, int) and skip_distance &gt; -1, &#39;the skip_distance parameter should be of type integer and greater or equal to 0&#39;</span>
-<span class="c1">#            </span>
-<span class="c1">#        if stemmer is not None:</span>
-<span class="c1">#            </span>
-<span class="c1">#            if stemmer == &quot;ngram_sequential&quot;:</span>
-<span class="c1">#                </span>
-<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
-<span class="c1">#            </span>
-<span class="c1">#                assert isinstance(stemmer_gamma, float) and stemmer_gamma &gt;= 0.0, &#39;the stemmer_gamma parameter should be of type float and greater or equal to 0.0&#39;</span>
-<span class="c1">#                    </span>
-<span class="c1">#                assert isinstance(stemmer_truncate, int) and stemmer_truncate &gt; 0, &#39;the stemmer_truncate parameter should be of type integer and greater than 0&#39;</span>
-<span class="c1">#                    </span>
-<span class="c1">#                assert isinstance(stemmer_batches, int) and stemmer_batches &gt; 0, &#39;the stemmer_batches parameter should be of type integer and greater than 0&#39;</span>
-<span class="c1">#                </span>
-<span class="c1">#            if stemmer == &quot;ngram_overlap&quot;:</span>
-<span class="c1">#                </span>
-<span class="c1">#                assert isinstance(stemmer_ngram, int) and stemmer_ngram &gt; 0, &#39;the stemmer_ngram parameter should be of type integer and greater than 0&#39;</span>
-<span class="c1">#        </span>
+<span class="c1">#        assert isinstance(skip_distance, int) and skip_distance &gt; -1, &#39;the skip_distance parameter should be of type integer and greater or equal to 0&#39;        </span>
 <span class="c1">#        </span>
 <span class="c1">#        assert isinstance(print_every_rows, int) and print_every_rows &gt; 0, &#39;the print_every_rows parameter should be of type integer&#39;</span>
 <span class="c1">#        </span>
@@ -463,9 +436,9 @@
 <span class="c1">#                                      </span>
 <span class="c1">#                                      remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, </span>
 <span class="c1">#                                  </span>
-<span class="c1">#                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, </span>
+<span class="c1">#                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, 4, 0, 3, </span>
 <span class="c1">#                                      </span>
-<span class="c1">#                                      stemmer_batches, threads, verbose, print_every_rows, normalize, tf_idf)</span>
+<span class="c1">#                                      1, threads, verbose, print_every_rows, normalize, tf_idf)</span>
 <span class="c1">#        </span>
 <span class="c1">#        if self.FLAG_output_long:</span>
 <span class="c1">#            </span>

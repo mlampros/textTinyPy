@@ -65,7 +65,7 @@ cdef extern from "cpp_src/tokenization.h":
         
         void save_2file(string folder, string path_extend)
         
-        void append_2file(string folder, string path_extend)
+        void append_2file(string folder, string CONCAT, bool_t tokenize_vector, string path_extend)
         
         vector[string] _object_vector()
         
@@ -108,7 +108,7 @@ cdef extern from "cpp_src/token_big_files.h":
                                 
                                 int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool_t verbose, bool_t save_2single_file, 
                                 
-                                string path_extend, string vocabulary_path)
+                                string path_extend, string vocabulary_path, bool_t tokenize_vector)
         
         
         vector[string] res_token_vector(vector[string] VEC, vector[string] language, string language_spec, string LOCALE_UTF, int max_num_char, string remove_char, bool_t cpp_to_lower, 

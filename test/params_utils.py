@@ -124,16 +124,6 @@ tok_kwargs_error_handling = [ { 'input_path_file' : None }, { 'input_path_file' 
                              
                              { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'skip_distance' : -1},
                              
-                             { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'stemmer' : 'ngram_sequential', 'stemmer_ngram' : 0},
-                             
-                             { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'stemmer' : 'ngram_sequential', 'stemmer_gamma' : -0.1},
-                             
-                             { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'stemmer' : 'ngram_sequential', 'stemmer_truncate' : 0},
-                             
-                             { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'stemmer' : 'ngram_sequential', 'stemmer_batches' : 0},
-                             
-                             { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'stemmer' : 'ngram_overlap', 'stemmer_ngram' : 0},
-                             
                              {  'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'threads' : -1}, 
                                  
                              { 'input_path_file' : tok_file, 'vocabulary_path_file' : tok_write_vocab_single, 'start_query' : '<structure' , 'end_query' : '</structure>', 'verbose' : 'False'},
@@ -162,19 +152,15 @@ list_of_error_messages = ['the input_path_file parameter should be of type strin
                           
                           'the max_num_char parameter should be of type integer and greater than the min_num_char', 'the stemmer parameter should be of type string',
                                     
-                          'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap', 'the min_n_gram parameter should be of type integer and greater than 0',
+                          'available stemmer is porter2_stemmer', 'the min_n_gram parameter should be of type integer and greater than 0',
                         
                           'the max_n_gram parameter should be of type integer and greater than 0', 'the max_n_gram parameter should be greater than the min_n_gram', 
                         
                           'the n_gram_delimiter parameter should be of type string', 'the skip_n_gram parameter should be of type integer and greater than 0', 
                         
-                          'the skip_distance parameter should be of type integer and greater or equal to 0', 'the stemmer_ngram parameter should be of type integer and greater than 0',
-                                    
-                          'the stemmer_gamma parameter should be of type float and greater or equal to 0.0', 'the stemmer_truncate parameter should be of type integer and greater than 0',
-                        
-                          'the stemmer_batches parameter should be of type integer and greater than 0', 'the stemmer_ngram parameter should be of type integer and greater than 0',
+                          'the skip_distance parameter should be of type integer and greater or equal to 0', 'the threads parameter should be of type integer and greater than 0',
                           
-                          'the threads parameter should be of type integer and greater than 0', 'the verbose parameter should be of type boolean',
+                          'the verbose parameter should be of type boolean',
                           
                           'the language parameter should be of type string', "available languages in case of stop-word removal are 'afrikaans', 'arabic', 'armenian',\
                                                                                 'basque', 'bengali', 'breton', 'bulgarian', 'catalan', 'croatian', 'czech','danish', 'dutch',\

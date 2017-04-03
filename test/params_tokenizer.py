@@ -185,11 +185,7 @@ tok_kwargs_error_handling_vec = [ { 'LOCALE_UTF' : 1},{ 'to_lower' : 'False' }, 
                              
                                  {'min_n_gram' : 2, 'max_n_gram' : 1 }, { 'n_gram_delimiter' : [] }, { 'skip_n_gram' : 0}, { 'skip_distance' : -1 },
                                  
-                                 { 'stemmer' : "ngram_sequential", 'stemmer_ngram' : 0}, { 'stemmer' : "ngram_sequential", 'stemmer_gamma' : -0.1},
-                                 
-                                 { 'stemmer' : "ngram_sequential", 'stemmer_truncate' : 0}, { 'stemmer' : "ngram_sequential", 'stemmer_batches' : 0},
-                                 
-                                 { 'stemmer' : "ngram_overlap", 'stemmer_ngram' : 0}, { 'vocabulary_path' : 1}, { 'concat_delimiter' : []},
+                                 { 'vocabulary_path' : 1}, { 'concat_delimiter' : []},
                                  
                                  { 'path_2folder' : []}, { 'path_2folder' : invalid_PATH_tests }, { 'threads' : 0 }, { 'verbose' : 'False'} ]
                               
@@ -220,19 +216,15 @@ list_of_error_messages_vec = [
                           
                           'the max_num_char parameter should be of type integer and greater than the min_num_char', 'the stemmer parameter should be of type string',
                           
-                          'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap', 'the min_n_gram parameter should be of type integer and greater than 0',
+                          'available stemmer is porter2_stemmer', 'the min_n_gram parameter should be of type integer and greater than 0',
                           
                           'the max_n_gram parameter should be of type integer and greater than 0', 'the max_n_gram parameter should be greater than the min_n_gram',
                           
                           'the n_gram_delimiter parameter should be of type string', 'the skip_n_gram parameter should be of type integer and greater than 0', 
                           
-                          'the skip_distance parameter should be of type integer and greater or equal to 0', 'the stemmer_ngram parameter should be of type integer and greater than 0',
+                          'the skip_distance parameter should be of type integer and greater or equal to 0', 'the vocabulary_path parameter should be of type string', 
                           
-                          'the stemmer_gamma parameter should be of type float and greater or equal to 0.0', 'the stemmer_truncate parameter should be of type integer and greater than 0',
-                          
-                          'the stemmer_batches parameter should be of type integer and greater than 0', 'the stemmer_ngram parameter should be of type integer and greater than 0',
-                          
-                          'the vocabulary_path parameter should be of type string', 'the concat_delimiter parameter should be of type string',
+                          'the concat_delimiter parameter should be of type string',
                           
                           'the path_2folder parameter should be of type string', "the path_2folder parameter should end in slash", 'the threads parameter should be of type integer and greater than 0',
                           

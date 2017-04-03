@@ -66,9 +66,7 @@ class docs_matrix:
 
                     max_num_char = MAX_VAL, stemmer = None, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
                     
-                    stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, print_every_rows = 1000, normalize = None, tf_idf = False, 
-                    
-                    threads = 1, verbose = False):
+                    print_every_rows = 1000, normalize = None, tf_idf = False, threads = 1, verbose = False):
         
         '''
         
@@ -110,7 +108,7 @@ class docs_matrix:
         
         :param max_num_char: an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)
 
-        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. 
+        :param stemmer: a character string specifying the stemming method. Available method is porter2_stemmer.
 
         :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
         
@@ -121,15 +119,7 @@ class docs_matrix:
         :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
         
         :param n_gram_delimiter: a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
-
-        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.
-        
-        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.
-        
-        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.
-
-        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.
-        
+       
         :param print_every_rows: a numeric value greater than 1 specifying the print intervals. Frequent output in the console can slow down the method in case of big files.
                 
         :param normalize: either None or one of 'l1' or 'l2' normalization.
@@ -255,7 +245,7 @@ class docs_matrix:
 #            
 #            assert isinstance(stemmer, basestring), 'the stemmer parameter should be of type string'
 #            
-#            assert stemmer in ["porter2_stemmer", "ngram_sequential", "ngram_overlap"], 'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap'
+#            assert stemmer in ["porter2_stemmer"], 'available stemmer is porter2_stemmer'
 #                
 #        if stemmer is None:
 #            
@@ -271,24 +261,7 @@ class docs_matrix:
 #                  
 #        assert isinstance(skip_n_gram, int) and skip_n_gram > 0, 'the skip_n_gram parameter should be of type integer and greater than 0'
 #            
-#        assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'
-#            
-#        if stemmer is not None:
-#            
-#            if stemmer == "ngram_sequential":
-#                
-#                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-#            
-#                assert isinstance(stemmer_gamma, float) and stemmer_gamma >= 0.0, 'the stemmer_gamma parameter should be of type float and greater or equal to 0.0'
-#                    
-#                assert isinstance(stemmer_truncate, int) and stemmer_truncate > 0, 'the stemmer_truncate parameter should be of type integer and greater than 0'
-#                    
-#                assert isinstance(stemmer_batches, int) and stemmer_batches > 0, 'the stemmer_batches parameter should be of type integer and greater than 0'
-#                
-#            if stemmer == "ngram_overlap":
-#                
-#                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-#        
+#        assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'        
 #        
 #        assert isinstance(print_every_rows, int) and print_every_rows > 0, 'the print_every_rows parameter should be of type integer'
 #        
@@ -330,9 +303,9 @@ class docs_matrix:
 #                                      
 #                                      remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, 
 #                                  
-#                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, 
+#                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, 4, 0, 3, 
 #                                      
-#                                      stemmer_batches, threads, verbose, print_every_rows, normalize, tf_idf)
+#                                      1, threads, verbose, print_every_rows, normalize, tf_idf)
 #        
 #        if self.FLAG_output_long:
 #            

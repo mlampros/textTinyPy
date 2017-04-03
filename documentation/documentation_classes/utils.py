@@ -56,7 +56,7 @@ class utils:
                           
                           trim_token = False, split_string = False, separator = " \r\n\t.,;:()?!//", remove_stopwords = False, min_num_char = 1, stemmer = None, min_n_gram = 1, max_n_gram = 1,
 
-                          n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, threads = 1, verbose = False):
+                          n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, threads = 1, verbose = False):
         '''
         
         :param input_path_file: a character string specifying the path to the input file
@@ -103,7 +103,7 @@ class utils:
 
         :param min_num_char: an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned
         
-        :param stemmer: a character string specifying the stemming method. One of the following porter2_stemmer, ngram_sequential, ngram_overlap. 
+        :param stemmer: a character string specifying the stemming method. Available stemmer is porter2_stemmer. 
 
         :param min_n_gram: an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
         
@@ -114,15 +114,7 @@ class utils:
         :param skip_n_gram: an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
         
         :param skip_distance: an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
-        
-        :param stemmer_ngram: a numeric value greater than 1. Applies to both ngram_sequential and ngram_overlap methods. In case of ngram_sequential the first n characters will be picked, whereas in the case of ngram_overlap the overlapping stemmer_ngram characters will be build.
-        
-        :param stemmer_gamma: a float number greater or equal to 0.0. Applies only to ngram_sequential. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.
-        
-        :param stemmer_truncate: a numeric value greater than 0. Applies only to ngram_sequential. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.
-
-        :param stemmer_batches: a numeric value greater than 0. Applies only to ngram_sequential. Splits the corpus into batches with the option to run the batches in multiple threads.
-        
+      
         :param threads: an integer specifying the number of cores to run in parallel
         
         :param verbose: either True or False. If True then information will be printed out
@@ -190,7 +182,7 @@ class utils:
 #            
 #            assert isinstance(stemmer, basestring), 'the stemmer parameter should be of type string'
 #            
-#            assert stemmer in ["porter2_stemmer", "ngram_sequential", "ngram_overlap"], 'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap'
+#            assert stemmer in ["porter2_stemmer"], 'available stemmer is porter2_stemmer'
 #            
 #        assert isinstance(min_n_gram, int) and min_n_gram > 0, 'the min_n_gram parameter should be of type integer and greater than 0'
 #        
@@ -202,23 +194,7 @@ class utils:
 #                  
 #        assert isinstance(skip_n_gram, int) and skip_n_gram > 0, 'the skip_n_gram parameter should be of type integer and greater than 0'
 #            
-#        assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'    
-#        
-#        if stemmer is not None:
-#            
-#            if stemmer == "ngram_sequential":
-#                
-#                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-#            
-#                assert isinstance(stemmer_gamma, float) and stemmer_gamma >= 0.0, 'the stemmer_gamma parameter should be of type float and greater or equal to 0.0'
-#                    
-#                assert isinstance(stemmer_truncate, int) and stemmer_truncate > 0, 'the stemmer_truncate parameter should be of type integer and greater than 0'
-#                    
-#                assert isinstance(stemmer_batches, int) and stemmer_batches > 0, 'the stemmer_batches parameter should be of type integer and greater than 0'
-#                
-#            if stemmer == "ngram_overlap":
-#                
-#                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
+#        assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'
 #             
 #        assert isinstance(threads, int) and threads > 0, 'the threads parameter should be of type integer and greater than 0'
 #            
@@ -294,9 +270,9 @@ class utils:
 #                          
 #                                          REMOVE_characters, to_lower, to_upper, remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, 
 #                                                     
-#                                          separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, 
+#                                          separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, 4, 
 #                                          
-#                                          stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose)
+#                                          0.0, 3, 1, threads, verbose)
         
     pass
         

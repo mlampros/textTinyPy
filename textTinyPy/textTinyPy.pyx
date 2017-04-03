@@ -293,7 +293,7 @@ cdef class tokenizer:
                                              
                                               concat_delimiter, path_2folder, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, 
                                               
-                                              False, "output_token.txt", vocabulary_path)
+                                              False, "output_token.txt", vocabulary_path, False)
             
             return result_vec
             
@@ -318,9 +318,9 @@ cdef class tokenizer:
                            
                            remove_numbers = False, trim_token = False, split_string = False, separator = " \r\n\t.,;:()?!//", remove_punctuation_vector = False, remove_stopwords = False, 
 
-                           min_num_char = 1, max_num_char = MAX_VAL, stemmer = None, min_n_gram = 1, max_n_gram = 1, n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, stemmer_ngram = 4, 
+                           min_num_char = 1, max_num_char = MAX_VAL, stemmer = None, min_n_gram = 1, max_n_gram = 1, n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, 
                            
-                           stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, vocabulary_path = None, concat_delimiter = None, path_2folder = "", threads = 1, verbose = False):
+                           vocabulary_path = None, concat_delimiter = None, path_2folder = "", threads = 1, verbose = False):
         
         
         '''
@@ -333,12 +333,8 @@ cdef class tokenizer:
         
         under consideration, but may leave gaps that are skipped over. They provide one way of overcoming the data sparsity problem found with conventional n-gram analysis. Stemming of the english language is 
         
-        done using the porter2-stemmer, for details see https://github.com/smassung/porter2_stemmer. N-gram stemming is language independent and supported by the following two functions:
-            
-            ngram_overlap    : The ngram_overlap stemming method is based on N-Gram Morphemes for Retrieval, Paul McNamee and James Mayfield ( http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf )
-            
-            ngram_sequential : The ngram_sequential stemming method is a modified version based on Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami ( https://arxiv.org/pdf/1312.4824.pdf )
-            
+        done using the porter2-stemmer, for details see https://github.com/smassung/porter2_stemmer. 
+        
         The list of stop-words in all available languages was downloaded from the following link https://github.com/6/stopwords-json        
         
         '''
@@ -440,7 +436,7 @@ cdef class tokenizer:
             
             assert isinstance(stemmer, basestring), 'the stemmer parameter should be of type string'
             
-            assert stemmer in ["porter2_stemmer", "ngram_sequential", "ngram_overlap"], 'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap'
+            assert stemmer in ["porter2_stemmer"], 'available stemmer is porter2_stemmer'
                 
         if stemmer is None:
             
@@ -457,22 +453,6 @@ cdef class tokenizer:
         assert isinstance(skip_n_gram, int) and skip_n_gram > 0, 'the skip_n_gram parameter should be of type integer and greater than 0'
             
         assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'
-        
-        if stemmer is not None:
-            
-            if stemmer == "ngram_sequential":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-            
-                assert isinstance(stemmer_gamma, float) and stemmer_gamma >= 0.0, 'the stemmer_gamma parameter should be of type float and greater or equal to 0.0'
-                    
-                assert isinstance(stemmer_truncate, int) and stemmer_truncate > 0, 'the stemmer_truncate parameter should be of type integer and greater than 0'
-                    
-                assert isinstance(stemmer_batches, int) and stemmer_batches > 0, 'the stemmer_batches parameter should be of type integer and greater than 0'
-                
-            if stemmer == "ngram_overlap":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
         
         if vocabulary_path is not None:        
         
@@ -509,9 +489,9 @@ cdef class tokenizer:
                                                  
                                                         remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, stemmer, 
                                                  
-                                                        min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2folder, stemmer_ngram, 
-                                                 
-                                                        stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path)
+                                                        min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2folder, 4, 0.0, 3, 1,                 # GIVE DEFAULT VALUES FOR N-GRAM STEMMING : stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1
+                                                        
+                                                        threads, verbose, vocabulary_path)
             
             return result_list_token
             
@@ -521,9 +501,9 @@ cdef class tokenizer:
                                                  
                                                            remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, stemmer, 
                                                  
-                                                           min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2folder, stemmer_ngram, 
-                                                 
-                                                           stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path)
+                                                           min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2folder, 4, 0.0, 3, 1,               # GIVE DEFAULT VALUES FOR N-GRAM STEMMING : stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1
+                                                           
+                                                           threads, verbose, vocabulary_path)
             
             return result_list_string
 
@@ -918,7 +898,7 @@ cdef class utils:
                           
                           trim_token = False, split_string = False, separator = " \r\n\t.,;:()?!//", remove_stopwords = False, min_num_char = 1, stemmer = None, min_n_gram = 1, max_n_gram = 1,
 
-                          n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, threads = 1, verbose = False):
+                          n_gram_delimiter = " ", skip_n_gram = 1, skip_distance = 0, threads = 1, verbose = False):
         '''
         
         Returns the vocabulary counts for small or medium ( xml ) files ( for big files the vocabulary_accumulator method of the big_text_files class is appropriate )
@@ -973,7 +953,7 @@ cdef class utils:
             
             assert isinstance(stemmer, basestring), 'the stemmer parameter should be of type string'
             
-            assert stemmer in ["porter2_stemmer", "ngram_sequential", "ngram_overlap"], 'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap'
+            assert stemmer in ["porter2_stemmer"], 'available stemmer is porter2_stemmer'
             
         assert isinstance(min_n_gram, int) and min_n_gram > 0, 'the min_n_gram parameter should be of type integer and greater than 0'
         
@@ -986,22 +966,6 @@ cdef class utils:
         assert isinstance(skip_n_gram, int) and skip_n_gram > 0, 'the skip_n_gram parameter should be of type integer and greater than 0'
             
         assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'    
-        
-        if stemmer is not None:
-            
-            if stemmer == "ngram_sequential":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-            
-                assert isinstance(stemmer_gamma, float) and stemmer_gamma >= 0.0, 'the stemmer_gamma parameter should be of type float and greater or equal to 0.0'
-                    
-                assert isinstance(stemmer_truncate, int) and stemmer_truncate > 0, 'the stemmer_truncate parameter should be of type integer and greater than 0'
-                    
-                assert isinstance(stemmer_batches, int) and stemmer_batches > 0, 'the stemmer_batches parameter should be of type integer and greater than 0'
-                
-            if stemmer == "ngram_overlap":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
              
         assert isinstance(threads, int) and threads > 0, 'the threads parameter should be of type integer and greater than 0'
             
@@ -1072,14 +1036,12 @@ cdef class utils:
             
             raise_with_traceback(ValueError("the remove_stopwords parameter should be either a list of user defined stopwords or a logical parameter ( True or False )"))
         
-        
+         
         self.bgf.vocabulary_count_parser(input_path_file, start_query, end_query, list_stopw, vocabulary_path_file, min_lines, trimmed_line, query_transform, language, LOCALE_UTF, max_num_char, 
                           
                                           REMOVE_characters, to_lower, to_upper, remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, 
                                                      
-                                          separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, 
-                                          
-                                          stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose)
+                                          separator, remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, 4, 0.0, 3, 1, threads, verbose)        # SET DEFAULT VALUES FOR N-GRAM STEMMING : stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1
         
         
     def utf_locale(self, language = "english"):
@@ -1845,9 +1807,7 @@ cdef class docs_matrix:
 
                     max_num_char = MAX_VAL, stemmer = None, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
                     
-                    stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, print_every_rows = 1000, normalize = None, tf_idf = False, 
-                    
-                    threads = 1, verbose = False):
+                    print_every_rows = 1000, normalize = None, tf_idf = False, threads = 1, verbose = False):
         
         '''
         
@@ -1956,7 +1916,7 @@ cdef class docs_matrix:
             
             assert isinstance(stemmer, basestring), 'the stemmer parameter should be of type string'
             
-            assert stemmer in ["porter2_stemmer", "ngram_sequential", "ngram_overlap"], 'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap'
+            assert stemmer in ["porter2_stemmer"], 'available stemmer is porter2_stemmer'
                 
         if stemmer is None:
             
@@ -1973,23 +1933,6 @@ cdef class docs_matrix:
         assert isinstance(skip_n_gram, int) and skip_n_gram > 0, 'the skip_n_gram parameter should be of type integer and greater than 0'
             
         assert isinstance(skip_distance, int) and skip_distance > -1, 'the skip_distance parameter should be of type integer and greater or equal to 0'
-            
-        if stemmer is not None:
-            
-            if stemmer == "ngram_sequential":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-            
-                assert isinstance(stemmer_gamma, float) and stemmer_gamma >= 0.0, 'the stemmer_gamma parameter should be of type float and greater or equal to 0.0'
-                    
-                assert isinstance(stemmer_truncate, int) and stemmer_truncate > 0, 'the stemmer_truncate parameter should be of type integer and greater than 0'
-                    
-                assert isinstance(stemmer_batches, int) and stemmer_batches > 0, 'the stemmer_batches parameter should be of type integer and greater than 0'
-                
-            if stemmer == "ngram_overlap":
-                
-                assert isinstance(stemmer_ngram, int) and stemmer_ngram > 0, 'the stemmer_ngram parameter should be of type integer and greater than 0'
-        
         
         assert isinstance(print_every_rows, int) and print_every_rows > 0, 'the print_every_rows parameter should be of type integer'
         
@@ -2035,9 +1978,9 @@ cdef class docs_matrix:
                                       
                                       remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, separator, remove_stopwords, min_num_char, 
                                   
-                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, 
+                                      stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, 4, 0.0, 3, 1,             # SET DEFAULT VALUES FOR N-GRAM STEMMING : stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1 
                                       
-                                      stemmer_batches, threads, verbose, print_every_rows, normalize, tf_idf)
+                                      threads, verbose, print_every_rows, normalize, tf_idf)
         
         if self.FLAG_output_long:
             

@@ -66,15 +66,9 @@ lst_term = [ { 'vector_documents' : {} } , { 'vector_documents' : None, 'path_2d
                              
             { 'vector_documents' : voc_vec, 'min_n_gram' : 2, 'max_n_gram' : 1 }, { 'vector_documents' : voc_vec, 'skip_n_gram' : 0}, { 'vector_documents' : voc_vec, 'skip_distance' : -1 }, 
             
-            { 'vector_documents' : voc_vec, 'n_gram_delimiter' : [] }, { 'vector_documents' : voc_vec, 'stemmer' : "ngram_sequential", 'stemmer_ngram' : 0}, 
+            { 'vector_documents' : voc_vec, 'n_gram_delimiter' : [] }, { 'vector_documents' : voc_vec, 'print_every_rows' : 0 }, { 'vector_documents' : voc_vec, 'tf_idf' : 'False' }, 
             
-            { 'vector_documents' : voc_vec, 'stemmer' : "ngram_sequential", 'stemmer_gamma' : -0.1}, { 'vector_documents' : voc_vec, 'stemmer' : "ngram_sequential", 'stemmer_truncate' : 0},
-            
-            { 'vector_documents' : voc_vec, 'stemmer' : "ngram_sequential", 'stemmer_batches' : 0}, { 'vector_documents' : voc_vec, 'stemmer' : "ngram_overlap", 'stemmer_ngram' : 0},
-            
-            { 'vector_documents' : voc_vec, 'print_every_rows' : 0 }, { 'vector_documents' : voc_vec, 'tf_idf' : 'False' }, { 'vector_documents' : voc_vec, 'normalize' : 'l3' }, 
-            
-            { 'vector_documents' : voc_vec, 'threads' : 0 }, { 'vector_documents' : voc_vec, 'verbose' : 'False' }]
+            { 'vector_documents' : voc_vec, 'normalize' : 'l3' }, { 'vector_documents' : voc_vec, 'threads' : 0 }, { 'vector_documents' : voc_vec, 'verbose' : 'False' }]
 
 
 
@@ -105,21 +99,15 @@ msg_term = [ 'the vector_documents parameter should be of type list', 'the path_
               
               'the max_num_char parameter should be of type integer and greater than the min_num_char', 'the stemmer parameter should be of type string',
               
-              'available stemmers are : porter2_stemmer, ngram_sequential or ngram_overlap', 'the min_n_gram parameter should be of type integer and greater than 0',
+              'available stemmer is porter2_stemmer', 'the min_n_gram parameter should be of type integer and greater than 0',
               
               'the max_n_gram parameter should be of type integer and greater than 0', 'the max_n_gram parameter should be greater than the min_n_gram',
               
               'the skip_n_gram parameter should be of type integer and greater than 0', 'the skip_distance parameter should be of type integer and greater or equal to 0', 
              
-              'the n_gram_delimiter parameter should be of type string', 'the stemmer_ngram parameter should be of type integer and greater than 0',
+              'the n_gram_delimiter parameter should be of type string', 'the print_every_rows parameter should be of type integer','the tf_idf parameter should be of type boolean', 
               
-              'the stemmer_gamma parameter should be of type float and greater or equal to 0.0', 'the stemmer_truncate parameter should be of type integer and greater than 0',
-              
-              'the stemmer_batches parameter should be of type integer and greater than 0', 'the stemmer_ngram parameter should be of type integer and greater than 0', 
-              
-              'the print_every_rows parameter should be of type integer','the tf_idf parameter should be of type boolean', "available normalization methods are 'l1' or 'l2'",
-              
-              'the threads parameter should be of type integer and greater than 0', 'the verbose parameter should be of type boolean' ]
+              "available normalization methods are 'l1' or 'l2'", 'the threads parameter should be of type integer and greater than 0', 'the verbose parameter should be of type boolean' ]
 
 
 
