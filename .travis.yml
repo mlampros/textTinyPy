@@ -34,7 +34,13 @@ before_install:
 
 
 install:
- - sudo apt-get install -qq cmake                                                # install cmake
+ #- sudo apt-get install -qq cmake
+ - wget https://cmake.org/files/v3.8/cmake-3.8.0-rc4.tar.gz                      # install cmake
+ - tar xzvf cmake-3.8.0-rc4.tar.gz
+ - cd cmake-3.8.0-rc4/
+ - ./bootstrap
+ - make -j4
+ - sudo make install
  - wget http://sourceforge.net/projects/arma/files/armadillo-7.800.2.tar.xz      # download, build, install the latest armadillo version
  - tar xf armadillo-7.800.2.tar.xz
  - cd armadillo-7.800.2/
