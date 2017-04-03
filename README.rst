@@ -1,10 +1,10 @@
 .. image:: https://badge.fury.io/py/textTinyPy.svg
     :target: https://badge.fury.io/py/textTinyPy
     
-.. image:: https://travis-ci.org/mlampros/textTinyPy.svg?branch=master1
+.. image:: https://travis-ci.org/mlampros/textTinyPy.svg?branch=master
     :target: https://travis-ci.org/mlampros/textTinyPy
 
-.. image:: https://codecov.io/github/mlampros/textTinyPy/coverage.svg?branch=master1
+.. image:: https://codecov.io/github/mlampros/textTinyPy/coverage.svg?branch=master
     :target: https://codecov.io/github/mlampros/textTinyPy?branch=master1
 
 
