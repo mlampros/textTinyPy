@@ -3,8 +3,6 @@
 # python dependencies
 #--------------------
 
-import sys
-sys.dont_write_bytecode = True
 from io import open
 from past.builtins import basestring
 import os
