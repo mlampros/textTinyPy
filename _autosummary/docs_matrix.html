@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>docs_matrix &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  <title>docs_matrix &mdash; textTinyPy documentation 0.0.4 documentation</title>
   
 
+  
+  
   
   
 
@@ -33,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.4 documentation" href="../index.html"/>
         <link rel="up" title="textTinyPy classes" href="../modules.html"/>
         <link rel="next" title="token_stats" href="token_stats.html"/>
         <link rel="prev" title="big_text_files" href="big_text_files.html"/> 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -64,7 +67,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.4
               </div>
             
           
@@ -85,7 +88,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="big_text_files.html">big_text_files</a></li>
@@ -107,8 +113,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">textTinyPy documentation</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">textTinyPy documentation</a>
+        
       </nav>
 
 
@@ -117,23 +125,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../modules.html"><strong>textTinyPy classes</strong></a> &raquo;</li>
-      
-    <li>docs_matrix</li>
+        
+      <li>docs_matrix</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -165,38 +190,38 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>vector_documents</strong> &#8211; either None or a character vector of documents</li>
-<li><strong>path_2documents_file</strong> &#8211; either None or a valid character path to a text file</li>
-<li><strong>sort_columns</strong> &#8211; either True or False specifying if the initial terms should be sorted ( so that the output sparse matrix is sorted in alphabetical order )</li>
-<li><strong>LOCALE_UTF</strong> &#8211; the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#8216;el_GR.UTF-8&#8217; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the function increases.</li>
-<li><strong>to_lower</strong> &#8211; either True or False. If True the character string will be converted to lower case</li>
-<li><strong>to_upper</strong> &#8211; either True or False. If True the character string will be converted to upper case</li>
-<li><strong>language</strong> &#8211; <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#8216;afrikaans&#8217;,</p>
-<p>&#8216;arabic&#8217;, &#8216;armenian&#8217;, &#8216;basque&#8217;, &#8216;bengali&#8217;, &#8216;breton&#8217;, &#8216;bulgarian&#8217;, &#8216;catalan&#8217;, &#8216;croatian&#8217;, &#8216;czech&#8217;,&#8217;danish&#8217;, &#8216;dutch&#8217;, &#8216;english&#8217;, &#8216;estonian&#8217;, &#8216;finnish&#8217;, &#8216;french&#8217;, &#8216;galician&#8217;, &#8216;german&#8217;, 
-&#8216;greek&#8217;, &#8216;hausa&#8217;, &#8216;hebrew&#8217;, &#8216;hindi&#8217;, &#8216;hungarian&#8217;, &#8216;indonesian&#8217;, &#8216;irish&#8217;, &#8216;italian&#8217;, &#8216;latvian&#8217;, &#8216;marathi&#8217;, &#8216;norwegian&#8217;, &#8216;persian&#8217;, &#8216;polish&#8217;, &#8216;portuguese&#8217;, &#8216;romanian&#8217;, &#8216;russian&#8217;,
-&#8216;slovak&#8217;, &#8216;slovenian&#8217;, &#8216;somalia&#8217;, &#8216;spanish&#8217;, &#8216;swahili&#8217;, &#8216;swedish&#8217;, &#8216;turkish&#8217;, &#8216;yoruba&#8217;, &#8216;zulu&#8217;</p>
+<li><strong>vector_documents</strong> – either None or a character vector of documents</li>
+<li><strong>path_2documents_file</strong> – either None or a valid character path to a text file</li>
+<li><strong>sort_columns</strong> – either True or False specifying if the initial terms should be sorted ( so that the output sparse matrix is sorted in alphabetical order )</li>
+<li><strong>LOCALE_UTF</strong> – the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be ‘el_GR.UTF-8’ ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the function increases.</li>
+<li><strong>to_lower</strong> – either True or False. If True the character string will be converted to lower case</li>
+<li><strong>to_upper</strong> – either True or False. If True the character string will be converted to upper case</li>
+<li><strong>language</strong> – <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages ‘afrikaans’,</p>
+<p>’arabic’, ‘armenian’, ‘basque’, ‘bengali’, ‘breton’, ‘bulgarian’, ‘catalan’, ‘croatian’, ‘czech’,’danish’, ‘dutch’, ‘english’, ‘estonian’, ‘finnish’, ‘french’, ‘galician’, ‘german’, 
+‘greek’, ‘hausa’, ‘hebrew’, ‘hindi’, ‘hungarian’, ‘indonesian’, ‘irish’, ‘italian’, ‘latvian’, ‘marathi’, ‘norwegian’, ‘persian’, ‘polish’, ‘portuguese’, ‘romanian’, ‘russian’,
+‘slovak’, ‘slovenian’, ‘somalia’, ‘spanish’, ‘swahili’, ‘swedish’, ‘turkish’, ‘yoruba’, ‘zulu’</p>
 </li>
-<li><strong>REMOVE_characters</strong> &#8211; a character string with specific characters that should be removed from the text file. If the remove_char is &#8220;&#8221; then no removal of characters take place</li>
-<li><strong>remove_punctuation_string</strong> &#8211; either True or False. If True then the punctuation of the character string will be removed (applies before the split function)</li>
-<li><strong>remove_numbers</strong> &#8211; either True or False. If True then any numbers in the character string will be removed</li>
-<li><strong>trim_token</strong> &#8211; either True or False. If True then the string will be trimmed (left and/or right)</li>
-<li><strong>split_string</strong> &#8211; either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
-<li><strong>separator</strong> &#8211; a character string specifying the character delimiter(s)</li>
-<li><strong>remove_punctuation_vector</strong> &#8211; either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
-<li><strong>remove_stopwords</strong> &#8211; either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
-<li><strong>min_num_char</strong> &#8211; an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
-<li><strong>max_num_char</strong> &#8211; an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
-<li><strong>stemmer</strong> &#8211; a character string specifying the stemming method. Available method is porter2_stemmer.</li>
-<li><strong>min_n_gram</strong> &#8211; an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
-<li><strong>max_n_gram</strong> &#8211; an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
-<li><strong>skip_n_gram</strong> &#8211; an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
-<li><strong>skip_distance</strong> &#8211; an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
-<li><strong>n_gram_delimiter</strong> &#8211; a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
-<li><strong>print_every_rows</strong> &#8211; a numeric value greater than 1 specifying the print intervals. Frequent output in the console can slow down the method in case of big files.</li>
-<li><strong>normalize</strong> &#8211; either None or one of &#8216;l1&#8217; or &#8216;l2&#8217; normalization.</li>
-<li><strong>tf_idf</strong> &#8211; either True or False. If True then the term-frequency-inverse-document-frequency will be returned</li>
-<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
-<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+<li><strong>REMOVE_characters</strong> – a character string with specific characters that should be removed from the text file. If the remove_char is “” then no removal of characters take place</li>
+<li><strong>remove_punctuation_string</strong> – either True or False. If True then the punctuation of the character string will be removed (applies before the split function)</li>
+<li><strong>remove_numbers</strong> – either True or False. If True then any numbers in the character string will be removed</li>
+<li><strong>trim_token</strong> – either True or False. If True then the string will be trimmed (left and/or right)</li>
+<li><strong>split_string</strong> – either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
+<li><strong>separator</strong> – a character string specifying the character delimiter(s)</li>
+<li><strong>remove_punctuation_vector</strong> – either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
+<li><strong>remove_stopwords</strong> – either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
+<li><strong>min_num_char</strong> – an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
+<li><strong>max_num_char</strong> – an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
+<li><strong>stemmer</strong> – a character string specifying the stemming method. Available method is porter2_stemmer.</li>
+<li><strong>min_n_gram</strong> – an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
+<li><strong>max_n_gram</strong> – an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
+<li><strong>skip_n_gram</strong> – an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
+<li><strong>skip_distance</strong> – an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
+<li><strong>n_gram_delimiter</strong> – a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
+<li><strong>print_every_rows</strong> – a numeric value greater than 1 specifying the print intervals. Frequent output in the console can slow down the method in case of big files.</li>
+<li><strong>normalize</strong> – either None or one of ‘l1’ or ‘l2’ normalization.</li>
+<li><strong>tf_idf</strong> – either True or False. If True then the term-frequency-inverse-document-frequency will be returned</li>
+<li><strong>threads</strong> – an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> – either True or False. If True then information will be printed out</li>
 </ul>
 </td>
 </tr>
@@ -215,13 +240,31 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="docs_matrix.docs_matrix.triplet_data">
+<code class="descname">triplet_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docs_matrix.html#docs_matrix.triplet_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#docs_matrix.docs_matrix.triplet_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tm</span> <span class="o">=</span> <span class="n">docs_matrix</span><span class="p">()</span>
+
+<span class="n">tm</span><span class="o">.</span><span class="n">Term_Matrix</span><span class="p">(</span><span class="n">path_2documents_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">sort_columns</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">tf_idf</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">trpl_dat</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">triplet_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This method returns the terms, row-indices, column-indices and counts ( or floats ).</p>
+<p class="last">The ‘triplet_data’ method is called after the ‘Term_Matrix’ method, otherwise the output will be an empty dictionary.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="docs_matrix.docs_matrix.document_term_matrix">
 <code class="descname">document_term_matrix</code><span class="sig-paren">(</span><em>to_array=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docs_matrix.html#docs_matrix.document_term_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#docs_matrix.docs_matrix.document_term_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>to_array</strong> &#8211; either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>to_array</strong> – either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</td>
 </tr>
 </tbody>
 </table>
@@ -235,8 +278,8 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This method should be called after the &#8216;Term_Matrix&#8217; method is run. It returns a document-term-matrix</p>
-<p class="last">Here the sparse matrix format is a &#8216;csr_matrix&#8217; because shape[0] &lt; shape[1] (rows &lt; columns)</p>
+<p>This method should be called after the ‘Term_Matrix’ method is run. It returns a document-term-matrix</p>
+<p class="last">Here the sparse matrix format is a ‘csr_matrix’ because shape[0] &lt; shape[1] (rows &lt; columns)</p>
 </div>
 </dd></dl>
 
@@ -247,7 +290,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>to_array</strong> &#8211; either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>to_array</strong> – either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</td>
 </tr>
 </tbody>
 </table>
@@ -261,8 +304,8 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This method should be called after the &#8216;Term_Matrix&#8217; method is run. It returns a term-document-matrix.</p>
-<p class="last">Here the sparse matrix format is a &#8216;csc_matrix&#8217; because shape[0] &gt; shape[1] (rows &gt; columns)</p>
+<p>This method should be called after the ‘Term_Matrix’ method is run. It returns a term-document-matrix.</p>
+<p class="last">Here the sparse matrix format is a ‘csc_matrix’ because shape[0] &gt; shape[1] (rows &gt; columns)</p>
 </div>
 </dd></dl>
 
@@ -273,7 +316,7 @@
 <p class="first admonition-title">Note</p>
 <p>The corpus_terms method returns the terms of the corpus. There are two different cases:</p>
 <blockquote class="last">
-<div><p>1st. either the &#8216;document_term_matrix&#8217; or the &#8216;term_document_matrix&#8217; was run first &#8211;&gt; it returns all the terms of the corpus.</p>
+<div><p>1st. either the ‘document_term_matrix’ or the ‘term_document_matrix’ was run first –&gt; it returns all the terms of the corpus.</p>
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tm</span> <span class="o">=</span> <span class="n">docs_matrix</span><span class="p">()</span>
 
@@ -282,7 +325,7 @@
 <span class="n">res_crp_all</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">corpus_terms</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>2nd. the &#8216;Term_Matrix_Adjust&#8217; method was run first &#8211;&gt; it retuns a reduced list of terms taking into account the output of the &#8216;Term_Matrix_Adjust&#8217; method</p>
+<p>2nd. the ‘Term_Matrix_Adjust’ method was run first –&gt; it retuns a reduced list of terms taking into account the output of the ‘Term_Matrix_Adjust’ method</p>
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tm</span> <span class="o">=</span> <span class="n">docs_matrix</span><span class="p">()</span>
 
@@ -322,8 +365,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sparsity_thresh</strong> &#8211; a float number between 0.0 and 1.0 specifying the sparsity threshold</li>
-<li><strong>to_array</strong> &#8211; either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</li>
+<li><strong>sparsity_thresh</strong> – a float number between 0.0 and 1.0 specifying the sparsity threshold</li>
+<li><strong>to_array</strong> – either True or False. If True then the output will be an numpy array, otherwise a sparse matrix</li>
 </ul>
 </td>
 </tr>
@@ -351,9 +394,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>keep_terms</strong> &#8211; a numeric value specifying the number of rows (terms) to keep from the output data frame</li>
-<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
-<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+<li><strong>keep_terms</strong> – a numeric value specifying the number of rows (terms) to keep from the output data frame</li>
+<li><strong>threads</strong> – an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> – either True or False. If True then information will be printed out</li>
 </ul>
 </td>
 </tr>
@@ -376,16 +419,15 @@
 
 <dl class="method">
 <dt id="docs_matrix.docs_matrix.term_associations">
-<code class="descname">term_associations</code><span class="sig-paren">(</span><em>Terms=None</em>, <em>keep_terms=None</em>, <em>threads=1</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docs_matrix.html#docs_matrix.term_associations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#docs_matrix.docs_matrix.term_associations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">term_associations</code><span class="sig-paren">(</span><em>Terms=None</em>, <em>keep_terms=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docs_matrix.html#docs_matrix.term_associations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#docs_matrix.docs_matrix.term_associations" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>Terms</strong> &#8211; a character list specifying the character strings for which the associations will be computed</li>
-<li><strong>keep_terms</strong> &#8211; a numeric value specifying the number of rows (terms) to keep from the output data frame</li>
-<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
-<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+<li><strong>Terms</strong> – a character list specifying the character strings for which the associations will be computed</li>
+<li><strong>keep_terms</strong> – a numeric value specifying the number of rows (terms) to keep from the output data frame</li>
+<li><strong>verbose</strong> – either True or False. If True then information will be printed out</li>
 </ul>
 </td>
 </tr>
@@ -396,7 +438,7 @@
 
 <span class="n">tm</span><span class="o">.</span><span class="n">Term_Matrix</span><span class="p">(</span><span class="n">path_2documents_file</span> <span class="o">=</span> <span class="s1">&#39;/myfolder/input_file.txt&#39;</span><span class="p">,</span> <span class="n">sort_columns</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">to_lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">split_string</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">tf_idf</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="n">res_assoc</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">term_associations</span><span class="p">(</span><span class="n">Terms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">],</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">res_assoc</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">term_associations</span><span class="p">(</span><span class="n">Terms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">],</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -412,15 +454,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="token_stats.html" class="btn btn-neutral float-right" title="token_stats" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="token_stats.html" class="btn btn-neutral float-right" title="token_stats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="big_text_files.html" class="btn btn-neutral" title="big_text_files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="big_text_files.html" class="btn btn-neutral" title="big_text_files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -451,10 +496,11 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.1',
+            VERSION:'0.0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
