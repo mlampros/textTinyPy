@@ -1,5 +1,4 @@
-import sys
-sys.dont_write_bytecode = True
+
 import platform
 import pkg_resources           # load data from a subdirectory
 import pandas as pd
