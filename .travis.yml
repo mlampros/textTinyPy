@@ -53,6 +53,9 @@ install:
  - pip --version
  - cython --version
  - python setup.py install
+ - find . -name '*.py[odc]' -type f -delete
+ - find . -name '__pycache__' -type d -delete
+ - rm -rf *.egg-info .cache .eggs build dist
  #- pip install coveralls
 
 
