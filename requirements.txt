@@ -1,5 +1,5 @@
 future>= 0.15.2
 Cython>= 0.23.5
-scipy>= 0.16.1
-pandas>= 0.13.1
+scipy>= 0.13.0
+pandas>= 0.21.0
 numpy>= 1.11.2

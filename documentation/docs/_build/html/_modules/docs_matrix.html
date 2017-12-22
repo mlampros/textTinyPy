@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>docs_matrix &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  <title>docs_matrix &mdash; textTinyPy documentation 0.0.4 documentation</title>
   
 
+  
+  
   
   
 
@@ -33,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.4 documentation" href="../index.html"/>
         <link rel="up" title="Module code" href="index.html"/> 
 
   
@@ -43,6 +45,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -62,7 +65,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.4
               </div>
             
           
@@ -83,7 +86,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a></li>
 </ul>
@@ -98,8 +104,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">textTinyPy documentation</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">textTinyPy documentation</a>
+        
       </nav>
 
 
@@ -112,19 +120,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Module code</a> &raquo;</li>
-      
-    <li>docs_matrix</li>
+        
+      <li>docs_matrix</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -472,6 +497,32 @@
 
 
 
+<div class="viewcode-block" id="docs_matrix.triplet_data"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.triplet_data">[docs]</a>    <span class="k">def</span> <span class="nf">triplet_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                         
+    
+        <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">        Example::</span>
+<span class="sd">                </span>
+<span class="sd">                tm = docs_matrix()</span>
+<span class="sd">                </span>
+<span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
+<span class="sd">                </span>
+<span class="sd">                trpl_dat = tm.triplet_data()</span>
+
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            This method returns the terms, row-indices, column-indices and counts ( or floats ).</span>
+<span class="sd">        </span>
+<span class="sd">            The &#39;triplet_data&#39; method is called after the &#39;Term_Matrix&#39; method, otherwise the output will be an empty dictionary.</span>
+<span class="sd">        </span>
+<span class="sd">        &#39;&#39;&#39;</span></div>
+        
+<span class="c1">#        return self.result_struct_matrix</span>
+    <span class="k">pass</span>
+
+
+
         
 <div class="viewcode-block" id="docs_matrix.document_term_matrix"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.document_term_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">document_term_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_array</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         
@@ -753,15 +804,13 @@
         
         
         
-<div class="viewcode-block" id="docs_matrix.term_associations"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.term_associations">[docs]</a>    <span class="k">def</span> <span class="nf">term_associations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="docs_matrix.term_associations"><a class="viewcode-back" href="../_autosummary/docs_matrix.html#docs_matrix.docs_matrix.term_associations">[docs]</a>    <span class="k">def</span> <span class="nf">term_associations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_terms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         
         <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="sd">        :param Terms: a character list specifying the character strings for which the associations will be computed</span>
 <span class="sd">        </span>
 <span class="sd">        :param keep_terms: a numeric value specifying the number of rows (terms) to keep from the output data frame</span>
-<span class="sd">        </span>
-<span class="sd">        :param threads: an integer specifying the number of cores to run in parallel</span>
 <span class="sd">        </span>
 <span class="sd">        :param verbose: either True or False. If True then information will be printed out</span>
 <span class="sd">        </span>
@@ -772,7 +821,7 @@
 <span class="sd">                </span>
 <span class="sd">                tm.Term_Matrix(path_2documents_file = &#39;/myfolder/input_file.txt&#39;, sort_columns = True, to_lower = True, split_string = True, tf_idf = True)</span>
 <span class="sd">                </span>
-<span class="sd">                res_assoc = tm.term_associations(Terms = [&#39;this&#39;, &#39;word&#39;, &#39;that&#39;], keep_terms = 10, threads = 1, verbose = False)</span>
+<span class="sd">                res_assoc = tm.term_associations(Terms = [&#39;this&#39;, &#39;word&#39;, &#39;that&#39;], keep_terms = 10, verbose = False)</span>
 <span class="sd">        </span>
 <span class="sd">        .. note::</span>
 <span class="sd">            </span>
@@ -783,109 +832,139 @@
 <span class="sd">        &#39;&#39;&#39;</span></div>
         
         
-<span class="c1">#        assert isinstance(Terms, list), &#39;the Terms parameter should be a list of character strings&#39;</span>
-<span class="c1">#        </span>
-<span class="c1">#        if keep_terms is not None:</span>
-<span class="c1">#            </span>
-<span class="c1">#            assert isinstance(keep_terms, int) and keep_terms &gt; -1, &#39;the keep_terms parameter should be of type integer and greater or equal to 0&#39;</span>
-<span class="c1">#            </span>
-<span class="c1">#            keep_terms += 1                # keep_terms + 1 because I&#39;ll remove the target-variable from the end-dataframe</span>
-<span class="c1">#            </span>
-<span class="c1">#        else:</span>
-<span class="c1">#            </span>
-<span class="c1">#            keep_terms = 0</span>
-<span class="c1">#            </span>
-<span class="c1">#        assert isinstance(threads, int) and threads &gt; 0, &quot;the number of threads should be greater or equal to 1&quot;</span>
-<span class="c1">#</span>
-<span class="c1">#        assert isinstance(verbose, bool), &quot;the verbose parameter should be either TRUE or FALSE&quot;</span>
-<span class="c1">#        </span>
-<span class="c1">#        </span>
-<span class="c1">#        single_trgt_idx, single_trgt_nam = [], []</span>
-<span class="c1">#        </span>
-<span class="c1">#        count_add = 0</span>
-<span class="c1">#        </span>
-<span class="c1">#        for item in range(len(Terms)):</span>
-<span class="c1">#            </span>
-<span class="c1">#            check_terms = np.array([i == Terms[item] for i in self.result_struct_matrix[&#39;terms&#39;]])</span>
-<span class="c1">#        </span>
-<span class="c1">#            if not any(check_terms):</span>
-<span class="c1">#                </span>
-<span class="c1">#                print(&quot;the &#39;&quot;, Terms[item], &quot;&#39; term does not exist in the terms list&quot;)</span>
-<span class="c1">#                </span>
-<span class="c1">#            else:</span>
-<span class="c1">#                </span>
-<span class="c1">#                tmp_trm = np.where(check_terms == True)[0][0]</span>
-<span class="c1">#                </span>
-<span class="c1">#                single_trgt_idx.append(tmp_trm)</span>
-<span class="c1">#                </span>
-<span class="c1">#                single_trgt_nam.append(Terms[item])</span>
-<span class="c1">#                </span>
-<span class="c1">#                count_add += 1</span>
-<span class="c1">#                </span>
-<span class="c1">#        if single_trgt_idx == []:</span>
-<span class="c1">#            </span>
-<span class="c1">#            raise_with_traceback(ValueError(&quot;none of the choosen Terms are present in the terms list&quot;))</span>
-<span class="c1">#            </span>
-<span class="c1">#        if self.FLAG_doc_term_mat:</span>
-<span class="c1">#            </span>
-<span class="c1">#            trgt_size = self.dims[0]</span>
-<span class="c1">#            </span>
-<span class="c1">#        else:</span>
-<span class="c1">#            </span>
-<span class="c1">#            trgt_size = self.dims[1]</span>
-<span class="c1">#            </span>
-<span class="c1">#        if len(single_trgt_idx) == 1:</span>
-<span class="c1">#            </span>
-<span class="c1">#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix[&#39;terms&#39;], [], keep_terms, single_trgt_idx[0], threads, verbose)</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_tmp_single = self.dtm.return_cor_assoc_T()</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_single = {}</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_single[&#39;term&#39;] = result_tmp_single.term</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_single[&#39;correlation&#39;] = result_tmp_single.correlation</span>
-<span class="c1">#            </span>
-<span class="c1">#            remove_idx = np.where(np.array(result_single[&#39;term&#39;]) == Terms[0])[0][0]         # remove index of target variable</span>
-<span class="c1">#            </span>
-<span class="c1">#            df = pd.DataFrame(result_single)</span>
-<span class="c1">#            </span>
-<span class="c1">#            df = df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
-<span class="c1">#            </span>
-<span class="c1">#            return df.drop([remove_idx])</span>
-<span class="c1">#            </span>
-<span class="c1">#        else:</span>
-<span class="c1">#            </span>
-<span class="c1">#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix[&#39;terms&#39;], single_trgt_idx, keep_terms, -1, threads, verbose)</span>
-<span class="c1">#            </span>
-<span class="c1">#            res_tmp_mult = self.dtm.return_nested_cor_assoc_T()</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_mult, return_mult = {}, {}</span>
-<span class="c1">#            </span>
-<span class="c1">#            result_mult[&#39;result_nested&#39;] = res_tmp_mult.result_nested</span>
-<span class="c1">#            </span>
-<span class="c1">#            tmp_vals = listvalues(result_mult)[0]       </span>
-<span class="c1">#            </span>
-<span class="c1">#            for nam in range(len(single_trgt_nam)):</span>
-<span class="c1">#                </span>
-<span class="c1">#                tmp_dict = tmp_vals[nam]</span>
-<span class="c1">#                </span>
-<span class="c1">#                remove_idx = np.where(np.array(tmp_dict[&#39;term&#39;]) == single_trgt_nam[nam])[0][0]         # remove index of target variable</span>
-<span class="c1">#                </span>
-<span class="c1">#                tmp_df = pd.DataFrame(tmp_dict)</span>
-<span class="c1">#            </span>
-<span class="c1">#                tmp_df = tmp_df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
-<span class="c1">#                </span>
-<span class="c1">#                tmp_df = tmp_df.drop([remove_idx])</span>
-<span class="c1">#                </span>
-<span class="c1">#                return_mult[single_trgt_nam[nam]] = tmp_df</span>
-<span class="c1">#</span>
-<span class="c1">#            return return_mult</span>
+        <span class="c1"># if self.result_struct_matrix == {}:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     raise_with_traceback(ValueError(&#39;run first the Term_Matrix method&#39;))        </span>
+        <span class="c1"># </span>
+        <span class="c1"># if self.adjust_sparsity_matrix == {}:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     TERMS = self.result_struct_matrix[&#39;terms&#39;]</span>
+        <span class="c1">#     </span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     TERMS = self.adjust_sparsity_matrix[&#39;sparsity_terms&#39;]</span>
+        <span class="c1"># </span>
+        <span class="c1"># </span>
+        <span class="c1"># assert isinstance(Terms, list), &#39;the Terms parameter should be a list of character strings&#39;</span>
+        <span class="c1"># </span>
+        <span class="c1"># if keep_terms is not None:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     assert isinstance(keep_terms, int) and keep_terms &gt; -1, &#39;the keep_terms parameter should be of type integer and greater or equal to 0&#39;</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     keep_terms += 1                # keep_terms + 1 because I&#39;ll remove the target-variable from the end-dataframe</span>
+        <span class="c1">#     </span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     keep_terms = 0</span>
+        <span class="c1"># </span>
+        <span class="c1"># assert isinstance(verbose, bool), &quot;the verbose parameter should be either TRUE or FALSE&quot;</span>
+        <span class="c1"># </span>
+        <span class="c1"># </span>
+        <span class="c1"># single_trgt_idx, single_trgt_nam = [], []</span>
+        <span class="c1"># </span>
+        <span class="c1"># count_add = 0</span>
+        <span class="c1"># </span>
+        <span class="c1"># for item in range(len(Terms)):</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     check_terms = np.array([i == Terms[item] for i in TERMS])</span>
+        <span class="c1"># </span>
+        <span class="c1">#     if not any(check_terms):</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         print(&quot;the &#39;&quot;, Terms[item], &quot;&#39; term does not exist in the terms list&quot;, sep = &#39;&#39;)</span>
+        <span class="c1">#         </span>
+        <span class="c1">#     else:</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         tmp_trm = np.where(check_terms == True)[0][0]                    </span>
+        <span class="c1">#         </span>
+        <span class="c1">#         single_trgt_idx.append(tmp_trm)</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         single_trgt_nam.append(Terms[item])</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         count_add += 1</span>
+        <span class="c1">#         </span>
+        <span class="c1"># if single_trgt_idx == []:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     raise_with_traceback(ValueError(&quot;none of the choosen Terms are present in the terms list&quot;))</span>
+        <span class="c1">#     </span>
+        <span class="c1"># if self.FLAG_doc_term_mat:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     trgt_size = self.dims[0]</span>
+        <span class="c1">#     </span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     trgt_size = self.dims[1]</span>
+        <span class="c1">#     </span>
+        <span class="c1"># cdef vector[string] result_zer_val_terms       # cdef for zero-valued-terms</span>
+        <span class="c1">#     </span>
+        <span class="c1"># if len(single_trgt_idx) == 1:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     self.dtm.Associations_Cpp(trgt_size, TERMS, [], keep_terms, single_trgt_idx[0], verbose)</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_tmp_single = self.dtm.return_cor_assoc_T()</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_single = {}</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_single[&#39;term&#39;] = result_tmp_single.term</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_single[&#39;correlation&#39;] = result_tmp_single.correlation</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     remove_idx = np.where(np.array(result_single[&#39;term&#39;]) == Terms[0])[0][0]         # remove index of target variable</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     df = pd.DataFrame(result_single)</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     df = df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_zer_val_terms = self.dtm.return_zer_value_terms()</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     if len(result_zer_val_terms) &gt; 0:</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         for tmp_term in result_zer_val_terms:</span>
+        <span class="c1">#             </span>
+        <span class="c1">#             print(&quot;warning: the &#39;&quot;, tmp_term, &quot;&#39; variable sums to zero&quot;, sep = &#39;&#39;)</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     return df.drop([remove_idx])</span>
+        <span class="c1">#     </span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     self.dtm.Associations_Cpp(trgt_size, TERMS, single_trgt_idx, keep_terms, -1, verbose)</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     res_tmp_mult = self.dtm.return_nested_cor_assoc_T()</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_mult, return_mult = {}, {}</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_mult[&#39;result_nested&#39;] = res_tmp_mult.result_nested</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     tmp_vals = listvalues(result_mult)[0]       </span>
+        <span class="c1">#     </span>
+        <span class="c1">#     for nam in range(len(single_trgt_nam)):</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         tmp_dict = tmp_vals[nam]</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         remove_idx = np.where(np.array(tmp_dict[&#39;term&#39;]) == single_trgt_nam[nam])[0][0]         # remove index of target variable</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         tmp_df = pd.DataFrame(tmp_dict)</span>
+        <span class="c1">#     </span>
+        <span class="c1">#         tmp_df = tmp_df[[&#39;term&#39;, &#39;correlation&#39;]]</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         tmp_df = tmp_df.drop([remove_idx])</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         return_mult[single_trgt_nam[nam]] = tmp_df</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     result_zer_val_terms = self.dtm.return_zer_value_terms()</span>
+        <span class="c1">#     </span>
+        <span class="c1">#     if len(result_zer_val_terms) &gt; 0:</span>
+        <span class="c1">#         </span>
+        <span class="c1">#         for tmp_term in result_zer_val_terms:</span>
+        <span class="c1">#             </span>
+        <span class="c1">#             print(&quot;warning: the &#39;&quot;, tmp_term, &quot;&#39; variable sums to zero&quot;, sep = &#39;&#39;)</span>
+        <span class="c1"># </span>
+        <span class="c1">#     return return_mult</span>
+
     <span class="k">pass</span></div>
             
             
             
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">tm</span> <span class="o">=</span> <span class="n">docs_matrix</span><span class="p">()</span>
     <span class="n">tm</span><span class="o">.</span><span class="n">Term_Matrix</span><span class="p">()</span>
     <span class="n">tm</span><span class="o">.</span><span class="n">document_term_matrix</span><span class="p">()</span>
@@ -897,6 +976,9 @@
     <span class="n">tm</span><span class="o">.</span><span class="n">term_associations</span><span class="p">()</span>
 </pre></div>
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
@@ -928,10 +1010,11 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.1',
+            VERSION:'0.0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>

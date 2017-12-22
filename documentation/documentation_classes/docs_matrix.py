@@ -339,6 +339,32 @@ class docs_matrix:
 
 
 
+    def triplet_data(self):                         
+    
+        '''
+
+        Example::
+                
+                tm = docs_matrix()
+                
+                tm.Term_Matrix(path_2documents_file = '/myfolder/input_file.txt', sort_columns = True, to_lower = True, split_string = True, tf_idf = True)
+                
+                trpl_dat = tm.triplet_data()
+
+
+        .. note::
+
+            This method returns the terms, row-indices, column-indices and counts ( or floats ).
+        
+            The 'triplet_data' method is called after the 'Term_Matrix' method, otherwise the output will be an empty dictionary.
+        
+        '''
+        
+#        return self.result_struct_matrix
+    pass
+
+
+
         
     def document_term_matrix(self, to_array = False):
         
@@ -620,15 +646,13 @@ class docs_matrix:
         
         
         
-    def term_associations(self, Terms = None, keep_terms = None, threads = 1, verbose = False):
+    def term_associations(self, Terms = None, keep_terms = None, verbose = False):
         
         '''
 
         :param Terms: a character list specifying the character strings for which the associations will be computed
         
         :param keep_terms: a numeric value specifying the number of rows (terms) to keep from the output data frame
-        
-        :param threads: an integer specifying the number of cores to run in parallel
         
         :param verbose: either True or False. If True then information will be printed out
         
@@ -639,7 +663,7 @@ class docs_matrix:
                 
                 tm.Term_Matrix(path_2documents_file = '/myfolder/input_file.txt', sort_columns = True, to_lower = True, split_string = True, tf_idf = True)
                 
-                res_assoc = tm.term_associations(Terms = ['this', 'word', 'that'], keep_terms = 10, threads = 1, verbose = False)
+                res_assoc = tm.term_associations(Terms = ['this', 'word', 'that'], keep_terms = 10, verbose = False)
         
         .. note::
             
@@ -650,104 +674,134 @@ class docs_matrix:
         '''
         
         
-#        assert isinstance(Terms, list), 'the Terms parameter should be a list of character strings'
-#        
-#        if keep_terms is not None:
-#            
-#            assert isinstance(keep_terms, int) and keep_terms > -1, 'the keep_terms parameter should be of type integer and greater or equal to 0'
-#            
-#            keep_terms += 1                # keep_terms + 1 because I'll remove the target-variable from the end-dataframe
-#            
-#        else:
-#            
-#            keep_terms = 0
-#            
-#        assert isinstance(threads, int) and threads > 0, "the number of threads should be greater or equal to 1"
-#
-#        assert isinstance(verbose, bool), "the verbose parameter should be either TRUE or FALSE"
-#        
-#        
-#        single_trgt_idx, single_trgt_nam = [], []
-#        
-#        count_add = 0
-#        
-#        for item in range(len(Terms)):
-#            
-#            check_terms = np.array([i == Terms[item] for i in self.result_struct_matrix['terms']])
-#        
-#            if not any(check_terms):
-#                
-#                print("the '", Terms[item], "' term does not exist in the terms list")
-#                
-#            else:
-#                
-#                tmp_trm = np.where(check_terms == True)[0][0]
-#                
-#                single_trgt_idx.append(tmp_trm)
-#                
-#                single_trgt_nam.append(Terms[item])
-#                
-#                count_add += 1
-#                
-#        if single_trgt_idx == []:
-#            
-#            raise_with_traceback(ValueError("none of the choosen Terms are present in the terms list"))
-#            
-#        if self.FLAG_doc_term_mat:
-#            
-#            trgt_size = self.dims[0]
-#            
-#        else:
-#            
-#            trgt_size = self.dims[1]
-#            
-#        if len(single_trgt_idx) == 1:
-#            
-#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix['terms'], [], keep_terms, single_trgt_idx[0], threads, verbose)
-#            
-#            result_tmp_single = self.dtm.return_cor_assoc_T()
-#            
-#            result_single = {}
-#            
-#            result_single['term'] = result_tmp_single.term
-#            
-#            result_single['correlation'] = result_tmp_single.correlation
-#            
-#            remove_idx = np.where(np.array(result_single['term']) == Terms[0])[0][0]         # remove index of target variable
-#            
-#            df = pd.DataFrame(result_single)
-#            
-#            df = df[['term', 'correlation']]
-#            
-#            return df.drop([remove_idx])
-#            
-#        else:
-#            
-#            self.dtm.Associations_Cpp(trgt_size, self.result_struct_matrix['terms'], single_trgt_idx, keep_terms, -1, threads, verbose)
-#            
-#            res_tmp_mult = self.dtm.return_nested_cor_assoc_T()
-#            
-#            result_mult, return_mult = {}, {}
-#            
-#            result_mult['result_nested'] = res_tmp_mult.result_nested
-#            
-#            tmp_vals = listvalues(result_mult)[0]       
-#            
-#            for nam in range(len(single_trgt_nam)):
-#                
-#                tmp_dict = tmp_vals[nam]
-#                
-#                remove_idx = np.where(np.array(tmp_dict['term']) == single_trgt_nam[nam])[0][0]         # remove index of target variable
-#                
-#                tmp_df = pd.DataFrame(tmp_dict)
-#            
-#                tmp_df = tmp_df[['term', 'correlation']]
-#                
-#                tmp_df = tmp_df.drop([remove_idx])
-#                
-#                return_mult[single_trgt_nam[nam]] = tmp_df
-#
-#            return return_mult
+        # if self.result_struct_matrix == {}:
+        #     
+        #     raise_with_traceback(ValueError('run first the Term_Matrix method'))        
+        # 
+        # if self.adjust_sparsity_matrix == {}:
+        #     
+        #     TERMS = self.result_struct_matrix['terms']
+        #     
+        # else:
+        #     
+        #     TERMS = self.adjust_sparsity_matrix['sparsity_terms']
+        # 
+        # 
+        # assert isinstance(Terms, list), 'the Terms parameter should be a list of character strings'
+        # 
+        # if keep_terms is not None:
+        #     
+        #     assert isinstance(keep_terms, int) and keep_terms > -1, 'the keep_terms parameter should be of type integer and greater or equal to 0'
+        #     
+        #     keep_terms += 1                # keep_terms + 1 because I'll remove the target-variable from the end-dataframe
+        #     
+        # else:
+        #     
+        #     keep_terms = 0
+        # 
+        # assert isinstance(verbose, bool), "the verbose parameter should be either TRUE or FALSE"
+        # 
+        # 
+        # single_trgt_idx, single_trgt_nam = [], []
+        # 
+        # count_add = 0
+        # 
+        # for item in range(len(Terms)):
+        #     
+        #     check_terms = np.array([i == Terms[item] for i in TERMS])
+        # 
+        #     if not any(check_terms):
+        #         
+        #         print("the '", Terms[item], "' term does not exist in the terms list", sep = '')
+        #         
+        #     else:
+        #         
+        #         tmp_trm = np.where(check_terms == True)[0][0]                    
+        #         
+        #         single_trgt_idx.append(tmp_trm)
+        #         
+        #         single_trgt_nam.append(Terms[item])
+        #         
+        #         count_add += 1
+        #         
+        # if single_trgt_idx == []:
+        #     
+        #     raise_with_traceback(ValueError("none of the choosen Terms are present in the terms list"))
+        #     
+        # if self.FLAG_doc_term_mat:
+        #     
+        #     trgt_size = self.dims[0]
+        #     
+        # else:
+        #     
+        #     trgt_size = self.dims[1]
+        #     
+        # cdef vector[string] result_zer_val_terms       # cdef for zero-valued-terms
+        #     
+        # if len(single_trgt_idx) == 1:
+        #     
+        #     self.dtm.Associations_Cpp(trgt_size, TERMS, [], keep_terms, single_trgt_idx[0], verbose)
+        #     
+        #     result_tmp_single = self.dtm.return_cor_assoc_T()
+        #     
+        #     result_single = {}
+        #     
+        #     result_single['term'] = result_tmp_single.term
+        #     
+        #     result_single['correlation'] = result_tmp_single.correlation
+        #     
+        #     remove_idx = np.where(np.array(result_single['term']) == Terms[0])[0][0]         # remove index of target variable
+        #     
+        #     df = pd.DataFrame(result_single)
+        #     
+        #     df = df[['term', 'correlation']]
+        #     
+        #     result_zer_val_terms = self.dtm.return_zer_value_terms()
+        #     
+        #     if len(result_zer_val_terms) > 0:
+        #         
+        #         for tmp_term in result_zer_val_terms:
+        #             
+        #             print("warning: the '", tmp_term, "' variable sums to zero", sep = '')
+        #     
+        #     return df.drop([remove_idx])
+        #     
+        # else:
+        #     
+        #     self.dtm.Associations_Cpp(trgt_size, TERMS, single_trgt_idx, keep_terms, -1, verbose)
+        #     
+        #     res_tmp_mult = self.dtm.return_nested_cor_assoc_T()
+        #     
+        #     result_mult, return_mult = {}, {}
+        #     
+        #     result_mult['result_nested'] = res_tmp_mult.result_nested
+        #     
+        #     tmp_vals = listvalues(result_mult)[0]       
+        #     
+        #     for nam in range(len(single_trgt_nam)):
+        #         
+        #         tmp_dict = tmp_vals[nam]
+        #         
+        #         remove_idx = np.where(np.array(tmp_dict['term']) == single_trgt_nam[nam])[0][0]         # remove index of target variable
+        #         
+        #         tmp_df = pd.DataFrame(tmp_dict)
+        #     
+        #         tmp_df = tmp_df[['term', 'correlation']]
+        #         
+        #         tmp_df = tmp_df.drop([remove_idx])
+        #         
+        #         return_mult[single_trgt_nam[nam]] = tmp_df
+        #     
+        #     result_zer_val_terms = self.dtm.return_zer_value_terms()
+        #     
+        #     if len(result_zer_val_terms) > 0:
+        #         
+        #         for tmp_term in result_zer_val_terms:
+        #             
+        #             print("warning: the '", tmp_term, "' variable sums to zero", sep = '')
+        # 
+        #     return return_mult
+
     pass
             
             

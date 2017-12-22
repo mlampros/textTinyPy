@@ -128,9 +128,7 @@ class term_matrix {
 
     adjusted_sp_mat most_freq_terms(std::vector<std::string> Terms, long long keepTerms = 0, int threads = 1, bool verbose = false);
     
-    void Associations_Cpp(long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var, long long keepTerms = 0, long long target_var = -1, 
-                          
-                          int threads = 1, bool verbose = false);
+    void Associations_Cpp(long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var, long long keepTerms = 0, long long target_var = -1, bool verbose = false);
     
     std::vector<std::string> return_zer_value_terms();
     

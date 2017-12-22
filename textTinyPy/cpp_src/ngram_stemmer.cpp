@@ -10,7 +10,7 @@
  * 
  * @Notes: stemming of tokenized text using the n-gram method
  * 
- * @last_modified: December 2016
+ * @last_modified: December 2017
  * 
  **/
 
@@ -408,12 +408,19 @@ std::vector<std::string> ngram_stemmer::frequency_seq_ngram(std::vector<std::str
     
     std::vector<std::string> res_dat(copy_x.size());
     
+    unsigned int g;
+    
     #ifdef _OPENMP
-    #pragma omp parallel for schedule(static)
+    #pragma omp parallel for schedule(static) shared(copy_x, res_ngram, res_dat) private(g)
     #endif
-    for (unsigned int g = 0; g < copy_x.size(); g++) {
+    for (g = 0; g < copy_x.size(); g++) {
       
-      res_dat[g] = res_ngram[copy_x[g]];
+      #ifdef _OPENMP
+      #pragma omp critical
+      #endif
+      {
+        res_dat[g] = res_ngram[copy_x[g]];
+      }
     }
     
     return res_dat;
@@ -422,19 +429,21 @@ std::vector<std::string> ngram_stemmer::frequency_seq_ngram(std::vector<std::str
   else {
     
     if (verbose) { std::cout << "batch n-gram stemming of the unique words begins ..." << std::endl; }
-
+    
     std::unordered_map<std::string, std::string> res_ngram(x.size());
     
     std::vector<int> btch = batch_num(x.size(), batches);        // split data in batches
     
-    if (verbose && threads > 1) { std::cout << "batch pre-processing begins ..." << std::endl; } 
+    if (verbose && threads > 1) { std::cout << "batch pre-processing begins ..." << std::endl; }
+    
+    unsigned int g;
     
     #ifdef _OPENMP
-    #pragma omp parallel for schedule(static)
+    #pragma omp parallel for schedule(static) shared(btch, threads, verbose, std::cout, x, round_dec_places, min_n_gram, gamma, res, res_ngram) private(g)
     #endif
-    for (unsigned int g = 0; g < btch.size(); g++) {
+    for (g = 0; g < btch.size(); g++) {
       
-      if (verbose && threads == 1) { std::cout << "batch " << g + 1 << " starts ..." << std::endl; } 
+      if (verbose && threads == 1) { std::cout << "batch " << g + 1 << " starts ..." << std::endl; }
       
       std::vector<std::string> subvector;
       
@@ -450,23 +459,35 @@ std::vector<std::string> ngram_stemmer::frequency_seq_ngram(std::vector<std::str
       else {
         
         std::copy( x.begin() + btch[g - 1], x.begin() + btch[g], std::back_inserter(subvector) );
-      }  
+      }
       
       std::unordered_map<std::string, std::string> tmp_batch_map = batch_map(subvector, res, gamma, min_n_gram, round_dec_places);
       
-      res_ngram.insert(tmp_batch_map.begin(), tmp_batch_map.end());
+      #ifdef _OPENMP
+      #pragma omp critical
+      #endif
+      {
+        res_ngram.insert(tmp_batch_map.begin(), tmp_batch_map.end());
+      }
     }
     
     if (verbose) { std::cout << "batch mapping of the corpus with the unique n-gram stems begins ..." << std::endl; }
     
     std::vector<std::string> res_dat(copy_x.size());
     
+    unsigned int f;
+    
     #ifdef _OPENMP
-    #pragma omp parallel for schedule(static)
+    #pragma omp parallel for schedule(static) shared(copy_x, res_ngram, res_dat) private(f)
     #endif
-    for (unsigned int g = 0; g < copy_x.size(); g++) {
+    for (f = 0; f < copy_x.size(); f++) {
       
-      res_dat[g] = res_ngram[copy_x[g]];
+      #ifdef _OPENMP
+      #pragma omp critical
+      #endif
+      {
+        res_dat[f] = res_ngram[copy_x[f]];
+      }
     }
     
     return res_dat;

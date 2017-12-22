@@ -15,6 +15,7 @@ compiler:
   - gcc
 
 
+
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y          # ppa to install both g++-4.9, gcc-4.9
   - sudo apt-get update -qq
@@ -34,10 +35,17 @@ before_install:
 
 
 install:
- - sudo apt-get install -qq cmake                                                # install cmake
- - wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz      # download, build, install the latest armadillo version
- - tar xf armadillo-7.600.2.tar.xz
- - cd armadillo-7.600.2/
+ #- sudo apt-get install -qq cmake
+ - wget https://cmake.org/files/v3.8/cmake-3.8.0-rc4.tar.gz                      # install cmake
+ - tar xzvf cmake-3.8.0-rc4.tar.gz
+ - cd cmake-3.8.0-rc4/
+ - ./bootstrap
+ - make -j4
+ - sudo make install
+ - cd ..
+ - wget http://sourceforge.net/projects/arma/files/armadillo-7.800.2.tar.xz      # download, build, install the latest armadillo version
+ - tar xf armadillo-7.800.2.tar.xz
+ - cd armadillo-7.800.2/
  - cmake .
  - make
  - sudo make install
@@ -53,7 +61,7 @@ script:
   - py.test -v --cov-config .coveragerc
   #- python setup.py install && py.test
   
-  # In all other cases it returns: Coverage.py warning: No data was collected, see: 
+  # In all other cases (than - py.test -v --cov-config .coveragerc) it returns: Coverage.py warning: No data was collected, see: 
   # http://stackoverflow.com/questions/34665433/coverage-py-cant-collect-any-data-for-coveralls-failing-in-travis,
   # http://stackoverflow.com/questions/18573542/coverage-py-does-not-cover-script-if-py-test-executes-it-from-another-directory
   # http://luc.lino-framework.org/blog/2013/0307.html

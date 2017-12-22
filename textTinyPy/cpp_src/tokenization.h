@@ -64,7 +64,7 @@ class TOKEN {
 
     void trim_token();
 
-    void TOKENIZER(std::string separator = "-*", bool remove_punctuation = false, int threads = 1);
+    void TOKENIZER(std::string separator = "-*", bool remove_punctuation = false);
 
     void remove_stopwords(int threads);
 
@@ -75,6 +75,8 @@ class TOKEN {
     void NGRAM_SEQ(int min_n_gram = 4, double gamma = 0.0, int round_dec_places = 3, int batches = 1, int threads = 1, bool verbose = false);
 
     void NGRAM_OVERLAP(int n_grams, bool verbose = false);
+    
+    std::string inner_str(int n_gram, int i, std::vector<std::string>& vec, std::string& n_gram_delimiter);
 
     std::vector<std::string> secondary_n_grams(std::vector<std::string> vec, int n_gram = 2, std::string n_gram_delimiter = "_", int threads = 1);
 

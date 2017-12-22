@@ -49,14 +49,14 @@ Python Requirements:
 --------------------
 
 * **Cython**>=0.23.5
-* **pandas**>=0.13.1
-* **scipy**>=0.16.1
+* **pandas**>=0.21.0
+* **scipy**>=0.13.0
 * **numpy**>=1.11.2
 * **future**>=0.15.2
 
 |
 
-The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.2/>`_  using:
+The package can be installed from `pypi <https://pypi.python.org/pypi/textTinyPy/0.0.4/>`_  using:
 
 **pip install textTinyPy**
 

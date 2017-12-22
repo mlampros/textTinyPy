@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>utils &mdash; textTinyPy documentation 0.0.1 documentation</title>
+  <title>utils &mdash; textTinyPy documentation 0.0.4 documentation</title>
   
 
+  
+  
   
   
 
@@ -33,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="textTinyPy documentation 0.0.1 documentation" href="../index.html"/>
+    <link rel="top" title="textTinyPy documentation 0.0.4 documentation" href="../index.html"/>
         <link rel="up" title="textTinyPy classes" href="../modules.html"/>
         <link rel="prev" title="tokenizer" href="tokenizer.html"/> 
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -63,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.4
               </div>
             
           
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../page.html"><strong>Text Processing Functions for Small or Big Data Files in Python</strong></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html"><strong>textTinyPy classes</strong></a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="big_text_files.html">big_text_files</a></li>
@@ -106,8 +112,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">textTinyPy documentation</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">textTinyPy documentation</a>
+        
       </nav>
 
 
@@ -116,23 +124,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../modules.html"><strong>textTinyPy classes</strong></a> &raquo;</li>
-      
-    <li>utils</li>
+        
+      <li>utils</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -164,38 +189,38 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
-<li><strong>vocabulary_path_file</strong> &#8211; a character string specifying the output file where the vocabulary should be saved (after tokenization and transformation is applied).</li>
-<li><strong>start_query</strong> &#8211; a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
-<li><strong>end_query</strong> &#8211; a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
-<li><strong>min_lines</strong> &#8211; a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
-<li><strong>trimmed_line</strong> &#8211; either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
-<li><strong>language</strong> &#8211; <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages &#8216;afrikaans&#8217;,</p>
-<p>&#8216;arabic&#8217;, &#8216;armenian&#8217;, &#8216;basque&#8217;, &#8216;bengali&#8217;, &#8216;breton&#8217;, &#8216;bulgarian&#8217;, &#8216;catalan&#8217;, &#8216;croatian&#8217;, &#8216;czech&#8217;,&#8217;danish&#8217;, &#8216;dutch&#8217;, &#8216;english&#8217;, &#8216;estonian&#8217;, &#8216;finnish&#8217;, &#8216;french&#8217;, &#8216;galician&#8217;, &#8216;german&#8217;, 
-&#8216;greek&#8217;, &#8216;hausa&#8217;, &#8216;hebrew&#8217;, &#8216;hindi&#8217;, &#8216;hungarian&#8217;, &#8216;indonesian&#8217;, &#8216;irish&#8217;, &#8216;italian&#8217;, &#8216;latvian&#8217;, &#8216;marathi&#8217;, &#8216;norwegian&#8217;, &#8216;persian&#8217;, &#8216;polish&#8217;, &#8216;portuguese&#8217;, &#8216;romanian&#8217;, &#8216;russian&#8217;,
-&#8216;slovak&#8217;, &#8216;slovenian&#8217;, &#8216;somalia&#8217;, &#8216;spanish&#8217;, &#8216;swahili&#8217;, &#8216;swedish&#8217;, &#8216;turkish&#8217;, &#8216;yoruba&#8217;, &#8216;zulu&#8217;</p>
+<li><strong>input_path_file</strong> – a character string specifying the path to the input file</li>
+<li><strong>vocabulary_path_file</strong> – a character string specifying the output file where the vocabulary should be saved (after tokenization and transformation is applied).</li>
+<li><strong>start_query</strong> – a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
+<li><strong>end_query</strong> – a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
+<li><strong>min_lines</strong> – a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
+<li><strong>trimmed_line</strong> – either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
+<li><strong>language</strong> – <p>a character string which defaults to english. If the remove_stopwords parameter is True then the corresponding stop words vector will be uploaded. Available languages ‘afrikaans’,</p>
+<p>’arabic’, ‘armenian’, ‘basque’, ‘bengali’, ‘breton’, ‘bulgarian’, ‘catalan’, ‘croatian’, ‘czech’,’danish’, ‘dutch’, ‘english’, ‘estonian’, ‘finnish’, ‘french’, ‘galician’, ‘german’, 
+‘greek’, ‘hausa’, ‘hebrew’, ‘hindi’, ‘hungarian’, ‘indonesian’, ‘irish’, ‘italian’, ‘latvian’, ‘marathi’, ‘norwegian’, ‘persian’, ‘polish’, ‘portuguese’, ‘romanian’, ‘russian’,
+‘slovak’, ‘slovenian’, ‘somalia’, ‘spanish’, ‘swahili’, ‘swedish’, ‘turkish’, ‘yoruba’, ‘zulu’</p>
 </li>
-<li><strong>LOCALE_UTF</strong> &#8211; the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be &#8216;el_GR.UTF-8&#8217; ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</li>
-<li><strong>max_num_char</strong> &#8211; an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
-<li><strong>REMOVE_characters</strong> &#8211; a character string with specific characters that should be removed from the text file. If the remove_char is &#8220;&#8221; then no removal of characters take place</li>
-<li><strong>to_lower</strong> &#8211; either True or False. If True the character string will be converted to lower case</li>
-<li><strong>to_upper</strong> &#8211; either True or False. If True the character string will be converted to upper case</li>
-<li><strong>remove_punctuation_string</strong> &#8211; either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</li>
-<li><strong>remove_punctuation_vector</strong> &#8211; either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
-<li><strong>remove_numbers</strong> &#8211; either True or False. If True then any numbers in the character string will be removed</li>
-<li><strong>trim_token</strong> &#8211; either True or False. If True then the string will be trimmed (left and/or right)</li>
-<li><strong>split_string</strong> &#8211; either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
-<li><strong>separator</strong> &#8211; a character string specifying the character delimiter(s)</li>
-<li><strong>remove_stopwords</strong> &#8211; either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
-<li><strong>min_num_char</strong> &#8211; an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
-<li><strong>stemmer</strong> &#8211; a character string specifying the stemming method. Available stemmer is porter2_stemmer.</li>
-<li><strong>min_n_gram</strong> &#8211; an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
-<li><strong>max_n_gram</strong> &#8211; an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
-<li><strong>n_gram_delimiter</strong> &#8211; a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
-<li><strong>skip_n_gram</strong> &#8211; an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
-<li><strong>skip_distance</strong> &#8211; an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
-<li><strong>threads</strong> &#8211; an integer specifying the number of cores to run in parallel</li>
-<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+<li><strong>LOCALE_UTF</strong> – the language specific locale to use in case that either the to_lower or the to_upper parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the utf_locale parameter should be ‘el_GR.UTF-8’ ( language_country.encoding ). A wrong utf-locale does not raise an error, however the runtime of the method increases.</li>
+<li><strong>max_num_char</strong> – an integer specifying the maximum number of characters to keep. The max_num_char should be less than or equal to Inf (in this method the Inf value translates to a word-length of 1000000000)</li>
+<li><strong>REMOVE_characters</strong> – a character string with specific characters that should be removed from the text file. If the remove_char is “” then no removal of characters take place</li>
+<li><strong>to_lower</strong> – either True or False. If True the character string will be converted to lower case</li>
+<li><strong>to_upper</strong> – either True or False. If True the character string will be converted to upper case</li>
+<li><strong>remove_punctuation_string</strong> – either True or False. If True then the punctuation of the character string will be removed (applies before the split method)</li>
+<li><strong>remove_punctuation_vector</strong> – either True or False. If True then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)</li>
+<li><strong>remove_numbers</strong> – either True or False. If True then any numbers in the character string will be removed</li>
+<li><strong>trim_token</strong> – either True or False. If True then the string will be trimmed (left and/or right)</li>
+<li><strong>split_string</strong> – either True or False. If True then the character string will be split using the separator as delimiter. The user can also specify multiple delimiters.</li>
+<li><strong>separator</strong> – a character string specifying the character delimiter(s)</li>
+<li><strong>remove_stopwords</strong> – either True, False or a character vector of user defined stop words. If True then by using the language parameter the corresponding stop words vector will be uploaded.</li>
+<li><strong>min_num_char</strong> – an integer specifying the minimum number of characters to keep. If the min_num_char is greater than 1 then character strings with more than 1 characters will be returned</li>
+<li><strong>stemmer</strong> – a character string specifying the stemming method. Available stemmer is porter2_stemmer.</li>
+<li><strong>min_n_gram</strong> – an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.</li>
+<li><strong>max_n_gram</strong> – an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.</li>
+<li><strong>n_gram_delimiter</strong> – a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)</li>
+<li><strong>skip_n_gram</strong> – an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.</li>
+<li><strong>skip_distance</strong> – an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.</li>
+<li><strong>threads</strong> – an integer specifying the number of cores to run in parallel</li>
+<li><strong>verbose</strong> – either True or False. If True then information will be printed out</li>
 </ul>
 </td>
 </tr>
@@ -223,7 +248,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> &#8211; a character string specifying the language for which the utf-locale should be returned</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> – a character string specifying the language for which the utf-locale should be returned</td>
 </tr>
 </tbody>
 </table>
@@ -248,8 +273,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
-<li><strong>unit</strong> &#8211; a character string specifying the unit. One of KB, MB, GB</li>
+<li><strong>input_path_file</strong> – a character string specifying the path to the input file</li>
+<li><strong>unit</strong> – a character string specifying the unit. One of KB, MB, GB</li>
 </ul>
 </td>
 </tr>
@@ -275,13 +300,13 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_path_file</strong> &#8211; a character string specifying the path to the input file</li>
-<li><strong>start_query</strong> &#8211; a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
-<li><strong>end_query</strong> &#8211; a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
-<li><strong>output_path_file</strong> &#8211; a character string specifying the path to the output file</li>
-<li><strong>min_lines</strong> &#8211; a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
-<li><strong>trimmed_line</strong> &#8211; either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
-<li><strong>verbose</strong> &#8211; either True or False. If True then information will be printed out</li>
+<li><strong>input_path_file</strong> – a character string specifying the path to the input file</li>
+<li><strong>start_query</strong> – a character string. The start_query is the first word of the subset of the data and should appear frequently at the beginning of each line int the text file.</li>
+<li><strong>end_query</strong> – a character string. The end_query is the last word of the subset of the data and should appear frequently at the end of each line in the text file.</li>
+<li><strong>output_path_file</strong> – a character string specifying the path to the output file</li>
+<li><strong>min_lines</strong> – a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.</li>
+<li><strong>trimmed_line</strong> – either True or FALSE. If False then each line of the text file will be trimmed both sides before applying the start_query and end_query</li>
+<li><strong>verbose</strong> – either True or False. If True then information will be printed out</li>
 </ul>
 </td>
 </tr>
@@ -307,9 +332,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>word1</strong> &#8211; a character string</li>
-<li><strong>word2</strong> &#8211; a character string</li>
-<li><strong>n_grams</strong> &#8211; a value specifying the consecutive n-grams of the words</li>
+<li><strong>word1</strong> – a character string</li>
+<li><strong>word2</strong> – a character string</li>
+<li><strong>n_grams</strong> – a value specifying the consecutive n-grams of the words</li>
 </ul>
 </td>
 </tr>
@@ -335,8 +360,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>word1</strong> &#8211; a character string</li>
-<li><strong>word2</strong> &#8211; a character string</li>
+<li><strong>word1</strong> – a character string</li>
+<li><strong>word2</strong> – a character string</li>
 </ul>
 </td>
 </tr>
@@ -362,9 +387,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sentence1</strong> &#8211; a character string consisting of multiple words</li>
-<li><strong>sentence2</strong> &#8211; a character string consisting of multiple words</li>
-<li><strong>split_separator</strong> &#8211; a character string specifying the delimiter(s) to split the sentence</li>
+<li><strong>sentence1</strong> – a character string consisting of multiple words</li>
+<li><strong>sentence2</strong> – a character string consisting of multiple words</li>
+<li><strong>split_separator</strong> – a character string specifying the delimiter(s) to split the sentence</li>
 </ul>
 </td>
 </tr>
@@ -390,9 +415,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_file</strong> &#8211; a character string specifying a valid path to a text file</li>
-<li><strong>characters</strong> &#8211; a numeric value specifying the number of characters to read</li>
-<li><strong>write_2file</strong> &#8211; either an empty string (&#8220;&#8221;) or a character string specifying a valid output file to write the subset of the input file</li>
+<li><strong>input_file</strong> – a character string specifying a valid path to a text file</li>
+<li><strong>characters</strong> – a numeric value specifying the number of characters to read</li>
+<li><strong>write_2file</strong> – either an empty string (“”) or a character string specifying a valid output file to write the subset of the input file</li>
 </ul>
 </td>
 </tr>
@@ -418,10 +443,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_file</strong> &#8211; a character string specifying a valid path to a text file</li>
-<li><strong>read_delimiter</strong> &#8211; a character string specifying the row delimiter of the text file</li>
-<li><strong>rows</strong> &#8211; a numeric value specifying the number of rows to read</li>
-<li><strong>write_2file</strong> &#8211; either an empty string (&#8220;&#8221;) or a character string specifying a valid output file to write the subset of the input file</li>
+<li><strong>input_file</strong> – a character string specifying a valid path to a text file</li>
+<li><strong>read_delimiter</strong> – a character string specifying the row delimiter of the text file</li>
+<li><strong>rows</strong> – a numeric value specifying the number of rows to read</li>
+<li><strong>write_2file</strong> – either an empty string (“”) or a character string specifying a valid output file to write the subset of the input file</li>
 </ul>
 </td>
 </tr>
@@ -447,10 +472,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_path_file</strong> &#8211; a character string specifying a valid path to an xml text file</li>
-<li><strong>xml_path</strong> &#8211; a character string specifying the xml query</li>
-<li><strong>output_path_file</strong> &#8211; a character string specifying a valid output file to write output</li>
-<li><strong>empty_key</strong> &#8211; a character string specifying the replacement word in case that the key in the tree structure is empty</li>
+<li><strong>input_path_file</strong> – a character string specifying a valid path to an xml text file</li>
+<li><strong>xml_path</strong> – a character string specifying the xml query</li>
+<li><strong>output_path_file</strong> – a character string specifying a valid output file to write output</li>
+<li><strong>empty_key</strong> – a character string specifying the replacement word in case that the key in the tree structure is empty</li>
 </ul>
 </td>
 </tr>
@@ -458,7 +483,7 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>xml file tree traversal for subroot&#8217;s attributes, elements and sub-elements using the boost library</p>
+<p>xml file tree traversal for subroot’s attributes, elements and sub-elements using the boost library</p>
 <p>The logic behind root-child-subchildren of an xml file is explained in <a class="reference external" href="http://www.w3schools.com/xml/xml_tree.asp">http://www.w3schools.com/xml/xml_tree.asp</a></p>
 <p>Example:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">the</span> <span class="n">following</span> <span class="n">structure</span> <span class="k">as</span> <span class="n">a</span> <span class="s1">&#39;FILE.xml&#39;</span>
@@ -519,9 +544,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_path_file</strong> &#8211; a character string specifying a valid path to an xml text file</li>
-<li><strong>xml_root</strong> &#8211; a character string specifying the xml query</li>
-<li><strong>output_path_file</strong> &#8211; a character string specifying a valid output file to write output</li>
+<li><strong>input_path_file</strong> – a character string specifying a valid path to an xml text file</li>
+<li><strong>xml_root</strong> – a character string specifying the xml query</li>
+<li><strong>output_path_file</strong> – a character string specifying a valid output file to write output</li>
 </ul>
 </td>
 </tr>
@@ -529,7 +554,7 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>xml file tree traversal for a root&#8217;s attributes using the boost library ( repeated tree sturcture )</p>
+<p>xml file tree traversal for a root’s attributes using the boost library ( repeated tree sturcture )</p>
 <p>Example:</p>
 <div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">the</span> <span class="n">following</span> <span class="n">structure</span> <span class="k">as</span> <span class="n">a</span> <span class="s1">&#39;FILE.xml&#39;</span>
 <span class="o">---------------------------------------------</span>
@@ -593,13 +618,16 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="tokenizer.html" class="btn btn-neutral" title="tokenizer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tokenizer.html" class="btn btn-neutral" title="tokenizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -630,10 +658,11 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.1',
+            VERSION:'0.0.4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>

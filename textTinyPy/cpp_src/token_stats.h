@@ -11,7 +11,7 @@
  * 
  * @Notes: statistics for tokenized and transformed text
  * 
- * @last_modified: December 2016
+ * @last_modified: December 2017
  * 
  **/
 
@@ -55,6 +55,8 @@ class TOKEN_stats {
     std::vector<std::string> char_n_grams(std::string &x, int n_grams, bool return_word = false, bool add_prefix = false);
     
     double dice_similarity(std::string x, std::string y, int n_grams);
+    
+    double inner_dissim_m(std::vector<std::string>& words, int dice_n_gram, double dice_thresh, std::string& method, std::string& split_separator, unsigned int i, unsigned int j);
 
     std::vector<std::vector<double> > dissimilarity_mat(std::vector<std::string> &words, int dice_n_gram = 2, std::string method = "dice", std::string split_separator = " ",
                                                          

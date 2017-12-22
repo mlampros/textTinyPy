@@ -1491,7 +1491,7 @@ cdef class token_stats:
         
         result_pd.columns = ['freq']
         
-        result_pd = result_pd.sort(['freq'], ascending=[False])
+        result_pd = result_pd.sort_values(by = ['freq'], ascending = False)
         
         if keep is not None:
             
@@ -2013,6 +2013,19 @@ cdef class docs_matrix:
 
 
 
+    def triplet_data(self):                         
+    
+        '''
+        
+        it returns the terms, row-indices, column-indices and counts ( or floats )
+        
+        the 'triplet_data' method is called after the 'Term_Matrix' method ( otherwise the output will be an empty dictionary )
+        
+        '''
+        
+        return self.result_struct_matrix
+        
+
         
     def document_term_matrix(self, to_array = False):
         
@@ -2291,7 +2304,7 @@ cdef class docs_matrix:
         
         
         
-    def term_associations(self, Terms = None, keep_terms = None, threads = 1, verbose = False):
+    def term_associations(self, Terms = None, keep_terms = None, verbose = False):
         
         '''
         
@@ -2326,8 +2339,6 @@ cdef class docs_matrix:
         else:
             
             keep_terms = 0
-            
-        assert isinstance(threads, int) and threads > 0, "the number of threads should be greater or equal to 1"
 
         assert isinstance(verbose, bool), "the verbose parameter should be either TRUE or FALSE"
         
@@ -2370,7 +2381,7 @@ cdef class docs_matrix:
             
         if len(single_trgt_idx) == 1:
             
-            self.dtm.Associations_Cpp(trgt_size, TERMS, [], keep_terms, single_trgt_idx[0], threads, verbose)
+            self.dtm.Associations_Cpp(trgt_size, TERMS, [], keep_terms, single_trgt_idx[0], verbose)
             
             result_tmp_single = self.dtm.return_cor_assoc_T()
             
@@ -2398,7 +2409,7 @@ cdef class docs_matrix:
             
         else:
             
-            self.dtm.Associations_Cpp(trgt_size, TERMS, single_trgt_idx, keep_terms, -1, threads, verbose)
+            self.dtm.Associations_Cpp(trgt_size, TERMS, single_trgt_idx, keep_terms, -1, verbose)
             
             res_tmp_mult = self.dtm.return_nested_cor_assoc_T()
             

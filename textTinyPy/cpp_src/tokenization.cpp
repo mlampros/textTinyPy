@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: December 2016
+ * @last_modified: December 2017
  *
  **/
 
@@ -218,11 +218,7 @@ void TOKEN::trim_token() {
 // split a string sentence using multiple separators example : TOKENIZER("abc-*-ABC-*-aBc")
 //
 
-void TOKEN::TOKENIZER(std::string separator, bool remove_punctuation, int threads) {
-
-  #ifdef _OPENMP
-  omp_set_num_threads(threads);
-  #endif
+void TOKEN::TOKENIZER(std::string separator, bool remove_punctuation) {
 
   std::vector<std::string> new_vec;
 
@@ -238,9 +234,6 @@ void TOKEN::TOKENIZER(std::string separator, bool remove_punctuation, int thread
 
     if (remove_punctuation) {
 
-      #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
-      #endif
       for (unsigned int i = 0; i < tmp_vec.size(); i++) {
 
         tmp_vec[i].erase(std::remove_if(tmp_vec[i].begin(), tmp_vec[i].end(), &ispunct), tmp_vec[i].end());
@@ -311,12 +304,19 @@ void TOKEN::remove_stopwords(int threads) {
 
   std::vector<std::string> result(insert_vals.size());              // subset [ to preserve the words order using indexing ]
 
+  unsigned int f;
+  
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
   #endif
-  for (unsigned int f = 0; f < insert_vals.size(); f++) {
-
-    result[f] = v[insert_vals[f]];
+  for (f = 0; f < insert_vals.size(); f++) {
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      result[f] = v[insert_vals[f]];
+    }
   }
 
   insert_vals.shrink_to_fit();
@@ -365,12 +365,19 @@ void TOKEN::keep_n_char(long long max_length, int min_length, int threads) {
 
   std::vector<std::string> result(insert_vals.size());
 
+  unsigned int f;
+  
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
   #endif
-  for (unsigned int f = 0; f < insert_vals.size(); f++) {
-
-    result[f] = v[insert_vals[f]];
+  for (f = 0; f < insert_vals.size(); f++) {
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      result[f] = v[insert_vals[f]];
+    }
   }
 
   insert_vals.shrink_to_fit();
@@ -397,17 +404,26 @@ void TOKEN::keep_n_char(long long max_length, int min_length, int threads) {
 * Copyright (C) 2012 Sean Massung**/
 
 void TOKEN::porter2_stemmer(int threads) {
-
+  
   #ifdef _OPENMP
   omp_set_num_threads(threads);
   #endif
-
+  
+  unsigned int i;
+    
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) private(i)
   #endif
-  for (unsigned int i = 0; i < v.size(); i++) {
-
-    v[i] = Porter2Stemmer::stem(v[i]);
+  for (i = 0; i < v.size(); i++) {
+    
+    std::string tmp_prt = Porter2Stemmer::stem(v[i]);
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      v[i] = tmp_prt;
+    }
   }
 }
 
@@ -430,44 +446,64 @@ void TOKEN::NGRAM_OVERLAP(int n_grams, bool verbose) {
 }
 
 
+
+// inner function for the 'secondary_n_grams' function
+//
+
+std::string TOKEN::inner_str(int n_gram, int i, std::vector<std::string>& vec, std::string& n_gram_delimiter) {
+  
+  std::string tmp_string;
+  
+  for (int j = i; j < i + n_gram; j++) {
+    
+    if (j == i) {
+      
+      tmp_string += vec[j];}
+    
+    else {
+      
+      tmp_string += n_gram_delimiter + vec[j];
+    }
+  }
+  
+  return tmp_string;
+}
+
+
+
 // secondary function for the n-grams-function
 //
 
 std::vector<std::string> TOKEN::secondary_n_grams(std::vector<std::string> vec, int n_gram, std::string n_gram_delimiter, int threads) {
-
+  
   #ifdef _OPENMP
   omp_set_num_threads(threads);
   #endif
-
+  
   int vec_size = vec.size() - n_gram + 1;
-
-  if (vec_size < 0) {                            // bug : textTinyR 1.0.5 version
-
+  
+  if (vec_size < 0) {
+    
     vec_size = 0;
   }
-
+  
   std::vector<std::string> out(vec_size);
-
+  
+  int i;
+  
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(vec_size, n_gram_delimiter, vec, n_gram, out) private(i)
   #endif
-  for (int i = 0; i < vec_size; i++) {
-
-    std::string tmp_string;
-
-    for (int j = i; j < i + n_gram; j++) {
-
-      if (j == i) {
-
-        tmp_string += vec[j];}
-
-      else {
-
-        tmp_string += n_gram_delimiter + vec[j];
-      }
+  for (i = 0; i < vec_size; i++) {
+    
+    std::string tmp_in = inner_str(n_gram, i, vec, n_gram_delimiter);
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      out[i] = tmp_in;
     }
-
-    out[i] = tmp_string;
   }
 
   return out;

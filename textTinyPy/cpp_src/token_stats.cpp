@@ -10,7 +10,7 @@
  * 
  * @Notes: statistics for tokenized and transformed text
  * 
- * @last_modified: December 2016
+ * @last_modified: December 2017
  * 
  **/
 
@@ -513,9 +513,11 @@ std::vector<std::string> TOKEN_stats::char_n_grams(std::string &x, int n_grams, 
   int x_size = x.size();
   
   if (add_prefix) {
-
+    
     x = "_" + x + "_";
   }
+  
+  int n_size = add_prefix ? x_size - n_grams + 3 : x_size - n_grams + 1;
   
   if (n_grams >= x_size) {
     
@@ -531,8 +533,6 @@ std::vector<std::string> TOKEN_stats::char_n_grams(std::string &x, int n_grams, 
   
   else {
     
-    int n_size = x_size - n_grams + 1;
-    
     std::vector<std::string> out(n_size);
     
     for (int i = 0; i < n_size; i++) {
@@ -543,7 +543,7 @@ std::vector<std::string> TOKEN_stats::char_n_grams(std::string &x, int n_grams, 
         
         n_gram += x[j];
       }
-
+      
       out[i] = n_gram;
     }
     
@@ -591,6 +591,35 @@ double TOKEN_stats::dice_similarity(std::string x, std::string y, int n_grams) {
 }
 
 
+// secondary function for the 'dissimilarity_mat' method
+//
+
+double TOKEN_stats::inner_dissim_m(std::vector<std::string>& words, int dice_n_gram, double dice_thresh, std::string& method, std::string& split_separator, unsigned int i, unsigned int j) {
+  
+  double tmp_idx = 0.0;
+  
+  if (method == "dice") {
+    
+    tmp_idx = dice_similarity(words[i], words[j], dice_n_gram);
+    
+    if (tmp_idx >= dice_thresh) { tmp_idx = 1.0; }     // special case when method = 'dice' see : http://www.anthology.aclweb.org/P/P00/P00-1026.pdf, page 3
+  }
+  
+  if (method == "levenshtein") {
+    
+    tmp_idx = levenshtein_dist(words[i], words[j]);
+  }
+  
+  if (method == "cosine") {
+    
+    tmp_idx = cosine_dist(words[i], words[j], split_separator);
+  }
+  
+  return tmp_idx;
+}
+
+
+
 // dissimilarity matrix using the dice-coefficient for the n-gram clustering [ set a threshold so that if a two-word's dissimilarity
 // value is greater than the threshold value, then they are (entirely) dissimilar and thus have a distance of 1.0 ]
 // conversion from arma-matrix to std-vector to be compatible with cython
@@ -603,61 +632,44 @@ std::vector<std::vector<double> > TOKEN_stats::dissimilarity_mat(std::vector<std
   #ifdef _OPENMP
   omp_set_num_threads(threads);
   #endif
-
+  
   arma::mat mt(words.size(), words.size());
-
+  
   mt.fill(arma::datum::nan);
-
+  
+  unsigned int i,j;
+  
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(words, split_separator, method, dice_n_gram, dice_thresh, mt, upper) private(i,j)
   #endif
-  for (unsigned int i = 0; i < words.size() - 1; i++) {
-
-    int k = i;
-
-    #ifdef _OPENMP
-    #pragma omp parallel for schedule(static)
-    #endif
-    for (unsigned int j = k + 1; j < words.size(); j++) {
-
-      double tmp_idx = 0.0;
-
-      if (method == "dice") {
-
-        tmp_idx = dice_similarity(words[i], words[j], dice_n_gram);
-
-        if (tmp_idx >= dice_thresh) { tmp_idx = 1.0; }     // special case when method = 'dice' see : http://www.anthology.aclweb.org/P/P00/P00-1026.pdf, page 3
-      }
-
-      if (method == "levenshtein") {
-
-        tmp_idx = levenshtein_dist(words[i], words[j]);
-      }
-
-      if (method == "cosine") {
-
-        tmp_idx = cosine_dist(words[i], words[j], split_separator);
-      }
-
+  for (i = 0; i < words.size() - 1; i++) {
+    
+    for (j = i + 1; j < words.size(); j++) {
+      
+      double tmp_idx = inner_dissim_m(words, dice_n_gram, dice_thresh, method, split_separator, i, j);
+      
+      #ifdef _OPENMP
+      #pragma omp atomic write
+      #endif
       mt(j,i) = tmp_idx;
-
+      
       if (upper) {
-
+        
+        #ifdef _OPENMP
+        #pragma omp atomic write
+        #endif
         mt(i,j) = tmp_idx;
       }
     }
   }
-
+  
   if (diagonal) {
-
+    
     mt.diag().zeros();
   }
   
   std::vector<std::vector<double> > mt_VEC(words.size(), std::vector<double>(words.size()));
 
-  #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
-  #endif
   for (unsigned int k = 0; k < mt.n_rows; k++) {
     
     mt_VEC[k] = arma::conv_to< std::vector<double> >::from(mt.row(k));

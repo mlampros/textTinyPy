@@ -155,14 +155,10 @@ msg_mft1 = "the most_frequent_terms method is invalid if the normalize parameter
 # term associations
 
 
-lst_assoc = [ { 'Terms' : {} }, { 'Terms' : [ 'the', 'of', 'or'], 'keep_terms' : -1 }, { 'Terms' : [ 'the', 'of', 'or'], 'threads' : 0 }, 
-             
-             { 'Terms' : [ 'the', 'of', 'or'], 'verbose' : 'False' } ]
+lst_assoc = [ { 'Terms' : {} }, { 'Terms' : [ 'the', 'of', 'or'], 'keep_terms' : -1 }, { 'Terms' : [ 'the', 'of', 'or'], 'verbose' : 'False' } ]
              
 
-msg_assoc = [ 'the Terms parameter should be a list of character strings', 'the keep_terms parameter should be of type integer and greater or equal to 0',
-             
-             "the number of threads should be greater or equal to 1", "the verbose parameter should be either TRUE or FALSE" ]
+msg_assoc = [ 'the Terms parameter should be a list of character strings', 'the keep_terms parameter should be of type integer and greater or equal to 0', "the verbose parameter should be either TRUE or FALSE" ]
     
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

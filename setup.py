@@ -56,7 +56,7 @@ ext = Extension("*",
 
 setup(name="textTinyPy",
 
-      version = '0.0.3',
+      version = '0.0.4',
       
       author = 'Lampros Mouselimis',
       
@@ -94,7 +94,7 @@ setup(name="textTinyPy",
 
       tests_require=['pytest'],
 
-      install_requires=[ "Cython >= 0.23.5", "pandas >= 0.13.1", "scipy >= 0.16.1", "numpy >= 1.11.2", "future >= 0.15.2" ],)
+      install_requires=[ "Cython >= 0.23.5", "pandas >= 0.21.0", "scipy >= 0.13.0", "numpy >= 1.11.2", "future >= 0.15.2" ],)
 
 
 

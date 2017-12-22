@@ -49,6 +49,8 @@ cdef extern from "cpp_src/tokenization.h":
         
         void NGRAM_OVERLAP(int n_grams, bool_t verbose)
         
+        string inner_str(int n_gram, int i, vector[string] vec, string n_gram_delimiter)
+        
         vector[string] secondary_n_grams(vector[string] vec, int n_gram, string n_gram_delimiter, int threads)
         
         void build_n_grams(int min_n_gram, int max_n_gram, string n_gram_delimiter, int threads)
@@ -247,6 +249,8 @@ cdef extern from "cpp_src/token_stats.h":
         
         double dice_similarity(string x, string y, int n_grams)
         
+        double inner_dissim_m(vector[string] words, int dice_n_gram, double dice_thresh, string method, string split_separator, int i, int j)
+        
         vector[vector[double]] dissimilarity_mat(vector[string] words, int dice_n_gram, string method, string split_separator, double dice_thresh, bool_t upper, bool_t diagonal, int threads)
         
         unordered_map[string, vector[string]] look_up_tbl(vector[string] VEC, int n_grams)
@@ -348,7 +352,7 @@ cdef extern from "cpp_src/term_matrix.h":
         
         struct_term_matrix_double output_data_double()
         
-        void Associations_Cpp(long long target_size, vector[string] Terms, vector[int] mult_target_var, long long keepTerms, long long target_var, int threads, bool_t verbose)
+        void Associations_Cpp(long long target_size, vector[string] Terms, vector[int] mult_target_var, long long keepTerms, long long target_var, bool_t verbose)
         
         vector[string] return_zer_value_terms()
         
