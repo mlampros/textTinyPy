@@ -61,7 +61,7 @@ install:
 
 script:
   #- py.test
-  - py.test -v --cov-config .coveragerc
+  #- py.test -v --cov-config .coveragerc
   #- python setup.py install && py.test
   
   # In all other cases (than - py.test -v --cov-config .coveragerc) it returns: Coverage.py warning: No data was collected, see: 
