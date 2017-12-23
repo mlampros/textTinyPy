@@ -59,6 +59,9 @@ install:
  #- pip install coveralls
 
 
+# 23-12-2017 : error with pytest probably related with '.pyc', '_cache_' files / folder that are created when each file of pytest is run. See also,
+# https://github.com/pytest-dev/pytest/issues/2042
+
 script:                                         # 23-12-17 : comment this [ tests work locally but not on travis ]
   #- py.test
   - py.test -v --cov-config .coveragerc         # 23-12-17 : comment this [ tests work locally but not on travis ]
