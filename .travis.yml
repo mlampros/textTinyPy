@@ -59,9 +59,9 @@ install:
  #- pip install coveralls
 
 
-#script:                                         # 23-12-17 : uncomment this [ tests work locally but not on travis ]
+script:                                         # 23-12-17 : comment this [ tests work locally but not on travis ]
   #- py.test
-  #- py.test -v --cov-config .coveragerc         # 23-12-17 : uncomment this [ tests work locally but not on travis ]
+  - py.test -v --cov-config .coveragerc         # 23-12-17 : comment this [ tests work locally but not on travis ]
   #- python setup.py install && py.test
   
   # In all other cases (than - py.test -v --cov-config .coveragerc) it returns: Coverage.py warning: No data was collected, see: 
@@ -71,9 +71,9 @@ install:
   #- py.test --cov=textTinyPy
   #- py.test -v --cov-config .coveragerc --cov textTinyPy test/
 
-#after_success:                                   # 23-12-17 : uncomment this [ tests work locally but not on travis ]
+after_success:                                  # 23-12-17 : comment this [ tests work locally but not on travis ]
   #- coveralls
-  #- codecov                                      # 23-12-17 : uncomment this [ tests work locally but not on travis ]
+  - codecov                                     # 23-12-17 : comment this [ tests work locally but not on travis ]
 
 notifications:
   email:
