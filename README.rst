@@ -10,7 +10,7 @@
 .. image:: https://codebeat.co/projects/github-com-mlampros-texttinypy-master
     :target: https://codebeat.co/badges/158c074c-375b-4bde-9374-b41e99bdb015
 
-!https://codebeat.co/badges/158c074c-375b-4bde-9374-b41e99bdb015(codebeat badge)!:https://codebeat.co/projects/github-com-mlampros-texttinypy-master
+
 
 |
 
