@@ -6,7 +6,9 @@
 
 .. image:: https://codecov.io/github/mlampros/textTinyPy/coverage.svg?branch=master
     :target: https://codecov.io/github/mlampros/textTinyPy?branch=master1
-
+    
+.. image:: https://codebeat.co/projects/github-com-mlampros-texttinypy-master
+    :target: https://codebeat.co/badges/158c074c-375b-4bde-9374-b41e99bdb015
 
 
 |
